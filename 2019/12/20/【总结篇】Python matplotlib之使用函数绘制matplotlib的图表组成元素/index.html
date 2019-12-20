@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="写在前面学习参考书籍：《Python数据可视化之matplotlib实践》出版社信息：中国工信出版集团 电子工业出版社作者：刘大成ISBN：978-7-121-34888-4  
+作者注：我在这里只总结函数的功能及其用法，程序实例参考链接：link  
+matplotlib简介&amp;emsp;&amp;emsp">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="【总结篇】Python matplotlib之使用函数绘制matplotlib的图表组成元素"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Welcome to CCH21&#39;s Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>【总结篇】Python matplotlib之使用函数绘制matplotlib的图表组成元素 - Welcome to CCH21&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/12/20/%E3%80%90%E6%80%BB%E7%BB%93%E7%AF%87%E3%80%91Python%20matplotlib%E4%B9%8B%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0%E7%BB%98%E5%88%B6matplotlib%E7%9A%84%E5%9B%BE%E8%A1%A8%E7%BB%84%E6%88%90%E5%85%83%E7%B4%A0/">
+                【总结篇】Python matplotlib之使用函数绘制matplotlib的图表组成元素
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-12-20</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>学习参考书籍：《Python数据可视化之matplotlib实践》<br>出版社信息：中国工信出版集团 电子工业出版社<br>作者：刘大成<br>ISBN：978-7-121-34888-4  </p>
+<p>作者注：我在这里只总结函数的功能及其用法，程序实例参考链接：<a href="https://github.com/CCH21/Python/tree/master/Python%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8Bmatplotlib%E5%AE%9E%E8%B7%B5" target="_blank" rel="noopener">link</a>  </p>
+<h2 id="matplotlib简介"><a href="#matplotlib简介" class="headerlink" title="matplotlib简介"></a>matplotlib简介</h2><p>&emsp;&emsp;matplotlib库是Python中绘制二维、三维图表的数据可视化工具。它能让使用者很轻松地将数据图形化，并且提供多样化的输出格式。<br>&emsp;&emsp;在使用matplotlib库的时候，我们应先用下面的语句导入matplotlib库：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib as mpl</span><br><span class="line">import matplotlib.pyplot as plt</span><br></pre></td></tr></table></figure>
+<h2 id="绘制图表组成元素的函数及其用法"><a href="#绘制图表组成元素的函数及其用法" class="headerlink" title="绘制图表组成元素的函数及其用法"></a>绘制图表组成元素的函数及其用法</h2><h5 id="1-函数plot"><a href="#1-函数plot" class="headerlink" title="1.函数plot()"></a>1.函数plot()</h5><p>函数功能：展现变量的趋势变化。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(s, y, ls=&quot;-&quot;, lw=2, label=&quot;plot figure&quot;)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>x：x轴上的数值。<br>y：y轴上的数值。<br>ls：折线图的线条风格。<br>lw：折线图的线条宽度。<br>label：标记图形内容的标签文本。  </p>
+<h5 id="2-函数scatter"><a href="#2-函数scatter" class="headerlink" title="2.函数scatter()"></a>2.函数scatter()</h5><p>函数功能：寻找变量之间的关系。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter(x, y, c=&quot;b&quot;, label=&quot;scatter figure&quot;)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>x：x轴上的数值。<br>y：y轴上的数值。<br>c：散点图中标记的颜色。<br>label：标记图形内容的标签文本。  </p>
+<h5 id="3-函数xlim-amp-ylim"><a href="#3-函数xlim-amp-ylim" class="headerlink" title="3.函数xlim() &amp; ylim()"></a>3.函数xlim() &amp; ylim()</h5><p>函数功能：设置x轴（y轴）的数值显示范围。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.xlim(xmin, xmax)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>xmin：x轴上的最小值。<br>xmax：x轴上的最大值。<br>平移性：上面的函数功能，调用签名和参数说明同样可以平移到函数ylim()上。  </p>
+<h5 id="4-函数xlabel-amp-ylabel"><a href="#4-函数xlabel-amp-ylabel" class="headerlink" title="4.函数xlabel() &amp; ylabel()"></a>4.函数xlabel() &amp; ylabel()</h5><p>函数功能：设置x轴（y轴）的标签文本。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.xlabel(string)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>string：标签文本内容。<br>平移性：上面的函数功能，调用签名和参数说明同样可以平移到函数ylabel()上。  </p>
+<h5 id="5-函数grid"><a href="#5-函数grid" class="headerlink" title="5.函数grid()"></a>5.函数grid()</h5><p>函数功能：绘制刻度线的网格线。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ply.grid(linestyle=&quot;:&quot;, color=&quot;r&quot;)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>linestyle：网格线的线条风格。<br>color：网格线的线条颜色。  </p>
+<h5 id="6-函数axhline-amp-axvline"><a href="#6-函数axhline-amp-axvline" class="headerlink" title="6.函数axhline() &amp; axvline()"></a>6.函数axhline() &amp; axvline()</h5><p>函数功能：绘制平行于x轴（y轴）的水平（竖直）参考线。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.axhline(y=0.0, c=&quot;r&quot;, ls=&quot;--&quot;, lw=2)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>y：水平参考线的出发点。<br>c：参考线的线条颜色。<br>ls：参考线的线条风格。<br>lw：参考线的线条宽度。<br>平移性：上面的函数功能，调用签名和参数说明同样可以平移到函数axvline()上。  </p>
+<h5 id="7-函数axvspan-amp-axhspan"><a href="#7-函数axvspan-amp-axhspan" class="headerlink" title="7.函数axvspan() &amp; axhspan()"></a>7.函数axvspan() &amp; axhspan()</h5><p>函数功能：绘制垂直于x轴（y轴）的参考区域。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.avxspan(xmin=1.0, xmax=2.0, facecolor=&quot;y&quot;, alpha=0.3)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>xmin：参考区域的起始位置。<br>xmax：参考区域的终止位置。<br>facecolor：参考区域的填充颜色。<br>alpha：参考区域的填充颜色的透明度。<br>平移性：上面的函数功能、调用签名和参数说明可以平移到函数axhspan()上。  </p>
+<h5 id="8-函数annotate"><a href="#8-函数annotate" class="headerlink" title="8.函数annotate()"></a>8.函数annotate()</h5><p>函数功能：添加图形内容细节的指向型注释文本。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plt.annotate(string, xy=(np.pi/2, 1.0),</span><br><span class="line">             xytext=((np.pi/2)+0.15, 1.5), </span><br><span class="line">             weight=&quot;bold&quot;, </span><br><span class="line">             color=&quot;b&quot;, </span><br><span class="line">             arrowprops=dict(arrowstyle=&quot;-&gt;&quot;, connectionstyle=&quot;arc3&quot;, color=&quot;b&quot;))</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>string：图形内容的注释文本。<br>xy：被注释图形内容的位置坐标。<br>xytext：注释文本的位置坐标。<br>weight：注释文本的字体粗细风格。<br>color：注释文本的字体颜色。<br>arrowprops：指示被注释内容的箭头的属性字典。  </p>
+<h5 id="9-函数text"><a href="#9-函数text" class="headerlink" title="9.函数text()"></a>9.函数text()</h5><p>函数功能：添加图形内容细节的无指向性注释文本。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.text(x, y, string, weight=&quot;bold&quot;, color=&quot;b&quot;)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>x：注释文本内容所在位置的横坐标。<br>y：注释文本内容所在位置的纵坐标。<br>string：注释文本内容。<br>weight：注释文本内容的粗细风格。<br>color：注释文本内容的字体颜色。  </p>
+<h5 id="10-函数title"><a href="#10-函数title" class="headerlink" title="10.函数title()"></a>10.函数title()</h5><p>函数功能：添加图形内容的标题。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.title(string)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>string：图形内容的标题文本。  </p>
+<h5 id="11-函数legend"><a href="#11-函数legend" class="headerlink" title="11.函数legend()"></a>11.函数legend()</h5><p>函数功能：标示不同图形的文本标签图例。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.legend(loc=&quot;lower left&quot;)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>loc：图例在图中的地理位置。  </p>
+<h5 id="12-函数show"><a href="#12-函数show" class="headerlink" title="12.函数show()"></a>12.函数show()</h5><p>函数功能：在屏幕上显示出绘制的图表。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>&emsp;&emsp;我最近刚刚开始学习Python的matplotlib库，对此的感觉就是函数及其参数很多、很不好记。但是matplotlib真的是一个功能很强大的库，在数据可视化领域的重要性不言而喻。希望自己可以通过这一段时间的学习熟练掌握matplotlib库的用法。<br>&emsp;&emsp;如果你有什么想法、意见和建议的话，欢迎联系我。<br>&emsp;&emsp;我的邮箱：<a href="mailto:1398635912@qq.com" target="_blank" rel="noopener">1398635912@qq.com</a></p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    I'd walk a million miles just to see your smile. 
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/12/20/%E3%80%90%E6%80%BB%E7%BB%93%E7%AF%87%E3%80%91Python%20matplotlib%E4%B9%8B%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0%E7%BB%98%E5%88%B6matplotlib%E7%9A%84%E5%9B%BE%E8%A1%A8%E7%BB%84%E6%88%90%E5%85%83%E7%B4%A0/">【总结篇】Python matplotlib之使用</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/12/19/%E9%80%92%E5%BD%92%E6%B3%95%E8%A7%A3%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/">递归法解汉诺塔问题</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/12/12/%E3%80%90%E7%AE%97%E6%B3%95%E7%A7%AF%E7%B4%AF%E3%80%91%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%B3%95/">【算法积累】二分查找法</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/12/12/C%E8%AF%AD%E8%A8%80%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98%E2%80%94%E2%80%94%E5%85%91%E6%8D%A2%E7%A1%AC%E5%B8%81/">C语言经典问题——兑换硬币</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://dribbble.com/" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.behance.net/" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://500px.com/" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:test@example.com" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/" target="_blank" rel="noopener">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
