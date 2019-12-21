@@ -186,6 +186,7 @@
 <p>&emsp;&emsp;同样地，这种解法的时间复杂度为O(n)，空间复杂度为O(n)。  </p>
 <h2 id="解法3：斐波那契公式法"><a href="#解法3：斐波那契公式法" class="headerlink" title="解法3：斐波那契公式法"></a>解法3：斐波那契公式法</h2><p>&emsp;&emsp;既然知道这道题本质上就是斐波那契数列了，那么我们就可以直接使用公式啦！<br>&emsp;&emsp;斐波那契数列的公式如下：<br>$$F_n=\frac{1}{\sqrt{5}}\left(\left(\frac{1+\sqrt{5}}{2}\right)^{n+1}-\left(\frac{1-\sqrt{5}}{2}\right)^{n+1}\right)$$<br>&emsp;&emsp;套用这个公式可以很快地解决本题。Python 3代码如下：  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">语言：Python 3</span><br><span class="line">执行用时：48ms（比上一个方法慢了不少诶QnQ）</span><br><span class="line">内存消耗：12.8MB</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">import math</span><br><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    def climbStairs(self, n: int) -&gt; int:</span><br><span class="line">        return int((pow((1+math.sqrt(5))/2, n+1) - pow((1-math.sqrt(5))/2, n+1)) / math.sqrt(5))</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这种方法的时间复杂度为O(log(n))（pow()将会用去log(n)的时间），空间复杂度为O(1)（使用常量级空间）。  </p>
 
     </div>
 
