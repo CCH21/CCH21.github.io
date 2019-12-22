@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="前言&amp;emsp;&amp;emsp;有句俗话说得好：“没有规矩，不成方圆。”这句话在计算机编程领域同样适用。大家都知道，每个人编写代码的习惯与风格是不一样的。而代码风格的统一可以带来很多好处，我认为从最直观的角度来说就是增强了代码的可读性。此外，统一代码风格还有更容易发现bug、略微提高性能等好处。&amp;ems">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Python编码规范总结"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Welcome to CCH21&#39;s Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Python编码规范总结 - Welcome to CCH21&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/12/22/Python%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83%E6%80%BB%E7%BB%93/">
+                Python编码规范总结
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-12-22</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>&emsp;&emsp;有句俗话说得好：“没有规矩，不成方圆。”这句话在计算机编程领域同样适用。大家都知道，每个人编写代码的习惯与风格是不一样的。而代码风格的统一可以带来很多好处，我认为从最直观的角度来说就是增强了代码的可读性。此外，统一代码风格还有更容易发现bug、略微提高性能等好处。<br>&emsp;&emsp;之前曾经读过一篇文章，里面提到这样一句话：“任何一个傻瓜都能写出计算机可以理解的代码，唯有写出人类容易理解的代码，才是优秀的程序员。”这句话对我的影响很深。我是一名大一本科在读学生，在平时的学习中不乏和同学互相讨论研究代码。我说过最多的一句话大概就是：“你这个代码写得太不规范了。”但是从来没有任何一个同学重视这句话，他们甚至会不屑一顾地回复我：“无所谓，又不是不能运行。”<br>&emsp;&emsp;但我认为，在系统学习一门编程语言之前，首先应该学习编码规范，从开始就养成一个良好的习惯，对于以后的学习来说也是有百利而无一害。只有这样，我们才可以编写出可读性高，无论自己和他人都易于理解的代码。  </p>
+<h1 id="Python编码规范"><a href="#Python编码规范" class="headerlink" title="Python编码规范"></a>Python编码规范</h1><blockquote>
+<p>参考书籍：《Python从小白到大牛》<br>作者：关东升<br>出版社：清华大学出版社<br>ISBN：978-7-302-50933-2  </p>
+</blockquote>
+<h3 id="1-命名规范"><a href="#1-命名规范" class="headerlink" title="1.命名规范"></a>1.命名规范</h3><p>&emsp;&emsp;1.包名：全部小写字母，中间可以由点分隔开，不推荐使用下划线。作为命名空间，包名应该具有唯一性，推荐采用公司或组织域名的倒置。<br>&emsp;&emsp;2.模块名：全部小写字母，如果由多个单词构成，可以用下划线隔开。<br>&emsp;&emsp;3.类名：采用大驼峰法（即每一个单词的首字母都大写）命名。<br>&emsp;&emsp;4.异常名：异常属于类，命名同类命名，但应该使用Error作为后缀。<br>&emsp;&emsp;5.变量名：全部小写字母，如果由多个单词构成，可以用下划线隔开。如果变量应用于模块或函数内部，则变量名可以由单下划线开头；变量类内部私有使用变量名可以双下划线开头。不要命名双下划线开头和结尾的变量，这是Python保留的。另外，避免使用小写L、大写O和大写I作为变量名。<br>&emsp;&emsp;6.函数名和方法名：命名同变量命名。<br>&emsp;&emsp;7.常量名：全部大写字母，如果由多个单词构成，可以用下划线隔开。  </p>
+<h3 id="2-注释规范"><a href="#2-注释规范" class="headerlink" title="2.注释规范"></a>2.注释规范</h3><p>&emsp;&emsp;Python中的注释语法有3种，分别是单行注释、多行注释和文档注释。  </p>
+<h5 id="2-1-文件注释"><a href="#2-1-文件注释" class="headerlink" title="2.1  文件注释"></a>2.1  文件注释</h5><p>&emsp;&emsp;文件注释就是在每一个文件开头添加注释，采用多行注释。文件注释通常包括如下信息：版权信息、文件名、所在模块、作者信息、历史版本信息、文件内容和作用等。<br>&emsp;&emsp;文件注释要根据实际情况包括内容。  </p>
+<h5 id="2-2-文档注释"><a href="#2-2-文档注释" class="headerlink" title="2.2  文档注释"></a>2.2  文档注释</h5><p>&emsp;&emsp;文档注释就是文档字符串，注释内容能够生成API帮助文档，可以使用Python官方提供的pydoc工具从Python源代码文件中提取这些信息，也可以生成HTML文件。所有公有的模块、函数、类和方法都应该进行文档注释。<br>&emsp;&emsp;文档注释推荐使用一对三重双引号“””””包裹起来，注意不推荐使用三重单引号“’’’”。文档注释应该位于被注释的模块、函数、类和方法内部的第一条语句。如果文档注释一行能够注释完成，结束的三重双引号也在同一行。如果文档注释很长，第一行注释之后要留一个空行，然后剩下的注释内容换行要与开始三重双引号对齐，最后结束的三重双引号要独占一行，并与开始三重双引号对齐。  </p>
+<h5 id="2-3-代码注释"><a href="#2-3-代码注释" class="headerlink" title="2.3  代码注释"></a>2.3  代码注释</h5><p>&emsp;&emsp;程序代码中处理文档注释时还需要在一些关键的地方添加代码注释，文档注释一般是给一些看不到源代码的人看的帮助文档，而代码注释是给阅读源代码的人参考的。代码注释一般采用单行注释和多行注释。<br>&emsp;&emsp;单行注释和多行注释要求与其后的代码具有一样的缩进级别。尾端进行注释要求注释内容极短，应该再有足够的空白（至少两个空格）来分开代码和注释。  </p>
+<h5 id="2-4-使用TODO注释"><a href="#2-4-使用TODO注释" class="headerlink" title="2.4  使用TODO注释"></a>2.4  使用TODO注释</h5><p>&emsp;&emsp;很多IDE工具都为源代码提供了一些特殊的注释，就是在代码中加一些标识，便于IDE工具快速定位代码，TODO注释就是其中的一种。<br>&emsp;&emsp;TODO注释虽然不是Python官方所提供的，但是主流的IDE工具也都支持TODO注释。有TODO注释说明此处有待处理的任务，或代码没有编写完成。<br>&emsp;&emsp;以PyCharm为例，TODO注释可以在PyCharm的TODO视图查看，单击其中的TODO可跳转到注释处。  </p>
+<h3 id="3-导入规范"><a href="#3-导入规范" class="headerlink" title="3.导入规范"></a>3.导入规范</h3><p>&emsp;&emsp;导入语句总是放在文件顶部，位于模块注释和文档注释之后，模块全局变量和常量之前。每一个导入语句只能导入一个模块。<br>&emsp;&emsp;推荐：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">import struct</span><br><span class="line">import binascii</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;不推荐：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import re, struct, binascii</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;但是如果from import后面跟有多个代码元素是可以的。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from codeop import CommandCompiler, compile_command</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;导入语句应该按照从通用到特殊的顺序分组，顺序是：标准库→第三方库→自己的模块。每一组之间有一个空行，而且组中模块是按照英文字母顺序排序的。  </p>
+<h3 id="4-代码排版"><a href="#4-代码排版" class="headerlink" title="4.代码排版"></a>4.代码排版</h3><p>&emsp;&emsp;代码排版包括空行、空格、断行和缩进等内容。  </p>
+<h5 id="4-1-空行"><a href="#4-1-空行" class="headerlink" title="4.1  空行"></a>4.1  空行</h5><p>&emsp;&emsp;空行用以将逻辑相关的代码段分隔开，以提高可读性。<br>&emsp;&emsp;1.import语句块前后保留两个空行。<br>&emsp;&emsp;2.函数声明之前保留两个空行。<br>&emsp;&emsp;3.类声明之前保留两个空行。<br>&emsp;&emsp;4.方法声明之前保留一个空行。<br>&emsp;&emsp;5.两个逻辑代码块之间应该保留一个空行。  </p>
+<h5 id="4-2-空格"><a href="#4-2-空格" class="headerlink" title="4.2  空格"></a>4.2  空格</h5><p>&emsp;&emsp;代码中的有些位置是需要有空格的。<br>&emsp;&emsp;1.赋值符号“=”前后各有一个空格。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = 10</span><br><span class="line">c = 10</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;2.所有的二元运算符都应该使用空格与操作数分开。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a += c + d</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;3.一元运算符：算法运算符取反“-”和运算符取反“~”。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b = 10</span><br><span class="line">a = -b</span><br><span class="line">y = ~b</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;4.括号内不要有空格，Python中括号包括小括号“()”、中括号“[]”和大括号“{}”。<br>&emsp;&emsp;推荐：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">doque(cat[1], &#123;dogs: 2&#125;, [])</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;不推荐：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">doque(cat[ 1 ], &#123; dogs: 2 &#125;, [ ])</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;5.不要在逗号、分号、冒号前面有空格，而是要在它们后面有一个空格，除非该符号已经是行尾了。<br>&emsp;&emsp;推荐：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if x == 88:</span><br><span class="line">    print(x, y)</span><br><span class="line">x, y = y, x</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;不推荐：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if x == 88:</span><br><span class="line">    print(x , y)</span><br><span class="line">x , y = y , x</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;6.参数列表、索引或切片的左括号前不应有空格。<br>&emsp;&emsp;推荐：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">doque(1)</span><br><span class="line">dogs[&apos;key&apos;] = list[index]</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;不推荐：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">doque (1)</span><br><span class="line">dict [&apos;key&apos;] = list [index]</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;7.如果使用具有不同优先级的运算符，请考虑在具有最低优先级的运算符周围添加空格。有时需要通过自己来判断；但是，不要使用一个以上的空格，并且在二元运算符的两边使用相同数量的空格。  </p>
+<h5 id="4-3-缩进"><a href="#4-3-缩进" class="headerlink" title="4.3  缩进"></a>4.3  缩进</h5><p>&emsp;&emsp;4个空格常被作为缩进排版的一个级别。虽然在开发时程序员可以使用制表符进行缩进，而默认情况下一个制表符等于8个空格，但是不同的IDE工具中一个制表符与空格对应个数会有不同，所以不要使用制表符缩进。Python 3不允许同时使用空格和制表符的缩进。<br>&emsp;&emsp;代码块的内容相当于首行缩进一个级别（4个空格）。  </p>
+<h5 id="4-4-断行"><a href="#4-4-断行" class="headerlink" title="4.4  断行"></a>4.4  断行</h5><p>&emsp;&emsp;一行代码中最多79个字符，对于文档注释和多行注释时一行最多72个字符，但是如果注视中包含URL地址可以不受这个限制。否则，如果超过则需断行。<br>&emsp;&emsp;1.在逗号后面断开。<br>&emsp;&emsp;2.在运算符前面断开。<br>&emsp;&emsp;3.尽量不要使用续行符“\”，当有括号（包括大括号、中括号和小括号）则在括号中断开，这样可以不使用续行符。有时为了省略续行符，会将表达式用小括号括起来。在括号中，续行是隐式的。<br>&emsp;&emsp;4.反斜杠有时依然很有用。比如，比较长的，多个with状态语句，不能使用隐式续行，所以反斜杠是可以接受。<br>&emsp;&emsp;5.续行应该与其包裹元素对齐，要么使用圆括号、方括号和花括号内的隐式行连接来垂直对齐，要么使用挂行缩进对齐。当使用挂行缩进时，应该考虑到第一行不应该有参数，以及使用缩进以区分自己是续行。四空格的规则对于续行是可选的。挂行缩进不一定要用4个空格。  </p>
+<h3 id="5-源文件编码"><a href="#5-源文件编码" class="headerlink" title="5.源文件编码"></a>5.源文件编码</h3><p>&emsp;&emsp;Python核心发布版本中的代码总是以UTF-8格式编码（或者在Python 2中用ASCII编码）。<br>&emsp;&emsp;使用ASCII（在Python 2中）或UTF-8（在Python 3中）编码的文件不应具有编码声明。<br>&emsp;&emsp;在标准库中，非默认的编码应该只用于测试，或者当一个注释或者文档字符串需要提及一个包含内ASCII字符编码的作者名字的时候；否则，使用\x,\u,\U , 或者 \N 进行转义来包含非ASCII字符。<br>&emsp;&emsp;对于Python 3和更高版本，标准库规定了以下策略（参见 PEP 3131）：Python标准库中的所有标识符必须使用ASCII标识符，并在可行的情况下使用英语单词（在许多情况下，缩写和技术术语是非英语的）。此外，字符串文字和注释也必须是ASCII。唯一的例外是测试非ASCII特征的测试用例以及作者的名称。作者的名字如果不使用拉丁字母拼写，必须提供一个拉丁字母的音译。  </p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    I'd walk a million miles just to see your smile. 
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/12/22/Python%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83%E6%80%BB%E7%BB%93/">Python编码规范总结</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/12/21/%E3%80%90%E7%AE%97%E6%B3%95%E7%A7%AF%E7%B4%AF%E3%80%91%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%8E%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/">【算法积累】动态规划与斐波那契数列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/12/21/%E3%80%90%E7%AE%97%E6%B3%95%E7%A7%AF%E7%B4%AF%E3%80%91%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%B3%95/">【算法积累】二分查找法</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/12/21/%E3%80%90%E6%80%BB%E7%BB%93%E7%AF%87%E3%80%91Python%20matplotlib%E4%B9%8B%E4%BD%BF%E7%94%A8%E7%BB%9F%E8%AE%A1%E5%87%BD%E6%95%B0%E7%BB%98%E5%88%B6%E7%AE%80%E5%8D%95%E5%9B%BE%E5%BD%A2/">【总结篇】Python matplotlib之使用</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/CCH21" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:1398635912@qq.com" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/" target="_blank" rel="noopener">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
