@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="参考资料：《Python数据分析基础》，作者[美]Clinton W. Brownley，译者陈光欣，中国工信出版集团，人民邮电出版社
+
+CSV文件简述&amp;emsp;&amp;emsp;CSV（comma-separated value，逗号分隔值）文件格式是一种非常简单的数据存储与分享方式。CSV文件将数据">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Python数据分析基础之CSV文件(1)"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Welcome to CCH21&#39;s Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Python数据分析基础之CSV文件(1) - Welcome to CCH21&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2020/01/19/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BCSV%E6%96%87%E4%BB%B6(1)/">
+                Python数据分析基础之CSV文件(1)
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-01-19</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <blockquote>
+<p>参考资料：<br>《Python数据分析基础》，作者[美]Clinton W. Brownley，译者陈光欣，中国工信出版集团，人民邮电出版社</p>
+</blockquote>
+<h2 id="CSV文件简述"><a href="#CSV文件简述" class="headerlink" title="CSV文件简述"></a>CSV文件简述</h2><p>&emsp;&emsp;CSV（comma-separated value，逗号分隔值）文件格式是一种非常简单的<strong>数据存储与分享</strong>方式。CSV文件将数据表格存储为纯文本，表格（或电子表格）中的每个单元格都是一个数值或字符串。与Excel文件相比，CSV文件的一个主要优点是<strong>有很多程序可以存储、转换和处理纯文本文件</strong>；相比之下，能够处理Excel文件的程序却不多。<br>&emsp;&emsp;当我们使用CSV文件时，确实会失去某些Excel功能：在Excel电子表格中，每个单元格都有一个定义好的“类型”，<strong>CSV文件中的单元格则只是原始数据</strong>。使用CSV文件的另一个问题是<strong>它只能保存数据而不能保存公式</strong>。  </p>
+<h2 id="CSV文件初体验"><a href="#CSV文件初体验" class="headerlink" title="CSV文件初体验"></a>CSV文件初体验</h2><p>&emsp;&emsp;我们打开一个电子表格，向其中加入数据，如下图所示。<br><img src="https://img-blog.csdnimg.cn/20200119001909232.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">&emsp;&emsp;把文件保存在合适的位置。我们用记事本来打开这个文件，如下图所示。<br><img src="https://img-blog.csdnimg.cn/20200119002141811.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">&emsp;&emsp;可以看到，supplier_data.csv确实是纯文本文件。  </p>
+<h2 id="用Python读写CSV文件"><a href="#用Python读写CSV文件" class="headerlink" title="用Python读写CSV文件"></a>用Python读写CSV文件</h2><h4 id="1-基础Python，不使用csv模块"><a href="#1-基础Python，不使用csv模块" class="headerlink" title="1.基础Python，不使用csv模块"></a>1.基础Python，不使用csv模块</h4><p>&emsp;&emsp;我们新建一个Python脚本，命名为<code>1csv_read_with_simple_parsing_and_write.py</code>。输入以下代码：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">with open(input_file, &apos;r&apos;, newline=&apos;&apos;) as filereader:</span><br><span class="line">    with open(output_file, &apos;w&apos;, newline=&apos;&apos;) as filewriter:</span><br><span class="line">        header = filereader.readline()</span><br><span class="line">        header = header.strip()</span><br><span class="line">        header_list = header.split(&apos;,&apos;)</span><br><span class="line">        print(header_list)</span><br><span class="line">        filewriter.write(&apos;,&apos;.join(map(str, header_list)) + &apos;\n&apos;)</span><br><span class="line">        for row in filereader:</span><br><span class="line">            row = row.strip()</span><br><span class="line">            row_list = row.split(&apos;,&apos;)</span><br><span class="line">            print(row_list)</span><br><span class="line">            filewriter.write(&apos;,&apos;.join(map(str, row_list)) + &apos;\n&apos;)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;下面我们来解释一下上面的代码。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这一行称为shebang行。在Python脚本中，我们应该一直把它作为第一行。以<code>#</code>开头的行为单行注释，在Windows系统中，计算机不读取也不执行这一行代码。但是，安装了Unix系统的计算机使用这一行来找到执行文件中代码的Python版本。加入这一行可以使脚本在不同操作系统的计算机之间具有可移植性。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这两行代码使用sys模块的argv参数，它是一个传递给Python脚本的命令行参数列表，也就是当你运行脚本时在命令行输入的内容。在argv这个特殊的列表中，第一个元素<code>argv[0]</code>用做脚本名称，<code>argv[1]</code>则用作CSV输入文件的路径和文件名，<code>argv[2]</code>用作CSV输出文件的路径和文件名。在上面的代码中，<code>argv[1]</code>和<code>argv[2]</code>被分别赋值给变量<code>input_file</code>和<code>output_file</code>。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with open(input_file, &apos;r&apos;, newline=&apos;&apos;) as filereader:</span><br><span class="line">    with open(output_file, &apos;w&apos;, newline=&apos;&apos;) as filewriter:</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这里的<code>with</code>语句可以在语句结束时自动关闭文件对象。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">header = filereader.readline()</span><br><span class="line">header = header.strip()</span><br><span class="line">header_list = header.split(&apos;,&apos;)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这里使用了文件对象的<code>readline</code>方法读取输入文件中的第一行数据。第一行是标题行，读入后将其作为字符串赋给变量<code>header</code>。<code>strip()</code>去掉了<code>header</code>字符串两端的空格、制表符和换行符。接下来使用<code>split(&#39;,&#39;)</code>将字符串用逗号拆分成列表并赋给变量<code>header_list</code>，列表中的每个值都是一个列标题。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filewriter.write(&apos;,&apos;.join(map(str, header_list)) + &apos;\n&apos;)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这行代码使用<code>filewriter</code>对象的<code>write()</code>方法将<code>header_list</code>中的每个值写入输出文件。<code>map()</code>函数将<code>str()</code>函数应用于<code>header_list</code>中的每个元素，确保每个元素都是字符串。<code>join()</code>函数在<code>header_list</code>中的每个值之间插入一个逗号，将这个列表转换为一个字符串。在此之后，在这个字符串最后添加一个换行符<code>\n</code>。<code>filewriter</code>对象将这个字符串写入输出文件，作为输出文件的第一行。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for row in filereader:</span><br><span class="line">    row = row.strip()</span><br><span class="line">    row_list = row.split(&apos;,&apos;)</span><br><span class="line">    print(row_list)</span><br><span class="line">    filewriter.write(&apos;,&apos;.join(map(str, row_list)) + &apos;\n&apos;)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这里创建了一个for循环，在输入文件剩余的各行中迭代。<code>strip()</code>除去每行字符串两端的空格、换行符和制表符。<code>split(&#39;,&#39;)</code>用逗号将字符串拆分成一个列表并赋给变量<code>row_list</code>，列表中的每个值都是这行中某一列的值。最后，将这些值打印到屏幕上并写入输出文件。<br>&emsp;&emsp;我们在命令行窗口运行这个脚本，如下图所示。<br><img src="https://img-blog.csdnimg.cn/20200119082504658.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">&emsp;&emsp;输入文件的所有行都被打印到了屏幕上，也被写入了输出文件。<br><img src="https://img-blog.csdnimg.cn/20200119082658257.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h4 id="2-使用pandas模块"><a href="#2-使用pandas模块" class="headerlink" title="2.使用pandas模块"></a>2.使用pandas模块</h4><p>&emsp;&emsp;使用pandas模块处理CSV文件的代码如下所示：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import sys</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line">data_frame = pd.read_csv(input_file)</span><br><span class="line">print(data_frame)</span><br><span class="line">data_frame.to_csv(output_file, index=False)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这里我们创建了一个变量<code>data_frame</code>，这种数据方式叫做<strong>数据框</strong>。数据框中保留了“表格”这种组织方式，不需要使用列表套列表的方式来分析数据。数据框包含在pandas中，如果我们没有在脚本中导入pandas模块，就不能使用数据框。<br>&emsp;&emsp;在学习阶段，将这个变量命名为<code>data_frame</code>是可以的，但是以后，我们应该使用更有描述性的变量名。<br>&emsp;&emsp;我们在命令行窗口运行这个脚本，如下图所示。<br><img src="https://img-blog.csdnimg.cn/20200119083552160.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200119083641933.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    I'd walk a million miles just to see your smile. 
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2020/01/19/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BCSV%E6%96%87%E4%BB%B6(1)/">Python数据分析基础之CSV文件(1)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/01/17/Python%E4%B8%8E%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">Python与正则表达式</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/12/24/%E3%80%90%E7%AE%97%E6%B3%95%E7%A7%AF%E7%B4%AF%E3%80%91%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/">【算法积累】最长公共前缀</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/12/22/Python%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83%E6%80%BB%E7%BB%93/">Python编码规范总结</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/CCH21" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:1398635912@qq.com" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/" target="_blank" rel="noopener">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
