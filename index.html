@@ -147,6 +147,44 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2020/02/09/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(5)/">
+                Python数据分析基础之Excel文件(5)
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-02-09</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>&emsp;&emsp;上一篇博客主要讲了如何在一个工作簿的所有工作表中筛选特定的行和列。但是，有些情况下，我们只需要处理工作簿中其中几个工作表。在这种情况下，我们可以使用<code>sheet_by_index()</code>或<code>sheet_by_name()</code>函数来处理这些待处理的工作表。  </p>
+<h2 id="在一组工作表中筛选特定行"><a href="#在一组工作表中筛选特定行" class="headerlink" title="在一组工作表中筛选特定行"></a>在一组工作表中筛选特定行</h2><h4 id="1-基础Python"><a href="#1-基础Python" class="headerlink" title="1.基础Python"></a>1.基础Python</h4><p>&emsp;&emsp;我们想要筛选出sales_2013.xlsx这个工作簿的第一个和第二个工作表中销售额大于$1900.00的那些行。代码如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import sys</span><br><span class="line">from datetime import date</span><br><span class="line">from xlrd import open_workbook, xldate_as_tuple</span><br><span class="line">from xlwt import Workbook</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">output_workbook = Workbook()</span><br><span class="line">output_worksheet = output_workbook.add_sheet(&apos;set_of_worksheets&apos;)</span><br><span class="line">my_sheets = [0, 1]</span><br><span class="line">threshold = 1900.0</span><br><span class="line">sales_column_index = 3</span><br><span class="line">first_worksheet = True</span><br><span class="line">with open_workbook(input_file) as workbook:</span><br><span class="line">    data = []</span><br><span class="line">    for sheet_index in range(workbook.nsheets):</span><br><span class="line">        if sheet_index in my_sheets:</span><br><span class="line">            worksheet = workbook.sheet_by_index(sheet_index)</span><br><span class="line">            if first_worksheet:</span><br><span class="line">                header_row = worksheet.row_values(0)</span><br><span class="line">                data.append(header_row)</span><br><span class="line">                first_worksheet = False</span><br><span class="line">            for row_index in range(1, worksheet.nrows):</span><br><span class="line">                row_list = []</span><br><span class="line">                sale_amount = worksheet.cell_value(row_index, sales_column_index)</span><br><span class="line">                sale_amount = sale_amount.replace(r&apos;$&apos;, &apos;&apos;)</span><br><span class="line">                sale_amount = sale_amount.replace(r&apos;,&apos;, &apos;&apos;)</span><br><span class="line">                sale_amount = float(sale_amount)</span><br><span class="line">                if sale_amount &gt; threshold:</span><br><span class="line">                    for column_index in range(worksheet.ncols):</span><br><span class="line">                        cell_value = worksheet.cell_value(row_index, column_index)</span><br><span class="line">                        cell_type = worksheet.cell_type(row_index, column_index)</span><br><span class="line">                        if cell_type == 3:</span><br><span class="line">                            date_cell = xldate_as_tuple(cell_value, workbook.datemode)</span><br><span class="line">                            date_cell = date(*date_cell[0:3]).strftime(&apos;%m/%d/%Y&apos;)</span><br><span class="line">                            row_list.append(date_cell)</span><br><span class="line">                        else:</span><br><span class="line">                            row_list.append(cell_value)</span><br><span class="line">                if row_list:</span><br><span class="line">                    data.append(row_list)</span><br><span class="line">    for list_index, output_list in enumerate(data):</span><br><span class="line">        for element_index, element in enumerate(output_list):</span><br><span class="line">            output_worksheet.write(list_index, element_index, element)</span><br><span class="line">output_workbook.save(output_file)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;第13行创建的列表变量<code>my_sheets</code>包含了两个整数，分别对应要处理的工作表（即第一个和第二个工作表）的索引值。第19行代码创建了工作簿中所有工作表的索引值，第20行代码在<code>for</code>循环中应用<code>if</code>判断语句检验要处理的工作表索引值是否在列表<code>my_sheets</code>中，这样可以确保代码只处理了我们想处理的工作表。  </p>
+<blockquote>
+<p>作者注：代码的第29-31行是我自己加上的，参考书（《Python数据分析基础》，作者Clinton W. Brownley，译者陈光欣，人民邮电出版社）上的代码并没有这三行，运行的时候会报错：<br>Traceback (most recent call last):<br>  File “E:\python_pycharm\Python数据分析基础\第3章 Excel文件\11excel_value_meets_condition_set_of_worksheets.py”, line 29, in <module><br>    if sale_amount &gt; threshold:<br>TypeError: ‘&gt;’ not supported between instances of ‘str’ and ‘float’<br>改正后可以正常运行。这应该是书本的错误。  </p>
+</blockquote>
+<p>&emsp;&emsp;在命令行窗口中运行这个脚本，得到输出文件。  </p>
+<p><img src="https://img-blog.csdnimg.cn/20200209204544276.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h4 id="2-pandas"><a href="#2-pandas" class="headerlink" title="2.pandas"></a>2.pandas</h4><p>&emsp;&emsp;使用pandas模块在工作簿中选择几个工作表非常容易，我们只需要在<code>read_excel()</code>函数中将工作表的索引值或名称设置成一个列表就可以了。代码如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import pandas as pd</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">my_sheets = [0, 1]</span><br><span class="line">threshold = 1900.0</span><br><span class="line">data_frame = pd.read_excel(input_file, sheet_name=my_sheets, index_col=None)</span><br><span class="line">row_list = []</span><br><span class="line">for worksheet_name, data in data_frame.items():</span><br><span class="line">    data[&apos;Sale Amount&apos;] = data[&apos;Sale Amount&apos;].str.replace(r&apos;\$&apos;, &apos;&apos;)</span><br><span class="line">    data[&apos;Sale Amount&apos;] = data[&apos;Sale Amount&apos;].str.replace(&apos;,&apos;, &apos;&apos;)</span><br><span class="line">    row_list.append(data[data[&apos;Sale Amount&apos;].astype(float) &gt; threshold])</span><br><span class="line">filtered_rows = pd.concat(row_list, axis=0, ignore_index=True)</span><br><span class="line">writer = pd.ExcelWriter(output_file)</span><br><span class="line">filtered_rows.to_excel(writer, sheet_name=&apos;set_of_worksheets&apos;, index=False)</span><br><span class="line">writer.save()</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;在命令行窗口中运行这个脚本，得到输出文件。<br><img src="https://img-blog.csdnimg.cn/20200209212418387.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2020/02/07/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(4)/">
                 Python数据分析基础之Excel文件(4)
             </a>
@@ -593,55 +631,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2020/01/19/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BCSV%E6%96%87%E4%BB%B6(1)/">
-                Python数据分析基础之CSV文件(1)
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2020-01-19</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <blockquote>
-<p>参考资料：<br>《Python数据分析基础》，作者[美]Clinton W. Brownley，译者陈光欣，中国工信出版集团，人民邮电出版社</p>
-</blockquote>
-<h2 id="CSV文件简述"><a href="#CSV文件简述" class="headerlink" title="CSV文件简述"></a>CSV文件简述</h2><p>&emsp;&emsp;CSV（comma-separated value，逗号分隔值）文件格式是一种非常简单的<strong>数据存储与分享</strong>方式。CSV文件将数据表格存储为纯文本，表格（或电子表格）中的每个单元格都是一个数值或字符串。与Excel文件相比，CSV文件的一个主要优点是<strong>有很多程序可以存储、转换和处理纯文本文件</strong>；相比之下，能够处理Excel文件的程序却不多。<br>&emsp;&emsp;当我们使用CSV文件时，确实会失去某些Excel功能：在Excel电子表格中，每个单元格都有一个定义好的“类型”，<strong>CSV文件中的单元格则只是原始数据</strong>。使用CSV文件的另一个问题是<strong>它只能保存数据而不能保存公式</strong>。  </p>
-<h2 id="CSV文件初体验"><a href="#CSV文件初体验" class="headerlink" title="CSV文件初体验"></a>CSV文件初体验</h2><p>&emsp;&emsp;我们打开一个电子表格，向其中加入数据，如下图所示。<br><img src="https://img-blog.csdnimg.cn/20200119001909232.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">&emsp;&emsp;把文件保存在合适的位置。我们用记事本来打开这个文件，如下图所示。<br><img src="https://img-blog.csdnimg.cn/20200119002141811.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">&emsp;&emsp;可以看到，supplier_data.csv确实是纯文本文件。  </p>
-<h2 id="用Python读写CSV文件"><a href="#用Python读写CSV文件" class="headerlink" title="用Python读写CSV文件"></a>用Python读写CSV文件</h2><h4 id="1-基础Python，不使用csv模块"><a href="#1-基础Python，不使用csv模块" class="headerlink" title="1.基础Python，不使用csv模块"></a>1.基础Python，不使用csv模块</h4><p>&emsp;&emsp;我们新建一个Python脚本，命名为<code>1csv_read_with_simple_parsing_and_write.py</code>。输入以下代码：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">with open(input_file, &apos;r&apos;, newline=&apos;&apos;) as filereader:</span><br><span class="line">    with open(output_file, &apos;w&apos;, newline=&apos;&apos;) as filewriter:</span><br><span class="line">        header = filereader.readline()</span><br><span class="line">        header = header.strip()</span><br><span class="line">        header_list = header.split(&apos;,&apos;)</span><br><span class="line">        print(header_list)</span><br><span class="line">        filewriter.write(&apos;,&apos;.join(map(str, header_list)) + &apos;\n&apos;)</span><br><span class="line">        for row in filereader:</span><br><span class="line">            row = row.strip()</span><br><span class="line">            row_list = row.split(&apos;,&apos;)</span><br><span class="line">            print(row_list)</span><br><span class="line">            filewriter.write(&apos;,&apos;.join(map(str, row_list)) + &apos;\n&apos;)</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;下面我们来解释一下上面的代码。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这一行称为shebang行。在Python脚本中，我们应该一直把它作为第一行。以<code>#</code>开头的行为单行注释，在Windows系统中，计算机不读取也不执行这一行代码。但是，安装了Unix系统的计算机使用这一行来找到执行文件中代码的Python版本。加入这一行可以使脚本在不同操作系统的计算机之间具有可移植性。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这两行代码使用sys模块的argv参数，它是一个传递给Python脚本的命令行参数列表，也就是当你运行脚本时在命令行输入的内容。在argv这个特殊的列表中，第一个元素<code>argv[0]</code>用做脚本名称，<code>argv[1]</code>则用作CSV输入文件的路径和文件名，<code>argv[2]</code>用作CSV输出文件的路径和文件名。在上面的代码中，<code>argv[1]</code>和<code>argv[2]</code>被分别赋值给变量<code>input_file</code>和<code>output_file</code>。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with open(input_file, &apos;r&apos;, newline=&apos;&apos;) as filereader:</span><br><span class="line">    with open(output_file, &apos;w&apos;, newline=&apos;&apos;) as filewriter:</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这里的<code>with</code>语句可以在语句结束时自动关闭文件对象。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">header = filereader.readline()</span><br><span class="line">header = header.strip()</span><br><span class="line">header_list = header.split(&apos;,&apos;)</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这里使用了文件对象的<code>readline</code>方法读取输入文件中的第一行数据。第一行是标题行，读入后将其作为字符串赋给变量<code>header</code>。<code>strip()</code>去掉了<code>header</code>字符串两端的空格、制表符和换行符。接下来使用<code>split(&#39;,&#39;)</code>将字符串用逗号拆分成列表并赋给变量<code>header_list</code>，列表中的每个值都是一个列标题。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filewriter.write(&apos;,&apos;.join(map(str, header_list)) + &apos;\n&apos;)</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这行代码使用<code>filewriter</code>对象的<code>write()</code>方法将<code>header_list</code>中的每个值写入输出文件。<code>map()</code>函数将<code>str()</code>函数应用于<code>header_list</code>中的每个元素，确保每个元素都是字符串。<code>join()</code>函数在<code>header_list</code>中的每个值之间插入一个逗号，将这个列表转换为一个字符串。在此之后，在这个字符串最后添加一个换行符<code>\n</code>。<code>filewriter</code>对象将这个字符串写入输出文件，作为输出文件的第一行。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for row in filereader:</span><br><span class="line">    row = row.strip()</span><br><span class="line">    row_list = row.split(&apos;,&apos;)</span><br><span class="line">    print(row_list)</span><br><span class="line">    filewriter.write(&apos;,&apos;.join(map(str, row_list)) + &apos;\n&apos;)</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这里创建了一个for循环，在输入文件剩余的各行中迭代。<code>strip()</code>除去每行字符串两端的空格、换行符和制表符。<code>split(&#39;,&#39;)</code>用逗号将字符串拆分成一个列表并赋给变量<code>row_list</code>，列表中的每个值都是这行中某一列的值。最后，将这些值打印到屏幕上并写入输出文件。<br>&emsp;&emsp;我们在命令行窗口运行这个脚本，如下图所示。<br><img src="https://img-blog.csdnimg.cn/20200119082504658.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">&emsp;&emsp;输入文件的所有行都被打印到了屏幕上，也被写入了输出文件。<br><img src="https://img-blog.csdnimg.cn/20200119082658257.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h4 id="2-使用pandas模块"><a href="#2-使用pandas模块" class="headerlink" title="2.使用pandas模块"></a>2.使用pandas模块</h4><p>&emsp;&emsp;使用pandas模块处理CSV文件的代码如下所示：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import sys</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line">data_frame = pd.read_csv(input_file)</span><br><span class="line">print(data_frame)</span><br><span class="line">data_frame.to_csv(output_file, index=False)</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这里我们创建了一个变量<code>data_frame</code>，这种数据方式叫做<strong>数据框</strong>。数据框中保留了“表格”这种组织方式，不需要使用列表套列表的方式来分析数据。数据框包含在pandas中，如果我们没有在脚本中导入pandas模块，就不能使用数据框。<br>&emsp;&emsp;在学习阶段，将这个变量命名为<code>data_frame</code>是可以的，但是以后，我们应该使用更有描述性的变量名。<br>&emsp;&emsp;我们在命令行窗口运行这个脚本，如下图所示。<br><img src="https://img-blog.csdnimg.cn/20200119083552160.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200119083641933.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -684,6 +673,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2020/02/09/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(5)/">Python数据分析基础之Excel文件(5)</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2020/02/07/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(4)/">Python数据分析基础之Excel文件(4)</a>
             </li>
             
@@ -693,10 +686,6 @@
             
             <li>
                 <a class="footer-post" href="/2020/02/03/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(2)/">Python数据分析基础之Excel文件(2)</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2020/01/28/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(1)/">Python数据分析基础之Excel文件(1)</a>
             </li>
             
         </ul>
