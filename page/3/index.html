@@ -147,6 +147,72 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2019/12/20/%E3%80%90%E6%80%BB%E7%BB%93%E7%AF%87%E3%80%91Python%20matplotlib%E4%B9%8B%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0%E7%BB%98%E5%88%B6matplotlib%E7%9A%84%E5%9B%BE%E8%A1%A8%E7%BB%84%E6%88%90%E5%85%83%E7%B4%A0/">
+                【总结篇】Python matplotlib之使用函数绘制matplotlib的图表组成元素
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-12-20</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>学习参考书籍：《Python数据可视化之matplotlib实践》<br>出版社信息：中国工信出版集团 电子工业出版社<br>作者：刘大成<br>ISBN：978-7-121-34888-4  </p>
+<p>作者注：我在这里只总结函数的功能及其用法，程序实例参考链接：<a href="https://github.com/CCH21/Python/tree/master/Python%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8Bmatplotlib%E5%AE%9E%E8%B7%B5" target="_blank" rel="noopener">link</a>  </p>
+<h2 id="matplotlib简介"><a href="#matplotlib简介" class="headerlink" title="matplotlib简介"></a>matplotlib简介</h2><p>&emsp;&emsp;matplotlib库是Python中绘制二维、三维图表的数据可视化工具。它能让使用者很轻松地将数据图形化，并且提供多样化的输出格式。<br>&emsp;&emsp;在使用matplotlib库的时候，我们应先用下面的语句导入matplotlib库：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib as mpl</span><br><span class="line">import matplotlib.pyplot as plt</span><br></pre></td></tr></table></figure>
+<h2 id="绘制图表组成元素的函数及其用法"><a href="#绘制图表组成元素的函数及其用法" class="headerlink" title="绘制图表组成元素的函数及其用法"></a>绘制图表组成元素的函数及其用法</h2><h5 id="1-函数plot"><a href="#1-函数plot" class="headerlink" title="1.函数plot()"></a>1.函数plot()</h5><p>函数功能：展现变量的趋势变化。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(s, y, ls=&quot;-&quot;, lw=2, label=&quot;plot figure&quot;)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>x：x轴上的数值。<br>y：y轴上的数值。<br>ls：折线图的线条风格。<br>lw：折线图的线条宽度。<br>label：标记图形内容的标签文本。  </p>
+<h5 id="2-函数scatter"><a href="#2-函数scatter" class="headerlink" title="2.函数scatter()"></a>2.函数scatter()</h5><p>函数功能：寻找变量之间的关系。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter(x, y, c=&quot;b&quot;, label=&quot;scatter figure&quot;)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>x：x轴上的数值。<br>y：y轴上的数值。<br>c：散点图中标记的颜色。<br>label：标记图形内容的标签文本。  </p>
+<h5 id="3-函数xlim-amp-ylim"><a href="#3-函数xlim-amp-ylim" class="headerlink" title="3.函数xlim() &amp; ylim()"></a>3.函数xlim() &amp; ylim()</h5><p>函数功能：设置x轴（y轴）的数值显示范围。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.xlim(xmin, xmax)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>xmin：x轴上的最小值。<br>xmax：x轴上的最大值。<br>平移性：上面的函数功能，调用签名和参数说明同样可以平移到函数ylim()上。  </p>
+<h5 id="4-函数xlabel-amp-ylabel"><a href="#4-函数xlabel-amp-ylabel" class="headerlink" title="4.函数xlabel() &amp; ylabel()"></a>4.函数xlabel() &amp; ylabel()</h5><p>函数功能：设置x轴（y轴）的标签文本。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.xlabel(string)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>string：标签文本内容。<br>平移性：上面的函数功能，调用签名和参数说明同样可以平移到函数ylabel()上。  </p>
+<h5 id="5-函数grid"><a href="#5-函数grid" class="headerlink" title="5.函数grid()"></a>5.函数grid()</h5><p>函数功能：绘制刻度线的网格线。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ply.grid(linestyle=&quot;:&quot;, color=&quot;r&quot;)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>linestyle：网格线的线条风格。<br>color：网格线的线条颜色。  </p>
+<h5 id="6-函数axhline-amp-axvline"><a href="#6-函数axhline-amp-axvline" class="headerlink" title="6.函数axhline() &amp; axvline()"></a>6.函数axhline() &amp; axvline()</h5><p>函数功能：绘制平行于x轴（y轴）的水平（竖直）参考线。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.axhline(y=0.0, c=&quot;r&quot;, ls=&quot;--&quot;, lw=2)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>y：水平参考线的出发点。<br>c：参考线的线条颜色。<br>ls：参考线的线条风格。<br>lw：参考线的线条宽度。<br>平移性：上面的函数功能，调用签名和参数说明同样可以平移到函数axvline()上。  </p>
+<h5 id="7-函数axvspan-amp-axhspan"><a href="#7-函数axvspan-amp-axhspan" class="headerlink" title="7.函数axvspan() &amp; axhspan()"></a>7.函数axvspan() &amp; axhspan()</h5><p>函数功能：绘制垂直于x轴（y轴）的参考区域。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.avxspan(xmin=1.0, xmax=2.0, facecolor=&quot;y&quot;, alpha=0.3)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>xmin：参考区域的起始位置。<br>xmax：参考区域的终止位置。<br>facecolor：参考区域的填充颜色。<br>alpha：参考区域的填充颜色的透明度。<br>平移性：上面的函数功能、调用签名和参数说明可以平移到函数axhspan()上。  </p>
+<h5 id="8-函数annotate"><a href="#8-函数annotate" class="headerlink" title="8.函数annotate()"></a>8.函数annotate()</h5><p>函数功能：添加图形内容细节的指向型注释文本。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plt.annotate(string, xy=(np.pi/2, 1.0),</span><br><span class="line">             xytext=((np.pi/2)+0.15, 1.5), </span><br><span class="line">             weight=&quot;bold&quot;, </span><br><span class="line">             color=&quot;b&quot;, </span><br><span class="line">             arrowprops=dict(arrowstyle=&quot;-&gt;&quot;, connectionstyle=&quot;arc3&quot;, color=&quot;b&quot;))</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>string：图形内容的注释文本。<br>xy：被注释图形内容的位置坐标。<br>xytext：注释文本的位置坐标。<br>weight：注释文本的字体粗细风格。<br>color：注释文本的字体颜色。<br>arrowprops：指示被注释内容的箭头的属性字典。  </p>
+<h5 id="9-函数text"><a href="#9-函数text" class="headerlink" title="9.函数text()"></a>9.函数text()</h5><p>函数功能：添加图形内容细节的无指向性注释文本。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.text(x, y, string, weight=&quot;bold&quot;, color=&quot;b&quot;)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>x：注释文本内容所在位置的横坐标。<br>y：注释文本内容所在位置的纵坐标。<br>string：注释文本内容。<br>weight：注释文本内容的粗细风格。<br>color：注释文本内容的字体颜色。  </p>
+<h5 id="10-函数title"><a href="#10-函数title" class="headerlink" title="10.函数title()"></a>10.函数title()</h5><p>函数功能：添加图形内容的标题。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.title(string)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>string：图形内容的标题文本。  </p>
+<h5 id="11-函数legend"><a href="#11-函数legend" class="headerlink" title="11.函数legend()"></a>11.函数legend()</h5><p>函数功能：标示不同图形的文本标签图例。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.legend(loc=&quot;lower left&quot;)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>loc：图例在图中的地理位置。  </p>
+<h5 id="12-函数show"><a href="#12-函数show" class="headerlink" title="12.函数show()"></a>12.函数show()</h5><p>函数功能：在屏幕上显示出绘制的图表。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>&emsp;&emsp;我最近刚刚开始学习Python的matplotlib库，对此的感觉就是函数及其参数很多、很不好记。但是matplotlib真的是一个功能很强大的库，在数据可视化领域的重要性不言而喻。希望自己可以通过这一段时间的学习熟练掌握matplotlib库的用法。<br>&emsp;&emsp;如果你有什么想法、意见和建议的话，欢迎联系我。<br>&emsp;&emsp;我的邮箱：<a href="mailto:1398635912@qq.com" target="_blank" rel="noopener">1398635912@qq.com</a></p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2019/12/19/%E9%80%92%E5%BD%92%E6%B3%95%E8%A7%A3%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/">
                 递归法解汉诺塔问题
             </a>
@@ -523,41 +589,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/10/31/%E4%BD%BF%E7%94%A8Hexo+Github%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/">
-                使用Hexo+Github搭建属于自己的博客
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-10-31</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前几天，我尝试用<strong>Hexo+Github</strong>搭建了属于我自己的博客。几经波折，当最后我成功搭建之后，喜悦感、成就感、自豪感油然而生。接下来我给大家分享一下搭建博客的经验。<br>我的电脑系统为Windows 10家庭中文版，系统类型为64位操作系统，基于x64的处理器。</p>
-<h1 id="相关步骤"><a href="#相关步骤" class="headerlink" title="相关步骤"></a>相关步骤</h1><h2 id="Step-1：安装Node-js和配置Node-js环境"><a href="#Step-1：安装Node-js和配置Node-js环境" class="headerlink" title="Step 1：安装Node.js和配置Node.js环境"></a>Step 1：安装Node.js和配置Node.js环境</h2><p>我们进入Node.js的官网，下载这个12.13.0版本的Node.js并安装它。<br>安装好之后，我们来检测一下PATH环境变量是否配置了Node.js。<br>打开cmd，输入命令<code>path</code>之后，输出了如下结果：<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9ncmFwaC5iYWlkdS5jb20vcmVzb3VyY2UvMTExYzE0ODZkZTIwNjE4NmU1NGIxMDE1NzI0NDE5NjQuanBn?x-oss-process=image/format,png" alt="avatar"><br>可以看出，环境变量中已经包含了D:\nodejs。<br>打开cmd，输入命令<code>node -v</code>和<code>npm -v</code>，我们可以看到版本号。这说明我们已经安装成功了。  </p>
-<h2 id="Step-2：安装Git和配置Git环境"><a href="#Step-2：安装Git和配置Git环境" class="headerlink" title="Step 2：安装Git和配置Git环境"></a>Step 2：安装Git和配置Git环境</h2><p>我们进入Git官网，下载最新的Git 2.23.0版本。<br>进入安装向导，选择安装位置之后，安装向导会让我们选择组件。在这里我选择的是<em>Additional icons<em>、</em>Windows Explorer integration<em>、</em>Git LFS(Large File Support)<em>、</em>Associate .git\</em> configuration files with the default text editor<em>以及</em>Associate .sh files to be run with Bash*。接下来，一路Next之后，点击Install，我们成功安装好了Git。<br>这里不得不提的是，我们如何判断自己是否安装成功了呢？其实，安装成功之后有一个典型的象征，就是在电脑上任何位置单击鼠标右键之后，都能够出现这两个选项：Git GUI Here和Git Bash Here。不妨动手试一试，一旦出现上述两个选项，恭喜你，你已经成功安装了Git。  </p>
-<h2 id="Step-3：Github账户注册和新建Repository"><a href="#Step-3：Github账户注册和新建Repository" class="headerlink" title="Step 3：Github账户注册和新建Repository"></a>Step 3：Github账户注册和新建Repository</h2><p>这个没什么好说的。只有一点需要注意：<br>在新建Repository的时候，Repository name必须遵守<strong>账户名.github.io</strong>的格式，否则接下来很可能会出现棘手的问题。我们还需要勾选下方的“Initialize this repository with a README”。</p>
-<h2 id="Step-4：安装Hexo"><a href="#Step-4：安装Hexo" class="headerlink" title="Step 4：安装Hexo"></a>Step 4：安装Hexo</h2><p>首先，你需要在自己认为合适的地方新建一个文件夹。我是在D盘新建了一个名为blog的文件夹。接下来，在cmd中进入该文件夹。<br>1.输入<code>npm install hexo -g</code>，开始安装Hexo。<br>2.在安装好之后，输入<code>hexo -v</code>，<strong>如果出现了一串版本号，说明Hexo已经安装成功了。</strong><br>3.输入<code>hexo init</code>，初始化该文件夹。需要说明的是，这一步所花费的时间可能会有些长，保持耐心。<br>4.当看到<code>Start blogging with Hexo!</code>的时候，你距离成功完成这一个Step已经很近了。输入<code>npm install</code>，安装所需组件。<br>5.输入<code>hexo g</code>，开始你的首次体验吧！<br>6.输入<code>hexo s</code>，开启服务器，访问该网址。有些电脑可能会遇到这样一个问题：在访问网址的时候，页面一直无法跳转。这可能是因为端口被占用了。遇到这种问题该怎么办呢？我们按Ctrl+C键停止服务器。【注意！！！这里的Ctrl+C并不是复制的意思！！！】接着，我们输入<code>hexo server -p 端口号</code>来改变端口号。试着访问一下这个新的网址吧！  </p>
-<h2 id="Step-5：将Hexo和Github联系起来"><a href="#Step-5：将Hexo和Github联系起来" class="headerlink" title="Step 5：将Hexo和Github联系起来"></a>Step 5：将Hexo和Github联系起来</h2><p>1.如果是第一次的话，我们需要先设置Git的user name和user email。 单击右键，选择“Git Bash Here”。输入<code>git config --global user.name &quot;用户名&quot;</code>来设置user name。输入<code>git config --global user.email &quot;邮箱号&quot;</code>来设置user email。<br>2.输入<code>cd ~/.ssh</code>，检查是否有.ssh文件夹。这里我要偷偷说一句，其实没有也没什么关系的。<br>3.输入<code>ls</code>，列出该文件下的内容。<br>4.输入<code>ssh-keygen -t rsa -C &quot;邮箱号&quot;</code>，<strong>连按三次Enter键</strong>，生成密钥。最后我们得到了id_rsa和id_rsa.pub两个文件。<br>5.输入<code>eval &quot;$(ssh-agent -s)&quot;</code>，添加密钥到ssh-agent。<br>6.输入<code>ssh-add ~/.ssh/id_rsa</code>，添加生成的SSH key到ssh-agent。<br>7.登录Github，在头像下找到Settings，添加SSH。我们点击“New SSH key”，新建一个SSH key。在“Title”栏写<code>blog</code>，“Key”栏中将id_rsa.pub里面的内容复制粘贴上去。【id_rsa.pub文件的存储路径为C:\Users\Administrator\.ssh，右键选择打开方式，选择用记事本打开即可。】<br>8.输入<code>ssh -T git@github.com</code>，测试是否成功添加了SSH。如果你看到了“Hi 用户名! ”，那么恭喜你，你已经成功将Hexo和Github联系起来了！  </p>
-<h2 id="Step-6：配置Deployment"><a href="#Step-6：配置Deployment" class="headerlink" title="Step 6：配置Deployment"></a>Step 6：配置Deployment</h2><p>在blog文件夹中，我们找到_config.yml文件，在末尾修改Repository值。Repository值是Github的Repository中的SSH。<strong>我们该如何找到它呢？</strong>在Repository右侧有一个绿色的框框，里面写着“Clone or download”，单击，再点击“Use SSH”就可以了。怎么样，很简单吧？  </p>
-<h2 id="Step-7：新建一篇博客，生成并部署文章"><a href="#Step-7：新建一篇博客，生成并部署文章" class="headerlink" title="Step 7：新建一篇博客，生成并部署文章"></a>Step 7：新建一篇博客，生成并部署文章</h2><p>打开cmd，输入<code>hexo new post &quot;Hello Hexo&quot;</code>，我们可以看到，这时候在D:\blog\source\_posts目录下已经创建了Hello-Hexo.md文件。<br>在生成并部署文章之前，我们还需要在cmd中输入<code>npm install hexo-deployer-git --save</code>，安装一个扩展。<br>使用编辑器编辑好文章之后，在cmd中输入<code>hexo d -g</code>，生成并部署文章。部署成功后访问http://用户名.github.io，我们就能看到我们写的文章了！  </p>
-<h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><p>看完这篇教程之后，你是不是也觉得使用Hexo+Github搭建属于自己的博客是一件很容易的事情呢？赶快动手试一试吧！<br>第一次写博客，如果有什么意见和建议想对我这个小白提的话，请联系我哟！<br><strong>我的邮箱：<a href="mailto:1398635912@qq.com" target="_blank" rel="noopener">1398635912@qq.com</a></strong></p>
-
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -600,6 +631,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2020/02/10/MySQL%20Community%208.0.19.0%20msi%E7%89%88%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">MySQL Community 8.0.19.0 </a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2020/02/10/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93(1)/">Python数据分析基础之数据库(1)</a>
             </li>
             
@@ -609,10 +644,6 @@
             
             <li>
                 <a class="footer-post" href="/2020/02/09/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(5)/">Python数据分析基础之Excel文件(5)</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2020/02/07/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(4)/">Python数据分析基础之Excel文件(4)</a>
             </li>
             
         </ul>
