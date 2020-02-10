@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="&amp;emsp;&amp;emsp;SQL（Structured Query Language），表示结构化查询语言，是一组应用广泛的与数据库交互的命令。要学习如何使用Python同数据库交互，首先我们要有一个数据库，并且数据库中要有一张充满数据的表。有两种资源可供我们选择：一是Python的内置模块sqlit">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Python数据分析基础之数据库(1)"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Welcome to CCH21&#39;s Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Python数据分析基础之数据库(1) - Welcome to CCH21&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2020/02/10/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93(1)/">
+                Python数据分析基础之数据库(1)
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-02-10</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>&emsp;&emsp;SQL（Structured Query Language），表示结构化查询语言，是一组应用广泛的与数据库交互的命令。要学习如何使用Python同数据库交互，首先我们要有一个数据库，并且数据库中要有一张充满数据的表。有两种资源可供我们选择：一是Python的内置模块sqlite3，它可以创建内存数据库，我们不用下载安装专门的数据库软件；二是MySQL、PostgreSQL或Oracle这样的常用数据库系统。  </p>
+<h2 id="使用sqlite3模块创建数据库"><a href="#使用sqlite3模块创建数据库" class="headerlink" title="使用sqlite3模块创建数据库"></a>使用sqlite3模块创建数据库</h2><p>&emsp;&emsp;首先，我们使用sqlite3模块直接在Python代码中创建一个内存数据库以及充满了数据的表。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import sqlite3</span><br><span class="line"></span><br><span class="line"># 创建SQLite3内存数据库</span><br><span class="line"># 创建带有4个属性的sales表</span><br><span class="line">con = sqlite3.connect(&apos;:memory:&apos;)</span><br><span class="line">query = &quot;&quot;&quot;CREATE TABLE sales</span><br><span class="line">           (customer VARCHAR(20),</span><br><span class="line">           product VARCHAR(40),</span><br><span class="line">           amount FLOAT,</span><br><span class="line">           date DATE);&quot;&quot;&quot;</span><br><span class="line">con.execute(query)</span><br><span class="line">con.commit()</span><br><span class="line"></span><br><span class="line"># 在表中插入几行数据</span><br><span class="line">data = [(&apos;Richard Lucas&apos;, &apos;Notepad&apos;, 2.50, &apos;2014-01-02&apos;),</span><br><span class="line">        (&apos;Jenny Kim&apos;, &apos;Binder&apos;, 4.15, &apos;2014-01-15&apos;),</span><br><span class="line">        (&apos;Svetlana Crow&apos;, &apos;Printer&apos;, 155.75, &apos;2014-02-03&apos;),</span><br><span class="line">        (&apos;Stephen Randolph&apos;, &apos;Computer&apos;, 679.40, &apos;2014-02-20&apos;)]</span><br><span class="line">statement = &quot;INSERT INTO sales VALUES(?, ?, ?, ?)&quot;</span><br><span class="line">con.executemany(statement, data)</span><br><span class="line">con.commit()</span><br><span class="line"></span><br><span class="line"># 查询sales表</span><br><span class="line">cursor = con.execute(&quot;SELECT * FROM sales&quot;)</span><br><span class="line">rows = cursor.fetchall()</span><br><span class="line"></span><br><span class="line"># 计算查询结果中行的数量</span><br><span class="line">row_counter = 0</span><br><span class="line">for row in rows:</span><br><span class="line">    print(row)</span><br><span class="line">    row_counter += 1</span><br><span class="line">print(&apos;Number of rows: %d&apos; % (row_counter))</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;第3行代码导入了sqlite3模块。为了使用这个模块，首先必须创建一个代表数据库的连接对象。第7行代码创建了连接对象<code>con</code>来代表数据库。专用名称<code>&#39;:memory:&#39;</code>在内存中创建了一个数据库。如果想要数据库持久化，就需要提供另外的字符串。<br>&emsp;&emsp;第8-12行代码使用三重双引号创建了一个多行字符串，并将这个字符串赋给变量<code>query</code>。这个字符串是一个SQL命令，可以在数据库中创建一个名为<code>sales</code>的表。<code>sales</code>表有4个属性：<code>customer</code>, <code>product</code>, <code>amount</code>和<code>date</code>。<code>customer</code>和<code>product</code>都是变长字符型字段，最大字符数分别为20和40。<code>amount</code>是一个浮点数型字段。<code>date</code>是一个日期型字段。<br>&emsp;&emsp;第13行代码使用连接对象的<code>execute()</code>方法执行包含在变量<code>query</code>中的SQL命令，在内存数据库中创建<code>sales</code>表。第14行代码使用连接对象的<code>commit()</code>方法将修改提交（也就是保存）到数据库。对数据库做出修改时必须使用<code>commit()</code>方法保存修改。<br>&emsp;&emsp;第21行代码与第8行代码类似，创建了一个字符串并赋给变量<code>statement</code>。这行代码中的字符串是另一个SQL命令，<code>INSERT</code>语句可以将<code>data</code>中的数据行插入<code>sales</code>表。<code>?</code>在这里用作占位符，表示想在SQL命令中使用的值。然后，在连接对象的<code>execute()</code>或<code>executemany()</code>方法中，需要提供一个包含4个值的元组，元组中的值会按位置替换到SQL命令中。<br>&emsp;&emsp;第26行代码使用连接对象的<code>execute()</code>方法运行一条SQL命令，并将命令结果赋给一个光标变量<code>cursor</code>。第27行代码执行了<code>fetchall()</code>方法，返回第26行代码中的SQL命令的数据行的列表。每行数据都是一个元组，所以<code>rows</code>是一个元组列表。在这种情况下，<code>sales</code>表中包含4行数据，SQL命令从<code>sales</code>表中选择所有的行，所以<code>rows</code>是一个含有4个元组的列表。<br>&emsp;&emsp;运行结果如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(&apos;Richard Lucas&apos;, &apos;Notepad&apos;, 2.5, &apos;2014-01-02&apos;)</span><br><span class="line">(&apos;Jenny Kim&apos;, &apos;Binder&apos;, 4.15, &apos;2014-01-15&apos;)</span><br><span class="line">(&apos;Svetlana Crow&apos;, &apos;Printer&apos;, 155.75, &apos;2014-02-03&apos;)</span><br><span class="line">(&apos;Stephen Randolph&apos;, &apos;Computer&apos;, 679.4, &apos;2014-02-20&apos;)</span><br><span class="line">Number of rows: 4</span><br></pre></td></tr></table></figure>
+<h2 id="向表中插入新记录"><a href="#向表中插入新记录" class="headerlink" title="向表中插入新记录"></a>向表中插入新记录</h2><p>&emsp;&emsp;下面的这个脚本将创建一个数据表，向表中插入CSV文件中的数据，然后展示表中的数据。这里使用的CSV文件是前面用到过的supplier_data.csv文件。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import csv</span><br><span class="line">import sqlite3</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line"># CSV输入文件的路径和文件名</span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line"></span><br><span class="line"># 创建SQLite3内存数据库</span><br><span class="line"># 创建带有5个属性的Suppliers表</span><br><span class="line">con = sqlite3.connect(&apos;E:\\python_pycharm\\Python数据分析基础\\第4章 数据库\\Suppliers.db&apos;)</span><br><span class="line">c = con.cursor()</span><br><span class="line">create_table = &quot;&quot;&quot;CREATE TABLE IF NOT EXISTS Suppliers</span><br><span class="line">                  (Supplier_Name VARCHAR(20),</span><br><span class="line">                  Invoice_Number VARCHAR(20),</span><br><span class="line">                  Part_Number VARCHAR(20),</span><br><span class="line">                  Cost FLOAT,</span><br><span class="line">                  Purchase_Date DATE);&quot;&quot;&quot;</span><br><span class="line">c.execute(create_table)</span><br><span class="line">con.commit()</span><br><span class="line"></span><br><span class="line"># 读取CSV文件</span><br><span class="line"># 向Suppliers表中插入数据</span><br><span class="line">file_reader = csv.reader(open(input_file, &apos;r&apos;), delimiter=&apos;,&apos;)</span><br><span class="line">header = next(file_reader, None)</span><br><span class="line">for row in file_reader:</span><br><span class="line">    data = []</span><br><span class="line">    for column_index in range(len(header)):</span><br><span class="line">        data.append(row[column_index])</span><br><span class="line">    print(data)</span><br><span class="line">    c.execute(&quot;INSERT INTO Suppliers VALUES (?, ?, ?, ?, ?);&quot;, data)</span><br><span class="line">con.commit()</span><br><span class="line">print(&apos;&apos;)</span><br><span class="line"></span><br><span class="line"># 查询Suppliers表</span><br><span class="line">output = c.execute(&quot;SELECT * FROM Suppliers&quot;)</span><br><span class="line">rows = output.fetchall()</span><br><span class="line">for row in rows:</span><br><span class="line">    output = []</span><br><span class="line">    for column_index in range(len(row)):</span><br><span class="line">        output.append(str(row[column_index]))</span><br><span class="line">    print(output)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;第12行代码为本地数据库<code>Suppliers.db</code>创建连接。这是一个持久化数据库，即使重启计算机，这个数据库也不会被删除。<br>&emsp;&emsp;第25-33行代码从CSV输入文件中读取要加载到数据库中的数据，并对输入文件中的每行数据执行一条SQL语句，将数据插入到数据库的表中。第32行代码将每行数据加载到数据表中。第33行代码使用<code>commit()</code>方法将修改提交到数据库。<br>&emsp;&emsp;第37-43行代码从数据表<code>Suppliers</code>中选择所有数据，并将输出打印到命令行窗口。第37-38行代码执行一条SQL语句，从<code>Suppliers</code>表中选择所有数据，并将<code>output</code>中的所有行读入变量<code>rows</code>。<br>&emsp;&emsp;在命令行窗口中运行这个脚本，得到输出结果如下：<br><img src="https://img-blog.csdnimg.cn/2020021019311438.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;输出的第一部分是从CSV文件中解析出的数据行，输出的第二部分是同样的行，但它是从sqlite数据表中提取出来的。  </p>
+<h2 id="更新表中记录"><a href="#更新表中记录" class="headerlink" title="更新表中记录"></a>更新表中记录</h2><p>&emsp;&emsp;我们可以使用CSV输入文件向数据表中添加新行，也可以使用从CSV输入文件中读取数据的技术来更新表中已有的行。在这种情况下，SQL语句有所改变，从<code>INSERT</code>语句变成了<code>UPDATE</code>语句。代码如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import csv</span><br><span class="line">import sqlite3</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line"># CSV输入文件的路径和文件名</span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line"></span><br><span class="line"># 创建SQLite3内存数据库</span><br><span class="line"># 创建带有4个属性的sales表</span><br><span class="line">con = sqlite3.connect(&apos;:memory:&apos;)</span><br><span class="line">query = &quot;&quot;&quot;CREATE TABLE IF NOT EXISTS sales</span><br><span class="line">           (customer VARCHAR(20),</span><br><span class="line">           product VARCHAR(40),</span><br><span class="line">           amount FLOAT,</span><br><span class="line">           date DATE);&quot;&quot;&quot;</span><br><span class="line">con.execute(query)</span><br><span class="line">con.commit()</span><br><span class="line"></span><br><span class="line"># 向表中插入几行数据</span><br><span class="line">data = [(&apos;Richard Lucas&apos;, &apos;Notepad&apos;, 2.50, &apos;2014-01-02&apos;),</span><br><span class="line">        (&apos;Jenny Kim&apos;, &apos;Binder&apos;, 4.15, &apos;2014-01-15&apos;),</span><br><span class="line">        (&apos;Svetlana Crow&apos;, &apos;Printer&apos;, 155.75, &apos;2014-02-03&apos;),</span><br><span class="line">        (&apos;Stephen Randolph&apos;, &apos;Computer&apos;, 679.40, &apos;2014-02-20&apos;)]</span><br><span class="line">for tuple in data:</span><br><span class="line">    print(tuple)</span><br><span class="line">statement = &quot;INSERT INTO sales VALUES(?, ?, ?, ?)&quot;</span><br><span class="line">con.executemany(statement, data)</span><br><span class="line">con.commit()</span><br><span class="line"></span><br><span class="line"># 读取CSV文件并更新特定的行</span><br><span class="line">file_reader = csv.reader(open(input_file, &apos;r&apos;), delimiter=&apos;,&apos;)</span><br><span class="line">header = next(file_reader, None)</span><br><span class="line">for row in file_reader:</span><br><span class="line">    data = []</span><br><span class="line">    for column_index in range(len(header)):</span><br><span class="line">        data.append(row[column_index])</span><br><span class="line">    print(data)</span><br><span class="line">    con.execute(&quot;UPDATE sales SET amount=?, date=? WHERE customer=?;&quot;, data)</span><br><span class="line">con.commit()</span><br><span class="line"></span><br><span class="line"># 查询sales表</span><br><span class="line">cursor = con.execute(&quot;SELECT * FROM sales&quot;)</span><br><span class="line">rows = cursor.fetchall()</span><br><span class="line">for row in rows:</span><br><span class="line">    output = []</span><br><span class="line">    for column_index in range(len(row)):</span><br><span class="line">        output.append(str(row[column_index]))</span><br><span class="line">    print(output)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;第40行代码，<code>UPDATE</code>语句代替了原来的<code>INSERT</code>语句。在<code>UPDATE</code>语句中，我们必须指定想更新哪一条记录和哪一个列属性。在这里，我们想为一组特定的<code>customer</code>更新<code>amount</code>值和<code>date</code>值。像前面的示例一样，<code>UPDATE</code>语句也需要占位符表示查询中的值的位置，CSV输入文件中数据的顺序也要同查询中属性的顺序一样。<br>&emsp;&emsp;我们新建一个CSV输入文件：<br><img src="https://img-blog.csdnimg.cn/20200210202106745.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;在命令行窗口中运行这个脚本，得到下面的输出结果。<br><img src="https://img-blog.csdnimg.cn/20200210202147190.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;这个输出首先展示了数据库中初始的4行数据，接下来2行是要更新到数据库中的2行数据。在这2行下面，输出还展示了执行更新之后从数据表中取出的4行数据。  </p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    I'd walk a million miles just to see your smile. 
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2020/02/10/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93(1)/">Python数据分析基础之数据库(1)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/02/10/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(6)/">Python数据分析基础之Excel文件(6)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/02/09/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(5)/">Python数据分析基础之Excel文件(5)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/02/07/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(4)/">Python数据分析基础之Excel文件(4)</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/CCH21" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:1398635912@qq.com" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/" target="_blank" rel="noopener">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

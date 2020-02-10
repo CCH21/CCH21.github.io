@@ -147,6 +147,111 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2020/01/20/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BCSV%E6%96%87%E4%BB%B6(3)/">
+                Python数据分析基础之CSV文件(3)
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-01-20</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>&emsp;&emsp;这一节主要讲一下在读写CSV文件时筛选特定的行。<br>&emsp;&emsp;有些时候，我们并不需要文件中所有的数据。例如，我们可能只需要一个包含特定词或数字的行的子集，或者是与某个具体日期关联的行的子集。在这些情况下，我们可以用Python筛选出特定的行来使用。<br>&emsp;&emsp;下面主要来讲在输入文件中筛选出特定行的3种方法：<br>&emsp;&emsp;1.行中的值满足某个条件；<br>&emsp;&emsp;2.行中的值属于某个集合；<br>&emsp;&emsp;3.行中的值匹配于某个模式（正则表达式）。<br>&emsp;&emsp;其实，这三种筛选方法的代码在结构上是一致的。通用结构如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for row in filereader:</span><br><span class="line">    ***if value in row meets some business rule or set of rules:***</span><br><span class="line">        do something</span><br><span class="line">    else:</span><br><span class="line">        do something else</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;下面我们来详细讨论一下上述3种方法。  </p>
+<h2 id="行中的值满足某个条件"><a href="#行中的值满足某个条件" class="headerlink" title="行中的值满足某个条件"></a>行中的值满足某个条件</h2><h4 id="1-基础Python"><a href="#1-基础Python" class="headerlink" title="1.基础Python"></a>1.基础Python</h4><p>&emsp;&emsp;在之前的样例中，如果我们只想保留供应商名字为Supplier Z或成本大于$600.00的行，并将结果写入输出文件。代码如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import csv</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">with open(input_file, &apos;r&apos;, newline=&apos;&apos;) as csv_in_file:</span><br><span class="line">    with open(output_file, &apos;w&apos;, newline=&apos;&apos;) as csv_out_file:</span><br><span class="line">        filereader = csv.reader(csv_in_file)</span><br><span class="line">        filewriter = csv.writer(csv_out_file)</span><br><span class="line">        header = next(filereader)</span><br><span class="line">        filewriter.writerow(header)</span><br><span class="line">        for row_list in filereader:</span><br><span class="line">            supplier = str(row_list[0]).strip()</span><br><span class="line">            cost = str(row_list[3]).strip(&apos;$&apos;).replace(&apos;,&apos;, &apos;&apos;)</span><br><span class="line">            if supplier == &apos;Supplier Z&apos; or float(cost) &gt; 600.0:</span><br><span class="line">                filewriter.writerow(row_list)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;我们来解释一下上面的代码。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">header = next(filereader)</span><br><span class="line">filewriter.writerow(header)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这两行代码使用csv模块的<code>next()</code>函数读出输入文件的第一行，赋给列表变量<code>header</code>，并且使用<code>writerow()</code>函数将标题行写入输出文件。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supplier = str(row_list[0]).strip()</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这行代码取出每行数据中的供应商名字，赋给变量<code>supplier</code>。这行代码使用列表索引取出每行数据的第一个值<code>row[0]</code>，使用<code>str()</code>函数将其转换为一个字符串，再使用<code>strip()</code>函数删除字符串两端的空格、制表符和换行符。最后，将处理好的字符串赋给变量<code>supplier</code>。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cost = str(row_list[3]).strip(&apos;$&apos;).replace(&apos;,&apos;, &apos;&apos;)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这行代码取出每行数据中的成本，赋给变量<code>cost</code>。这行代码使用列表索引取出每行数据的第四个值<code>row[3]</code>，使用<code>str()</code>函数将其转换为一个字符串，再使用<code>strip(&#39;$&#39;)</code>函数从字符串中删除<code>$</code>符号，再使用<code>replace()</code>函数从字符串中删除逗号。最后，将处理好的字符串赋给变量<code>cost</code>。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if supplier == &apos;Supplier Z&apos; or float(cost) &gt; 600.0:</span><br><span class="line">    filewriter.writerow(row_list)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这两行代码通过创建<code>if</code>语句来检验每行中的这两个值是否满足条件，若条件满足，则使用<code>filewriter</code>的<code>writerow()</code>函数将其写入输出文件。<br>&emsp;&emsp;我们在命令行窗口运行这个脚本。在窗口中没有任何输出，我们可以打开输出文件来查看结果。<br><img src="https://img-blog.csdnimg.cn/20200120205540611.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h4 id="2-pandas"><a href="#2-pandas" class="headerlink" title="2.pandas"></a>2.pandas</h4><p>&emsp;&emsp;pandas模块提供了一个<code>loc</code>函数，它可以同时选择特定的行与列。使用pandas模块的代码如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import pandas as pd</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">data_frame = pd.read_csv(input_file)</span><br><span class="line">data_frame[&apos;Cost&apos;] = data_frame[&apos;Cost&apos;].str.strip(&apos;$&apos;).astype(float)</span><br><span class="line">data_frame_value_meets_condition = data_frame.loc[(data_frame[&apos;Supplier Name&apos;].str.contains(&apos;Z&apos;))</span><br><span class="line">                                                  | (data_frame[&apos;Cost&apos;] &gt; 600.0), :]</span><br><span class="line">data_frame_value_meets_condition.to_csv(output_file, index=False)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;我们在命令行窗口运行这个脚本，同样地，在屏幕上我们看不到任何输出，我们可以打开输出文件查看结果。<br>&emsp;&emsp;此处省略输出结果。  </p>
+<h2 id="行中的值属于某个集合"><a href="#行中的值属于某个集合" class="headerlink" title="行中的值属于某个集合"></a>行中的值属于某个集合</h2><p>&emsp;&emsp;有些时候，当行中的值属于某个集合时，才需要保留这些行。例如，我们希望在数据集中保留那些供应商名字属于集合<code>{Supplier X, Supplier Y}</code>的行，或者希望保留所有购买日期属于集合<code>{&#39;1/20/2014&#39;, &#39;1/30/2014&#39;}</code>的行。在这种情况下，我们可以检验行中的值是否属于某个集合，筛选出具有属于该集合的行。  </p>
+<h4 id="1-基础Python-1"><a href="#1-基础Python-1" class="headerlink" title="1.基础Python"></a>1.基础Python</h4><p>&emsp;&emsp;代码如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import csv</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">important_dates = [&apos;1/20/2014&apos;, &apos;1/30/2014&apos;]</span><br><span class="line">with open(input_file, &apos;r&apos;, newline=&apos;&apos;) as csv_in_file:</span><br><span class="line">    with open(output_file, &apos;w&apos;, newline=&apos;&apos;) as csv_out_file:</span><br><span class="line">        filereader = csv.reader(csv_in_file)</span><br><span class="line">        filewriter = csv.writer(csv_out_file)</span><br><span class="line">        header = next(filereader)</span><br><span class="line">        filewriter.writerow(header)</span><br><span class="line">        for row_list in filereader:</span><br><span class="line">            a_date = row_list[4]</span><br><span class="line">            if a_date in important_dates:</span><br><span class="line">                filewriter.writerow(row_list)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;我们来讨论一下上述代码。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">important_dates = [&apos;1/20/2014&apos;, &apos;1/30/2014&apos;]</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这行代码创建了一个名为<code>important_dates</code>的列表变量，其中包含了两个特定日期。这个列表变量就是我们的集合。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a_date = row_list[4]</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这行代码取出每一行的购买日期，并赋给变量<code>a_date</code>。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if a_date in important_dates:</span><br><span class="line">    filewriter.writerow(row_list)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这行代码创建了一个<code>if</code>语句来检验变量<code>a_date</code>中的购买日期是否属于集合<code>important_date</code>，如果变量值在集合中，下一行代码就将这一行写入输出文件。<br>&emsp;&emsp;我们在命令行窗口中运行这个脚本，并打开输出文件来查看结果。<br><img src="https://img-blog.csdnimg.cn/20200120211035351.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h4 id="2-pandas-1"><a href="#2-pandas-1" class="headerlink" title="2.pandas"></a>2.pandas</h4><p>&emsp;&emsp;使用pandas模块的代码如下所示：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import pandas as pd</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">data_frame = pd.read_csv(input_file)</span><br><span class="line">important_dates = [&apos;1/20/2014&apos;, &apos;1/30/2014&apos;]</span><br><span class="line">data_frame_value_in_set = data_frame.loc[data_frame[&apos;Purchase Date&apos;].isin(important_dates), :]</span><br><span class="line">data_frame_value_in_set.to_csv(output_file, index=False)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这里的输出结果和上面基础Python方法的输出结果一致，故省略。  </p>
+<h2 id="行中的值匹配于某个模式（正则表达式）"><a href="#行中的值匹配于某个模式（正则表达式）" class="headerlink" title="行中的值匹配于某个模式（正则表达式）"></a>行中的值匹配于某个模式（正则表达式）</h2><p>&emsp;&emsp;有些时候，当行中的值匹配或包含一个特定模式（正则表达式）时，才需要保留这些行。例如，我们希望在数据集中保留所有发票开始于“001-”的行，或者希望保留所有供应商名字中包含“Y”的行。在这种情况下，我们可以检验行中的值是否匹配或包含某种模式，然后筛选出匹配或包含该模式的行。  </p>
+<h4 id="1-基础Python-2"><a href="#1-基础Python-2" class="headerlink" title="1.基础Python"></a>1.基础Python</h4><p>&emsp;&emsp;代码如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import csv</span><br><span class="line">import re</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">pattern = re.compile(r&apos;(?P&lt;my_pattern_group&gt;^001-.*)&apos;, re.I)</span><br><span class="line">with open(input_file, &apos;r&apos;, newline=&apos;&apos;) as csv_in_file:</span><br><span class="line">    with open(output_file, &apos;w&apos;, newline=&apos;&apos;) as csv_out_file:</span><br><span class="line">        filereader = csv.reader(csv_in_file)</span><br><span class="line">        filewriter = csv.writer(csv_out_file)</span><br><span class="line">        header = next(filereader)</span><br><span class="line">        filewriter.writerow(header)</span><br><span class="line">        for row_list in filereader:</span><br><span class="line">            invoice_number = row_list[1]</span><br><span class="line">            if pattern.search(invoice_number):</span><br><span class="line">                filewriter.writerow(row_list)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;我们来讨论一下上述代码。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这一行代码导入了re模块，也就是正则表达式模块。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pattern = re.compile(r&apos;(?P&lt;my_pattern_group&gt;^001-.*)&apos;, re.I)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这行代码使用re模块的<code>compile()</code>函数创建变量<code>pattern</code>。其中<code>r</code>表示将单引号之间的模式当作原始字符串来处理。元字符<code>?P&lt;my_pattern_group&gt;</code>捕获了名为<code>&lt;my_pattern_group&gt;</code>的组中匹配了的字符串，以便在需要的时候将它们打印到屏幕或写入文件。这里要搜索的实际模式是<code>^001-.*</code>。插入符号<code>^</code>表示只在字符串开头搜索模式，<code>*</code>表示重复前面的字符0次或更多次，<code>.*</code>组合在一起使用表示除换行符<code>\n</code>之外的任意字符可以在“001-”后面出现任意次。最后，参数<code>re.I</code>告诉了正则表达式进行大小写敏感的匹配。<br>&emsp;&emsp;有关正则表达式的内容，可以参考我之前写的博客：<a href="https://blog.csdn.net/qq_45554010/article/details/104022260" target="_blank" rel="noopener">Python与正则表达式</a>。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if pattern.search(invoice_number):</span><br><span class="line">    filewriter.writerow(row_list)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这里使用re模块的<code>search()</code>函数在<code>invoice_number</code>的值中寻找模式，如果模式出现在变量值中，就将这行写入输出文件。<br>&emsp;&emsp;我们在命令行窗口运行这个脚本，得到输出文件如下图所示。<br><img src="https://img-blog.csdnimg.cn/20200120212816274.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h4 id="2-pandas-2"><a href="#2-pandas-2" class="headerlink" title="2.pandas"></a>2.pandas</h4><p>&emsp;&emsp;使用pandas模块的代码如下所示：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import pandas as pd</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">data_frame = pd.read_csv(input_file)</span><br><span class="line">data_frame_value_matches_pattern = data_frame.loc[data_frame[&apos;Invoice Number&apos;].str.startswith(&quot;001-&quot;), :]</span><br><span class="line">data_frame_value_matches_pattern.to_csv(output_file, index=False)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;上述代码中，<code>startswith()</code>函数用来搜索数据，不用再使用正则表达式。<br>&emsp;&emsp;这里的输出结果和上面基础Python方法的输出结果一致，故省略。  </p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2020/01/19/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BCSV%E6%96%87%E4%BB%B6(2)/">
+                Python数据分析基础之CSV文件(2)
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-01-19</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="基本字符串分析的失败"><a href="#基本字符串分析的失败" class="headerlink" title="基本字符串分析的失败"></a>基本字符串分析的失败</h2><p>&emsp;&emsp;在上一节我们讲了使用Python对CSV文件进行读写。事实上，当列中包含额外的逗号时，CSV分析会失败。<br>&emsp;&emsp;我们打开supplier_data.csv，将Cost列中的最后两个成本数量分别改为$6,015.00和$1,006,015.00，如下图所示。<br><img src="https://img-blog.csdnimg.cn/20200119164515385.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">&emsp;&emsp;之前的脚本是按照行中的逗号分析每行数据的，这会让脚本错误地拆分最后两行的数据，因为数据中有逗号。<br>&emsp;&emsp;有很多方法可以改进这个脚本中的代码，使它可以正确地处理包含逗号的数值。我们可以使用正则表达式，但为了不使脚本复杂化，我们可以使用Python内置的csv模块。这个模块可以方便灵活地处理复杂的CSV文件。  </p>
+<h2 id="修改后的脚本读写CSV文件"><a href="#修改后的脚本读写CSV文件" class="headerlink" title="修改后的脚本读写CSV文件"></a>修改后的脚本读写CSV文件</h2><p>&emsp;&emsp;使用Python内置的csv模块处理CSV文件的一个优点是，这个模块就是被设计用于正确处理数据值中的嵌入逗号和其他复杂模式的，它可以识别出这些模式并正确地处理数据。<br>&emsp;&emsp;修改后的代码如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import csv</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">with open(input_file, &apos;r&apos;, newline=&apos;&apos;) as csv_in_file:</span><br><span class="line">    with open(output_file, &apos;w&apos;, newline=&apos;&apos;) as csv_out_file:</span><br><span class="line">        filereader = csv.reader(csv_in_file, delimiter=&apos;,&apos;)</span><br><span class="line">        filewriter = csv.writer(csv_out_file, delimiter=&apos;,&apos;)</span><br><span class="line">        for row_list in filereader:</span><br><span class="line">            print(row_list)</span><br><span class="line">            filewriter.writerow(row_list)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;我们来解释一下上面的代码。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这行代码导入csv模块，以便可以使用其中的函数来分析输入文件，写入输入文件。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">filereader = csv.reader(csv_in_file, delimiter=&apos;,&apos;)</span><br><span class="line">filewriter = csv.writer(csv_out_file, delimiter=&apos;,&apos;)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这两行代码使用csv模块中的<code>reader()</code>函数和<code>writer()</code>函数分别创建了一个文件读取对象<code>filereader</code>和文件写入对象<code>filewriter</code>。这两个函数中的第二个参数<code>delimiter=&#39;,&#39;</code>是默认分隔符，如果输入文件和输出文件都是用逗号分隔的，就不需要指定这个参数。这里指定分隔符函数，是为了防备待处理的输入文件或要写入的输出文件具有不同的分隔符，例如分号<code>;</code>或制表符<code>\t</code>。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filewriter.writerow(row_list)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这行代码使用<code>filewriter</code>对象的<code>writerow()</code>函数来将每行中的列表值写入输出文件。<br>&emsp;&emsp;我们在命令行窗口运行这个脚本，如下图所示。<br><img src="https://img-blog.csdnimg.cn/20200119170337420.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200119170405927.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2020/01/19/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BCSV%E6%96%87%E4%BB%B6(1)/">
                 Python数据分析基础之CSV文件(1)
             </a>
@@ -609,89 +714,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/12/19/%E9%80%92%E5%BD%92%E6%B3%95%E8%A7%A3%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/">
-                递归法解汉诺塔问题
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-12-19</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="汉诺塔简介"><a href="#汉诺塔简介" class="headerlink" title="汉诺塔简介"></a>汉诺塔简介</h2><p>&emsp;&emsp;法国数学家爱德华·卢卡斯曾编写过一个印度的古老传说：在世界中心贝拿勒斯的圣庙里，一块黄铜板上插着三根宝石针。印度教的主神梵天在创造世界的时候，在其中一根针上从下到上地穿好了由大到小的64片金片，这就是所谓的汉诺塔(Tower of Hanoi)。不论白天黑夜，总有一个僧侣在按照下面的法则移动这些金片：一次只移动一片，不管在哪根针上，小片必须在大片上面。僧侣们预言，当所有的金片都从梵天穿好的那根针上移到另外一根针上时，世界就将在一声霹雳中消灭，而梵塔、庙宇和众生也都将同归于尽。<br>&emsp;&emsp;我们假设金片的数量为n，移动的次数为f(n)，不难发现f(k+1)=2f(k)+1，也不难证明出f(n)=2^n^-1。也就是说，移动64片金片至少需要(2^64^-1)次，也就是18,446,744,073,709,551,615‬次。假设每秒钟移动一个圆盘，不考虑闰年，移动这些金片也需要584,942,417,355年。要知道，地球的年龄是45.5亿年……  </p>
-<h2 id="递归法解汉诺塔问题"><a href="#递归法解汉诺塔问题" class="headerlink" title="递归法解汉诺塔问题"></a>递归法解汉诺塔问题</h2><p>&emsp;&emsp;以上所说的属于数学范畴，在此不再赘述。我们要讲的重点是用代码来解决汉诺塔问题。这里我采用了递归的思想。递归并不一定是最好的方法，但就我而言，递归是最容易想到也是最容易理解的方法。<br>&emsp;&emsp;我们设汉诺塔的三根柱子从左到右分别为A，B，C，在A柱上有n个圆盘（<del>PS：还是叫圆盘好听些，叫金片总是感觉有些不习惯……</del>）。由于汉诺塔只能把小圆盘放在大圆盘上，想要把A柱的所有圆盘都移动到C柱，必须把最大圆盘上面的全部圆盘都移动到B柱，然后才可以把最大的圆盘移动到C柱。我们可以总结步骤如下：<br>&emsp;&emsp;第一步：把(n-1)个圆盘都从A柱移动到B柱；<br>&emsp;&emsp;第二步：把最大的圆盘从A柱移动到C柱；<br>&emsp;&emsp;第三步：把(n-1)个圆盘都从B柱移动到C柱。<br>&emsp;&emsp;特别地，当n=1时，只需将圆盘从A柱移动到C柱即可。<br>&emsp;&emsp;Python代码实现如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def hanoi(n, a, b, c):</span><br><span class="line">    if n == 1:</span><br><span class="line">        print(a, &apos;-&gt;&apos;, c)</span><br><span class="line">        return</span><br><span class="line">    hanoi(n - 1, a, c, b)</span><br><span class="line">    hanoi(1, a, b, c)		# 这里也可以写成print(a, &apos;-&gt;&apos;, c)</span><br><span class="line">    hanoi(n - 1, b, a, c)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">num = int(input(&apos;请输入圆盘数量：&apos;))</span><br><span class="line">print(&apos;移动方法如下：&apos;)</span><br><span class="line">hanoi(num, &apos;A&apos;, &apos;B&apos;, &apos;C&apos;)</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;取圆盘数量为4，得到输出结果如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">请输入圆盘数量：4</span><br><span class="line">移动方法如下：</span><br><span class="line">A -&gt; B</span><br><span class="line">A -&gt; C</span><br><span class="line">B -&gt; C</span><br><span class="line">A -&gt; B</span><br><span class="line">C -&gt; A</span><br><span class="line">C -&gt; B</span><br><span class="line">A -&gt; B</span><br><span class="line">A -&gt; C</span><br><span class="line">B -&gt; C</span><br><span class="line">B -&gt; A</span><br><span class="line">C -&gt; A</span><br><span class="line">B -&gt; C</span><br><span class="line">A -&gt; B</span><br><span class="line">A -&gt; C</span><br><span class="line">B -&gt; C</span><br></pre></td></tr></table></figure>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/12/12/C%E8%AF%AD%E8%A8%80%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98%E2%80%94%E2%80%94%E5%85%91%E6%8D%A2%E7%A1%AC%E5%B8%81/">
-                C语言经典问题——兑换硬币
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-12-12</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="兑换硬币问题"><a href="#兑换硬币问题" class="headerlink" title="兑换硬币问题"></a>兑换硬币问题</h2><p>&emsp;&emsp;兑换硬币问题是C语言的一个经典问题。题目如下：  </p>
-<blockquote>
-<p>现有一张1元纸币，欲将其兑换为1分、2分、5分硬币共60枚，请列出所有兑换方案。  </p>
-</blockquote>
-<p>&emsp;&emsp;我们可以利用分支和循环来解决这个问题。  </p>
-<h2 id="最简单的方法——三重循环法"><a href="#最简单的方法——三重循环法" class="headerlink" title="最简单的方法——三重循环法"></a>最简单的方法——三重循环法</h2><p>&emsp;&emsp;最“无脑”也是最容易想到的方法是利用三重循环。其代码如下所示：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main (void)</span><br><span class="line">&#123;</span><br><span class="line">	int i = 0; </span><br><span class="line">	int one, two, five; </span><br><span class="line">	for (one = 0; one &lt;= 60; one++)</span><br><span class="line">	&#123;</span><br><span class="line">		for (two = 0; two &lt;= 50; two++)</span><br><span class="line">		&#123;</span><br><span class="line">			for (five = 0; five &lt;= 20; five++)</span><br><span class="line">			&#123;</span><br><span class="line">				if ((one * 1 + two * 2 + five * 5 == 100) &amp;&amp; (one + two + five == 60))</span><br><span class="line">				&#123;</span><br><span class="line">					i++; </span><br><span class="line">					printf (&quot;兑换方案%2d：1分硬币%2d枚，2分硬币%2d枚，5分硬币%2d枚\n&quot;, i, one, two, five); </span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf (&quot;共有%d种兑换方案\n&quot;, i); </span><br><span class="line">	return 0; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;输出结果如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">兑换方案 1：1分硬币20枚，2分硬币40枚，5分硬币 0枚</span><br><span class="line">兑换方案 2：1分硬币23枚，2分硬币36枚，5分硬币 1枚</span><br><span class="line">兑换方案 3：1分硬币26枚，2分硬币32枚，5分硬币 2枚</span><br><span class="line">兑换方案 4：1分硬币29枚，2分硬币28枚，5分硬币 3枚</span><br><span class="line">兑换方案 5：1分硬币32枚，2分硬币24枚，5分硬币 4枚</span><br><span class="line">兑换方案 6：1分硬币35枚，2分硬币20枚，5分硬币 5枚</span><br><span class="line">兑换方案 7：1分硬币38枚，2分硬币16枚，5分硬币 6枚</span><br><span class="line">兑换方案 8：1分硬币41枚，2分硬币12枚，5分硬币 7枚</span><br><span class="line">兑换方案 9：1分硬币44枚，2分硬币 8枚，5分硬币 8枚</span><br><span class="line">兑换方案10：1分硬币47枚，2分硬币 4枚，5分硬币 9枚</span><br><span class="line">兑换方案11：1分硬币50枚，2分硬币 0枚，5分硬币10枚</span><br><span class="line">共有11种兑换方案</span><br></pre></td></tr></table></figure>
-<h2 id="稍加改进——双重循环法"><a href="#稍加改进——双重循环法" class="headerlink" title="稍加改进——双重循环法"></a>稍加改进——双重循环法</h2><p>&emsp;&emsp;通过分析上面的程序，我们可以发现，通过利用变量one，two和five之间的关系，即one+two+five=60，我们可以减少一层循环，从而达到代码的优化。改进后的代码如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	int i = 0;</span><br><span class="line">	int one, two, five;</span><br><span class="line">	for (five = 0; five &lt; 20; five++)</span><br><span class="line">	&#123;</span><br><span class="line">		for (two = 0; two &lt; 50; two++)</span><br><span class="line">		&#123;</span><br><span class="line">			one = 60 - two - five;</span><br><span class="line">			if (one + two * 2 + five * 5 == 100)</span><br><span class="line">			&#123;</span><br><span class="line">				i++;</span><br><span class="line">				printf (&quot;兑换方案%2d：1分硬币%2d枚，2分硬币%2d枚，5分硬币%2d枚\n&quot;, i, one, two, five);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf (&quot;共有%d种兑换方案\n&quot;, i); </span><br><span class="line">	return 0; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;输出结果如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">兑换方案 1：1分硬币20枚，2分硬币40枚，5分硬币 0枚</span><br><span class="line">兑换方案 2：1分硬币23枚，2分硬币36枚，5分硬币 1枚</span><br><span class="line">兑换方案 3：1分硬币26枚，2分硬币32枚，5分硬币 2枚</span><br><span class="line">兑换方案 4：1分硬币29枚，2分硬币28枚，5分硬币 3枚</span><br><span class="line">兑换方案 5：1分硬币32枚，2分硬币24枚，5分硬币 4枚</span><br><span class="line">兑换方案 6：1分硬币35枚，2分硬币20枚，5分硬币 5枚</span><br><span class="line">兑换方案 7：1分硬币38枚，2分硬币16枚，5分硬币 6枚</span><br><span class="line">兑换方案 8：1分硬币41枚，2分硬币12枚，5分硬币 7枚</span><br><span class="line">兑换方案 9：1分硬币44枚，2分硬币 8枚，5分硬币 8枚</span><br><span class="line">兑换方案10：1分硬币47枚，2分硬币 4枚，5分硬币 9枚</span><br><span class="line">兑换方案11：1分硬币50枚，2分硬币 0枚，5分硬币10枚</span><br><span class="line">共有11种兑换方案</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;我们得到了相同的输出结果，可见这种想法是可行的。  </p>
-<h2 id="最优方法——单重循环法"><a href="#最优方法——单重循环法" class="headerlink" title="最优方法——单重循环法"></a>最优方法——单重循环法</h2><p>&emsp;&emsp;实际上，这道题只用单重循环也是可以解决的。<br>&emsp;&emsp;我们再次对变量one，two和five之间的关系进行分析，不难得出以下两个关系式：  </p>
-<blockquote>
-<p>one + two + five = 60<br>one + two × 2 + five × 5 = 100</p>
-</blockquote>
-<p>&emsp;&emsp;整理之后，得：  </p>
-<blockquote>
-<p>two + five × 4 = 40，即 two = 40 - five × 4<br>five ≤ 10</p>
-</blockquote>
-<p>&emsp;&emsp;根据上面的分析，我们可以再次优化代码，如下所示：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	int i = 0;</span><br><span class="line">	int one, two, five;</span><br><span class="line">	for (five = 0; five &lt;= 10; five++)</span><br><span class="line">	&#123;</span><br><span class="line">		two = 40 - 4 * five;</span><br><span class="line">		one = 60 - two - five;</span><br><span class="line">		if (one + two * 2 + five * 5 == 100)</span><br><span class="line">		&#123;</span><br><span class="line">			i++;</span><br><span class="line">			printf (&quot;兑换方案%2d：1分硬币%2d枚，2分硬币%2d枚，5分硬币%2d枚\n&quot;, i, one, two, five);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf (&quot;共有%d种兑换方案\n&quot;, i); </span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;输出结果依旧和上面的两个程序相同：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">兑换方案 1：1分硬币20枚，2分硬币40枚，5分硬币 0枚</span><br><span class="line">兑换方案 2：1分硬币23枚，2分硬币36枚，5分硬币 1枚</span><br><span class="line">兑换方案 3：1分硬币26枚，2分硬币32枚，5分硬币 2枚</span><br><span class="line">兑换方案 4：1分硬币29枚，2分硬币28枚，5分硬币 3枚</span><br><span class="line">兑换方案 5：1分硬币32枚，2分硬币24枚，5分硬币 4枚</span><br><span class="line">兑换方案 6：1分硬币35枚，2分硬币20枚，5分硬币 5枚</span><br><span class="line">兑换方案 7：1分硬币38枚，2分硬币16枚，5分硬币 6枚</span><br><span class="line">兑换方案 8：1分硬币41枚，2分硬币12枚，5分硬币 7枚</span><br><span class="line">兑换方案 9：1分硬币44枚，2分硬币 8枚，5分硬币 8枚</span><br><span class="line">兑换方案10：1分硬币47枚，2分硬币 4枚，5分硬币 9枚</span><br><span class="line">兑换方案11：1分硬币50枚，2分硬币 0枚，5分硬币10枚</span><br><span class="line">共有11种兑换方案</span><br></pre></td></tr></table></figure>
-
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -734,19 +756,19 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2020/02/10/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93(1)/">Python数据分析基础之数据库(1)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/02/10/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(6)/">Python数据分析基础之Excel文件(6)</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2020/02/09/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(5)/">Python数据分析基础之Excel文件(5)</a>
             </li>
             
             <li>
                 <a class="footer-post" href="/2020/02/07/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(4)/">Python数据分析基础之Excel文件(4)</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2020/02/07/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(3)/">Python数据分析基础之Excel文件(3)</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2020/02/03/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(2)/">Python数据分析基础之Excel文件(2)</a>
             </li>
             
         </ul>

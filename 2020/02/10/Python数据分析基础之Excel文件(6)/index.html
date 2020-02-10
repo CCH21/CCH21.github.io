@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="&amp;emsp;&amp;emsp;这一篇博客主要讲一下处理多个工作簿。&amp;emsp;&amp;emsp;之前我们已经创建了sales_2013.xlsx工作簿。在这里，我们再创建两个新的工作簿sales_2014.xlsx和sales_2015.xlsx，并且修改其中的工作表名称和日期数据。)))))
+工作表计数以及每">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Python数据分析基础之Excel文件(6)"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Welcome to CCH21&#39;s Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Python数据分析基础之Excel文件(6) - Welcome to CCH21&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2020/02/10/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(6)/">
+                Python数据分析基础之Excel文件(6)
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-02-10</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>&emsp;&emsp;这一篇博客主要讲一下处理多个工作簿。<br>&emsp;&emsp;之前我们已经创建了sales_2013.xlsx工作簿。在这里，我们再创建两个新的工作簿sales_2014.xlsx和sales_2015.xlsx，并且修改其中的工作表名称和日期数据。<br><img src="https://img-blog.csdnimg.cn/20200210084609347.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200210084620268.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200210084629291.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200210084650308.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/2020021008473444.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/2020021008481770.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="工作表计数以及每个工作表中的行列计数"><a href="#工作表计数以及每个工作表中的行列计数" class="headerlink" title="工作表计数以及每个工作表中的行列计数"></a>工作表计数以及每个工作表中的行列计数</h2><p>&emsp;&emsp;如果想知道一个文件夹中工作簿的数量，每个工作簿中工作表的数量，以及每个工作表中的行与列的数量，我们可以编写下面的代码：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import glob</span><br><span class="line">import os</span><br><span class="line">import sys</span><br><span class="line">from xlrd import open_workbook</span><br><span class="line"></span><br><span class="line">input_directory = sys.argv[1]</span><br><span class="line"></span><br><span class="line">workbook_counter = 0</span><br><span class="line">for input_file in glob.glob(os.path.join(input_directory, &apos;*.xlsx&apos;)):</span><br><span class="line">    workbook = open_workbook(input_file)</span><br><span class="line">    print(&apos;Workbook: %s&apos; % os.path.basename(input_file))</span><br><span class="line">    print(&apos;Number of worksheets: %d&apos; % workbook.nsheets)</span><br><span class="line">    for worksheet in workbook.sheets():</span><br><span class="line">        print(&apos;Worksheet name: &apos;, worksheet.name, &apos;\tRows: &apos;, worksheet.nrows, &apos;\tColumns: &apos;, worksheet.ncols)</span><br><span class="line">    workbook_counter += 1</span><br><span class="line">print(&apos;Number of Excel workbooks: %d&apos; % (workbook_counter))</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这和之前的内省单个工作簿的代码非常相似。我们在命令行窗口中运行这个脚本，得到下面的输出结果。<br><img src="https://img-blog.csdnimg.cn/20200210085206136.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="从多个工作簿中连接数据"><a href="#从多个工作簿中连接数据" class="headerlink" title="从多个工作簿中连接数据"></a>从多个工作簿中连接数据</h2><p>&emsp;&emsp;使用Python可以将多个工作簿中所有工作表的数据垂直连接成一个输出文件。  </p>
+<h4 id="1-基础Python"><a href="#1-基础Python" class="headerlink" title="1.基础Python"></a>1.基础Python</h4><p>&emsp;&emsp;代码如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import glob</span><br><span class="line">import os</span><br><span class="line">import sys</span><br><span class="line">from datetime import date</span><br><span class="line">from xlrd import open_workbook, xldate_as_tuple</span><br><span class="line">from xlwt import Workbook</span><br><span class="line"></span><br><span class="line">input_folder = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">output_workbook = Workbook()</span><br><span class="line">output_worksheet = output_workbook.add_sheet(&apos;all_data_all_workbooks&apos;, cell_overwrite_ok=True)</span><br><span class="line">data = []</span><br><span class="line">first_worksheet = True</span><br><span class="line">for input_file in glob.glob(os.path.join(input_folder, &apos;*.xlsx&apos;)):</span><br><span class="line">    print(os.path.basename(input_file))</span><br><span class="line">    with open_workbook(input_file) as workbook:</span><br><span class="line">        for worksheet in workbook.sheets():</span><br><span class="line">            if first_worksheet:</span><br><span class="line">                header_row = worksheet.row_values(0)</span><br><span class="line">                data.append(header_row)</span><br><span class="line">                first_worksheet = False</span><br><span class="line">            for row_index in range(1, worksheet.nrows):</span><br><span class="line">                row_list = []</span><br><span class="line">                for column_index in range(worksheet.ncols):</span><br><span class="line">                    cell_value = worksheet.cell_value(row_index, column_index)</span><br><span class="line">                    cell_type = worksheet.cell_type(row_index, column_index)</span><br><span class="line">                    if cell_type == 3:</span><br><span class="line">                        date_cell = xldate_as_tuple(cell_value, workbook.datemode)</span><br><span class="line">                        date_cell = date(*date_cell[0:3]).strftime(&apos;%m/%d/%Y&apos;)</span><br><span class="line">                        row_list.append(date_cell)</span><br><span class="line">                    else:</span><br><span class="line">                        row_list.append(cell_value)</span><br><span class="line">                data.append(row_list)</span><br><span class="line">    for list_index, output_list in enumerate(data):</span><br><span class="line">        for element_index, element in enumerate(output_list):</span><br><span class="line">            output_worksheet.write(list_index, element_index, element)</span><br><span class="line">output_workbook.save(output_file)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>作者注：在第14行代码中，参考书上的代码并没有’cell_overwrite_ok=True’这一参数，这是我在写代码的时候报错后自己加上去的。<br>报错信息如下：<br>Traceback (most recent call last):<br>  File “E:\python_pycharm\Python数据分析基础\第3章 Excel文件\13excel_concat_data_from_multiple_workbook.py”, line 39, in <module><br>    output_worksheet.write(list_index, element_index, element)<br>  File “D:\Anaconda3\lib\site-packages\xlwt\Worksheet.py”, line 1088, in write<br>    self.row(r).write(c, label, style)<br>  File “D:\Anaconda3\lib\site-packages\xlwt\Row.py”, line 235, in write<br>    StrCell(self.<strong>idx, col, style_index, self.</strong>parent_wb.add_str(label))<br>  File “D:\Anaconda3\lib\site-packages\xlwt\Row.py”, line 154, in insert_cell<br>    raise Exception(msg)<br>Exception: Attempt to overwrite cell: sheetname=’all_data_all_workbooks’ rowx=0 colx=0<br>查阅有关资料后得知，对一个单元格重复操作会引发ReturnsError，这个时候只要在打开文件的时候加上’cell_overwrite_ok=True’即可解决。这应该是书本上的错误。  </p>
+</blockquote>
+<p>&emsp;&emsp;在命令行窗口中运行这个代码，得到输出文件。<br><img src="https://img-blog.csdnimg.cn/20200210093005610.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200210093047339.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h4 id="2-pandas"><a href="#2-pandas" class="headerlink" title="2.pandas"></a>2.pandas</h4><p>&emsp;&emsp;pandas模块提供了<code>concat()</code>函数来连接数据框。如果想把数据框一个一个地垂直堆叠起来，需要设置参数<code>axis=0</code>；如果想把数据框一个一个地平行连接起来，需要设置参数<code>axis=1</code>。如果我们需要基于某个关键字列连接数据框，可以使用pandas模块的<code>merge()</code>函数。<br>&emsp;&emsp;使用pandas模块的代码如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import pandas as pd</span><br><span class="line">import glob</span><br><span class="line">import os</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">input_path = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">all_workbooks = glob.glob(os.path.join(input_path, &apos;*.xlsx&apos;))</span><br><span class="line">data_frames = []</span><br><span class="line">for workbook in all_workbooks:</span><br><span class="line">    all_worksheets = pd.read_excel(workbook, sheet_name=None, index_col=None)</span><br><span class="line">    for worksheet_name, data in all_worksheets.items():</span><br><span class="line">        data_frames.append(data)</span><br><span class="line">all_data_concatenated = pd.concat(data_frames, axis=0, ignore_index=True)</span><br><span class="line">writer = pd.ExcelWriter(output_file)</span><br><span class="line">all_data_concatenated.to_excel(writer, sheet_name=&apos;all_data_all_workbooks&apos;, index=False)</span><br><span class="line">writer.save()</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;在命令行窗口中运行这个脚本，得到输出文件。<br><img src="https://img-blog.csdnimg.cn/20200210093549770.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="为每个工作簿和工作表计算总数和均值"><a href="#为每个工作簿和工作表计算总数和均值" class="headerlink" title="为每个工作簿和工作表计算总数和均值"></a>为每个工作簿和工作表计算总数和均值</h2><h4 id="基础Python"><a href="#基础Python" class="headerlink" title="基础Python"></a>基础Python</h4><p>&emsp;&emsp;代码如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import glob</span><br><span class="line">import os</span><br><span class="line">import sys</span><br><span class="line">from datetime import date</span><br><span class="line">from xlrd import open_workbook, xldate_as_tuple</span><br><span class="line">from xlwt import Workbook</span><br><span class="line"></span><br><span class="line">input_folder = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">output_workbook = Workbook()</span><br><span class="line">output_worksheet = output_workbook.add_sheet(&apos;sums_and_averages&apos;)</span><br><span class="line">all_data = []</span><br><span class="line">sales_column_index = 3</span><br><span class="line">header = [&apos;workbook&apos;, &apos;worksheet&apos;, &apos;worksheet_total&apos;, &apos;worksheet_average&apos;, &apos;workbook_total&apos;, &apos;workbook_average&apos;]</span><br><span class="line">all_data.append(header)</span><br><span class="line">for input_file in glob.glob(os.path.join(input_folder, &apos;*.xlsx&apos;)):</span><br><span class="line">    with open_workbook(input_file) as workbook:</span><br><span class="line">        list_of_totals = []</span><br><span class="line">        list_of_numbers = []</span><br><span class="line">        workbook_output = []</span><br><span class="line">        for worksheet in workbook.sheets():</span><br><span class="line">            total_sales = 0</span><br><span class="line">            number_of_sales = 0</span><br><span class="line">            worksheet_list = []</span><br><span class="line">            worksheet_list.append(os.path.basename(input_file))</span><br><span class="line">            worksheet_list.append(worksheet.name)</span><br><span class="line">            for row_index in range(1, worksheet.nrows):</span><br><span class="line">                try:</span><br><span class="line">                    total_sales += float(str(worksheet.cell_value(row_index, sales_column_index))</span><br><span class="line">                                         .strip(&apos;$&apos;).replace(&apos;,&apos;, &apos;&apos;))</span><br><span class="line">                    number_of_sales += 1</span><br><span class="line">                except:</span><br><span class="line">                    total_sales += 0</span><br><span class="line">                    number_of_sales += 0</span><br><span class="line">            average_sales = &apos;%.2f&apos; % (total_sales / number_of_sales)</span><br><span class="line">            worksheet_list.append(total_sales)</span><br><span class="line">            worksheet_list.append(float(average_sales))</span><br><span class="line">            list_of_totals.append(total_sales)</span><br><span class="line">            list_of_numbers.append(float(number_of_sales))</span><br><span class="line">            workbook_output.append(worksheet_list)</span><br><span class="line">        workbook_total = sum(list_of_totals)</span><br><span class="line">        workbook_average = sum(list_of_totals) / sum(list_of_numbers)</span><br><span class="line">        for list_element in workbook_output:</span><br><span class="line">            list_element.append(workbook_total)</span><br><span class="line">            list_element.append(workbook_average)</span><br><span class="line">        all_data.extend(workbook_output)</span><br><span class="line"></span><br><span class="line">for list_index, output_list in enumerate(all_data):</span><br><span class="line">    for element_index, element in enumerate(output_list):</span><br><span class="line">        output_worksheet.write(list_index, element_index, element)</span><br><span class="line">output_workbook.save(output_file)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;第21-23行分别创建了3个空列表，<code>list_of_totals</code>用来保存工作簿中所有工作表的销售额总计，<code>list_of_numbers</code>用来保存工作簿的所有工作表中用来计算总销售额的销售额数据个数，<code>workbook_output</code>用来保存要写入输出文件的所有输出列表。<br>&emsp;&emsp;第27行代码创建了列表<code>worksheet_list</code>，用来保存要保留的所有工作表的信息。<br>&emsp;&emsp;第28-29行代码将工作簿名称和工作表名称追加到<code>worksheet_list</code>中。同样地，第39-40行代码将销售额总计和均值追加到<code>worksheet_list</code>中，第43行代码将<code>worksheet_list</code>追加到<code>workbook_output</code>中，在工作簿级别保存信息。<br>&emsp;&emsp;第41-42行代码将工作表的销售额总计和销售额数据个数分别追加到<code>list_of_totals</code>和<code>list_of_numbers</code>中，这样我们可以对所有工作表保存这些值。<br>&emsp;&emsp;当获得了所有要为工作簿保留的信息之后，就将这些列表扩展到<code>all_data</code>中。这里使用<code>extend()</code>而不是<code>append()</code>，以使<code>workbook_output</code>中的每个列表都会成为<code>all_data</code>中的一个独立元素。在处理完所有工作簿之后，<code>all_data</code>是一个具有9个元素的列表，每个元素都是一个列表。否则，如果使用<code>append()</code>，<code>all_data</code>中就会只有3个元素，每个元素都是一个列表的列表。<br>&emsp;&emsp;在命令行窗口中运行这个脚本，得到输出文件。<br><img src="https://img-blog.csdnimg.cn/20200210144814305.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    I'd walk a million miles just to see your smile. 
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2020/02/10/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93(1)/">Python数据分析基础之数据库(1)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/02/10/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(6)/">Python数据分析基础之Excel文件(6)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/02/09/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(5)/">Python数据分析基础之Excel文件(5)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/02/07/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(4)/">Python数据分析基础之Excel文件(4)</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/CCH21" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:1398635912@qq.com" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/" target="_blank" rel="noopener">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
