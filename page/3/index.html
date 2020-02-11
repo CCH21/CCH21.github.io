@@ -147,6 +147,62 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2019/12/21/%E3%80%90%E6%80%BB%E7%BB%93%E7%AF%87%E3%80%91Python%20matplotlib%E4%B9%8B%E4%BD%BF%E7%94%A8%E7%BB%9F%E8%AE%A1%E5%87%BD%E6%95%B0%E7%BB%98%E5%88%B6%E7%AE%80%E5%8D%95%E5%9B%BE%E5%BD%A2/">
+                【总结篇】Python matplotlib之使用统计函数绘制简单图形
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-12-21</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>&emsp;&emsp;作者注：我在这里只总结函数的功能及其用法，程序实例参考链接：<a href="https://github.com/CCH21/Python/tree/master/Python%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8Bmatplotlib%E5%AE%9E%E8%B7%B5" target="_blank" rel="noopener">link</a><br>&emsp;&emsp;我们用下面的语句来导入matplotlib库：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br></pre></td></tr></table></figure>
+<h2 id="绘制简单图形的统计函数及其用法"><a href="#绘制简单图形的统计函数及其用法" class="headerlink" title="绘制简单图形的统计函数及其用法"></a>绘制简单图形的统计函数及其用法</h2><h5 id="1-函数bar"><a href="#1-函数bar" class="headerlink" title="1.函数bar()"></a>1.函数bar()</h5><p>函数bar()用来绘制柱状图。<br>函数功能：在x轴上绘制定性数据的分布特征。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.bar(x, y)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>x：标示在x轴上的定性数据的类别。<br>y：每种定性数据的类别的数量。  </p>
+<h5 id="2-函数barh"><a href="#2-函数barh" class="headerlink" title="2.函数barh()"></a>2.函数barh()</h5><p>函数barh()用于绘制条形图。<br>函数功能：在y轴上绘制定性数据的分布特征。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.barh(x, y)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>x：标示在y轴上的定性数据的类别。<br>y：每种定性数据的类别的数量。  </p>
+<h5 id="3-函数hist"><a href="#3-函数hist" class="headerlink" title="3.函数hist()"></a>3.函数hist()</h5><p>函数hist()用于绘制直方图。<br>函数功能：在x轴上绘制定量数据的分布特征。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.hist(x)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>x：在x轴上绘制箱体的定量数据输入值。  </p>
+<h5 id="4-函数pie"><a href="#4-函数pie" class="headerlink" title="4.函数pie()"></a>4.函数pie()</h5><p>函数pie()用于绘制饼图。<br>函数功能：绘制定性数据的不同类别的百分比。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.pie(x)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>x：定性数据的不同类别的百分比。  </p>
+<h5 id="5-函数polar"><a href="#5-函数polar" class="headerlink" title="5.函数polar()"></a>5.函数polar()</h5><p>函数polar()用于绘制极线图。<br>函数功能：在极坐标轴上绘制折线图。<br>调用签名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.polar(theta, r)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>theta：每个标记所在射线与极径的夹角。<br>r：每个标记到原点的距离。  </p>
+<h5 id="6-函数scatter"><a href="#6-函数scatter" class="headerlink" title="6.函数scatter()"></a>6.函数scatter()</h5><p>函数scatter()用于绘制气泡图。<br>函数功能：二位数据借助气泡大小展示三维数据。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter(x, y)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>x：x轴上的数值。<br>y：y轴上的数值。<br>s：散点标记的大小。<br>c：散点标记的颜色。<br>cmap：将浮点数映射成颜色的颜色映射表。  </p>
+<h5 id="7-函数stem"><a href="#7-函数stem" class="headerlink" title="7.函数stem()"></a>7.函数stem()</h5><p>函数stem()用于绘制棉棒图。<br>函数功能：绘制离散有序数据。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.stem(x, y)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>x：指定棉棒上的x轴基线上的位置。<br>y：绘制棉棒的长度。<br>linefmt：棉棒的样式。<br>markerfmt：棉棒末端的样式。<br>basefmt：指定基线的样式。  </p>
+<h5 id="8-函数boxplot"><a href="#8-函数boxplot" class="headerlink" title="8.函数boxplot()"></a>8.函数boxplot()</h5><p>函数boxplot()用于绘制箱线图。<br>函数功能：绘制箱线图。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.boxplot(x)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>x：绘制箱线图的输入数据。  </p>
+<h5 id="9-函数errorbar"><a href="#9-函数errorbar" class="headerlink" title="9.函数errorbar()"></a>9.函数errorbar()</h5><p>函数errorbar()用于绘制误差棒图。<br>函数功能：绘制y轴方向或是x轴方向的误差范围。<br>调用签名：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.errorbar(x, y, yerr=a, xerr=b)</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>x：数据点的水平位置。<br>y：数据点的垂直位置。<br>yerr：y轴方向的数据点的误差计算方法。<br>xerr：x轴方向的数据点的误差计算方法。  </p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>&emsp;&emsp;如果你有什么想法、意见和建议的话，欢迎联系我。<br>&emsp;&emsp;我的邮箱：<a href="mailto:1398635912@qq.com" target="_blank" rel="noopener">1398635912@qq.com</a></p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2019/12/20/%E3%80%90%E6%80%BB%E7%BB%93%E7%AF%87%E3%80%91Python%20matplotlib%E4%B9%8B%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0%E7%BB%98%E5%88%B6matplotlib%E7%9A%84%E5%9B%BE%E8%A1%A8%E7%BB%84%E6%88%90%E5%85%83%E7%B4%A0/">
                 【总结篇】Python matplotlib之使用函数绘制matplotlib的图表组成元素
             </a>
@@ -550,45 +606,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/11/02/%E7%94%A8Python%E8%BE%93%E5%87%BA%E8%87%AA%E5%B9%82%E6%95%B0/">
-                用Python输出自幂数
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-11-02</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="自幂数是什么"><a href="#自幂数是什么" class="headerlink" title="自幂数是什么"></a>自幂数是什么</h2><p>&emsp;&emsp;自幂数是指一个n位数，它的每个位上的数字的n次幂之和等于它本身。例如：当n为3时，153即是n为3时的一个自幂数。<br>&emsp;&emsp;自幂数包括独身数、水仙花数、四叶玫瑰数、五角星数、六合数、北斗七星数、八仙数、九九重阳数、十全十美数等。  </p>
-<h2 id="从水仙花数说起"><a href="#从水仙花数说起" class="headerlink" title="从水仙花数说起"></a>从水仙花数说起</h2><p>&emsp;&emsp;今天的计导课上，老师布置了一项作业：用Python输出所有的水仙花数。水仙花数即为当n=3时的自幂数。用Python 3.6编写代码如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for num in range(100,1000):</span><br><span class="line">    i = num % 10                     #个位</span><br><span class="line">    k = int(num / 100)               #百位</span><br><span class="line">    j = int((num - k * 100) / 10)    #十位</span><br><span class="line">    sum = i ** 3 + j ** 3 + k ** 3</span><br><span class="line">    if(num == sum):</span><br><span class="line">        print(&apos;%d&apos; %num)</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;它的思路是将三位数的个位、十位、百位分解，然后分别用个位、十位、百位的三次方作和，判断所求的和与原来的三位数是否相等，如果相等即为水仙花数。<br>&emsp;&emsp;另一种解法如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for i in range(100,1000):</span><br><span class="line">    num = str(i)</span><br><span class="line">    sum = 0</span><br><span class="line">    for j in num:</span><br><span class="line">        sum = sum + int(j)**3</span><br><span class="line">    if(sum == i):</span><br><span class="line">        print(i)</span><br></pre></td></tr></table></figure>
-<h2 id="从水仙花数到其他自幂数"><a href="#从水仙花数到其他自幂数" class="headerlink" title="从水仙花数到其他自幂数"></a>从水仙花数到其他自幂数</h2><p>&emsp;&emsp;通过上面所说的思路，我们可以用Python写出四叶玫瑰数、五角星数等其他自幂数。<br>&emsp;&emsp;下面是用Python 3.6编写的四叶玫瑰数程序：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">for num in range(1000,10000):</span><br><span class="line">    i = num % 10                             #个位</span><br><span class="line">    l = num // 1000                          #千位</span><br><span class="line">    k = (num % 1000) // 100                  #百位</span><br><span class="line">    j = (num % 100) // 10                    #十位</span><br><span class="line">    sum = pow(i,4) + pow(j,4) + pow(k,4) + pow (l,4)</span><br><span class="line">    if(num == sum):</span><br><span class="line">        print(num)</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;接下来是用Python 3.6编写的五角星数程序：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">for num in range(10000,100000):</span><br><span class="line">    a = num // 10000            #万位</span><br><span class="line">    b = (num % 10000) // 1000   #千位</span><br><span class="line">    c = (num % 1000) // 100     #百位</span><br><span class="line">    d = (num % 100) // 10       #十位</span><br><span class="line">    e = num % 10                #个位</span><br><span class="line">    sum = pow(a,5) + pow(b,5) + pow(c,5) + pow(d,5) + pow(e,5)</span><br><span class="line">    if(num == sum):</span><br><span class="line">        print(num)</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;如果你愿意的话，还可以试着用这种思路编写六合数、北斗七星数……十全十美数。  </p>
-<h2 id="可以输出你想要的自幂数的终极版本"><a href="#可以输出你想要的自幂数的终极版本" class="headerlink" title="可以输出你想要的自幂数的终极版本"></a>可以输出你想要的自幂数的终极版本</h2><p>&emsp;&emsp;当我把我写好的程序发到课堂的交流群的时候，一个同学问我：“能用一个程序把所有的自幂数输出出来吗？”答案是肯定的。<br>&emsp;&emsp;考虑到自幂数实在太多，我的想法是，首先让用户键入想要的自幂数的位数，然后使用if条件语句和for循环语句达到想要的结果。<br>&emsp;&emsp;用Python编写的最终版本如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">import math</span><br><span class="line">while True:</span><br><span class="line">    n=int(input(&quot;请输入自幂数位数：\n&quot;))</span><br><span class="line">    if(n == 1):</span><br><span class="line">        print(&quot;独身数:&quot;)</span><br><span class="line">        print(&quot;0\t&quot;)</span><br><span class="line">    elif(n == 2):</span><br><span class="line">        print(&quot;两位自幂数:&quot;)</span><br><span class="line">        print(&quot;没有自幂数！&quot;)</span><br><span class="line">    elif(n == 3):</span><br><span class="line">        print(&quot;水仙花数:&quot;)</span><br><span class="line">    elif(n == 4):</span><br><span class="line">        print(&quot;四叶玫瑰数:&quot;)</span><br><span class="line">    elif(n == 5):</span><br><span class="line">        print(&quot;五角星数:&quot;)</span><br><span class="line">    elif(n == 6):</span><br><span class="line">        print(&quot;六合数:&quot;)</span><br><span class="line">    elif(n == 7):</span><br><span class="line">        print(&quot;北斗七星数:&quot;)</span><br><span class="line">    elif(n == 8):</span><br><span class="line">        print(&quot;八仙数:&quot;)</span><br><span class="line">    elif(n == 9):</span><br><span class="line">        print(&quot;九九重阳数:&quot;)</span><br><span class="line">    elif(n == 10):</span><br><span class="line">        print(&quot;十全十美数:&quot;)</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;其它自幂数:&quot;)</span><br><span class="line">    for i in range(int(math.pow(10,n-1)),int(math.pow(10,n))):</span><br><span class="line">        num = 0</span><br><span class="line">        for j in str(i):</span><br><span class="line">            num += int(math.pow(int(j),n))</span><br><span class="line">        if(i == num):</span><br><span class="line">            print(i)</span><br></pre></td></tr></table></figure>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>&emsp;&emsp;以上就是用Python输出自幂数的全部内容了。写这个程序的思路不唯一，我只是用我认为最简单易懂的方法写出了这个程序。我也相信肯定有更为简便的方法来实现它。如果你有不同的思路，欢迎联系我，我非常期待你们的来信！<br>&emsp;&emsp;我的邮箱：<a href="mailto:1398635912@qq.com" target="_blank" rel="noopener">1398635912@qq.com</a></p>
-
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -631,6 +648,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2020/02/11/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93(2)/">Python数据分析基础之数据库(2)</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2020/02/10/MySQL%20Community%208.0.19.0%20msi%E7%89%88%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">MySQL Community 8.0.19.0 </a>
             </li>
             
@@ -640,10 +661,6 @@
             
             <li>
                 <a class="footer-post" href="/2020/02/10/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(6)/">Python数据分析基础之Excel文件(6)</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2020/02/09/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(5)/">Python数据分析基础之Excel文件(5)</a>
             </li>
             
         </ul>

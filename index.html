@@ -147,6 +147,44 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2020/02/11/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93(2)/">
+                Python数据分析基础之数据库(2)
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-02-11</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>&emsp;&emsp;上一篇博客主要讲了使用Python的内置模块sqlite3来创建内存数据库，这篇博客以及之后的博客主要讲MySQL数据库。  </p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>&emsp;&emsp;我们需要安装Python的MySQLdb扩展包，在Python 2中是MySQL-python，在Python 3中是mysqlclient。我使用的是Anaconda，这个扩展包随着安装Anaconda的时候就捆绑安装好了。<br>&emsp;&emsp;我们还需要安装MySQL。msi版安装教程可以参考我之前写的博客：<a href="https://blog.csdn.net/qq_45554010/article/details/104254892" target="_blank" rel="noopener">《MySQL Community 8.0.19.0 msi版安装教程》</a>，zip版安装教程请自行查阅。  </p>
+<h2 id="在MySQL中创建新数据库"><a href="#在MySQL中创建新数据库" class="headerlink" title="在MySQL中创建新数据库"></a>在MySQL中创建新数据库</h2><p>&emsp;&emsp;打开MySQL 8.0 Command Line Client，输入root密码，进入MySQL。<br><img src="https://img-blog.csdnimg.cn/20200211113356992.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;输入命令<code>SHOW DATABASES;</code>，然后按Enter键，我们可以看到，在MySQL数据库系统中已经有了4个数据库。这些数据库使MySQL数据库系统能够运行，并包含系统用户的权限信息。注意：在输入命令<code>SHOW DATABASES;</code>的时候，<strong>必须要输入分号</strong>。<br><img src="https://img-blog.csdnimg.cn/20200211113838267.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;接下来我们来创建自己的数据库。输入命令<code>CREATE DATABASE my_suppliers;</code>，然后按Enter键。我们可以再运行一次<code>SHOW DATABASE;</code>命令，这时我们可以看到我们刚刚创建的<code>my_suppliers</code>数据库。<br><img src="https://img-blog.csdnimg.cn/20200211114219439.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;要使用<code>my_suppliers</code>数据库，必须先选择它。输入命令<code>USE my_suppliers;</code>，然后按Enter键。这样我们就已经选择了<code>my_suppliers</code>数据库。<br><img src="https://img-blog.csdnimg.cn/20200211114436643.png" alt="在这里插入图片描述"></p>
+<p>&emsp;&emsp;接下来我们创建一个数据表<code>Suppliers</code>。输入以下命令，然后按Enter键：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE IF NOT EXISTS Suppliers</span><br><span class="line">(Supplier_Name VARCHAR(20),</span><br><span class="line">Invoice_Number VARCHAR(20),</span><br><span class="line">Part_Number VARCHAR(20),</span><br><span class="line">Cost FLOAT,</span><br><span class="line">Purchase_Date DATE);</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200211114912180.png" alt="在这里插入图片描述"></p>
+<p>&emsp;&emsp;我们来解释一下上面的命令。<br>&emsp;&emsp;如果数据库中不存在数据表<code>Suppliers</code>，这个命令就创建数据表<code>Suppliers</code>。这个表有5个列。其中，前3个列是可变字符<code>VARCHAR</code>型字段。<code>20</code>表示为这个字段中的数据分配20个字符。如果输入这个字段的数据大于20个字符，那么数据将被截断。如果数据少于20个字符，那么这个字段就为数据分配一个更小的空间。<br>&emsp;&emsp;第4列是一个浮点数<code>FLOAT</code>字段。浮点数字段保存浮点数近似值。在本例中，第4列包含的是货币值，所以可以用<code>NUMERIC</code>定点确定值类型字段替代<code>FLOAT</code>类型字段。不使用<code>FLOAT</code>，也可以使用<code>NUMERIC(11, 2)</code>。其中<code>11</code>是数值的精度，也就是为数值保存的数位总数（包括小数点后面的位数）。<code>2</code>是小数位数，即小数点后面的数位总数。<br>&emsp;&emsp;第5列是一个日期<code>DATE</code>字段。<code>DATE</code>字段用来保存日期，形式为<code>YYYY-MM-DD</code>，没有时间部分。<br>&emsp;&emsp;为了确保数据表创建正确，输入命令<code>DESCRIBE Suppliers;</code>，然后按Enter键。<br><img src="https://img-blog.csdnimg.cn/20200211120009829.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;我们看到了一个表格，其中列出了创建的列的名称，每列的数据类型以及列中的值是否可以为<code>NULL</code>。<br>&emsp;&emsp;接下来我们创建一个新用户。输入命令<code>CREATE USER &#39;username&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;secret_password&#39;;</code>（请注意用要使用的用户名替换<code>username</code>，用自己的密码替换<code>secret_password</code>），然后按Enter键。<br>&emsp;&emsp;输入以下两条命令，然后在每条命令后面按Enter键，来向新用户授于所有权限。同样地，用要使用的用户名替换下面的<code>username</code>。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GRANT ALL PRIVILEGES ON my_suppliers.* TO &apos;username&apos;@&apos;localhost&apos;;</span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这样我们就可以同本地主机中的<code>my_suppliers</code>数据库中的<code>Suppliers</code>表进行交互了。<br><img src="https://img-blog.csdnimg.cn/20200211162149574.png" alt="在这里插入图片描述"></p>
+<h2 id="向表中插入新记录"><a href="#向表中插入新记录" class="headerlink" title="向表中插入新记录"></a>向表中插入新记录</h2><p>&emsp;&emsp;下面的Python脚本会将数据从CSV文件中插入到我们的数据表，然后展示表中的数据。我们还是以supplier_data.csv为例。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import csv</span><br><span class="line">import MySQLdb</span><br><span class="line">import sys</span><br><span class="line">from datetime import datetime, date</span><br><span class="line"></span><br><span class="line"># CSV输入文件的路径和文件名</span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line"></span><br><span class="line"># 连接MySQL数据库</span><br><span class="line">con = MySQLdb.connect(host=&apos;localhost&apos;, port=3306, db=&apos;my_suppliers&apos;, user=&apos;root&apos;, passwd=&apos;## your password ##&apos;)</span><br><span class="line">c = con.cursor()</span><br><span class="line"></span><br><span class="line"># 向Suppliers表中插入数据</span><br><span class="line">file_reader = csv.reader(open(input_file, &apos;r&apos;, newline=&apos;&apos;))</span><br><span class="line">header = next(file_reader)</span><br><span class="line">for row in file_reader:</span><br><span class="line">    data = []</span><br><span class="line">    for column_index in range(len(header)):</span><br><span class="line">        if column_index &lt; 4:</span><br><span class="line">            data.append(str(row[column_index]).lstrip(&apos;$&apos;).replace(&apos;,&apos;, &apos;&apos;).strip())</span><br><span class="line">        else:</span><br><span class="line">            a_date = datetime.date(datetime.strptime(str(row[column_index]), &apos;%m/%d/%Y&apos;))</span><br><span class="line">            a_date = a_date.strftime(&apos;%Y-%m-%d&apos;)</span><br><span class="line">            data.append(a_date)</span><br><span class="line">    print(data)</span><br><span class="line">    c.execute(&quot;&quot;&quot;INSERT INTO Suppliers VALUES (%s, %s, %s, %s, %s);&quot;&quot;&quot;, data)</span><br><span class="line">con.commit()</span><br><span class="line">print(&quot;&quot;)</span><br><span class="line"></span><br><span class="line"># 查询Suppliers表</span><br><span class="line">c.execute(&quot;SELECT * FROM Suppliers&quot;)</span><br><span class="line">rows = c.fetchall()</span><br><span class="line">for row in rows:</span><br><span class="line">    row_list_output = []</span><br><span class="line">    for column_index in range(len(row)):</span><br><span class="line">        row_list_output.append(str(row[column_index]))</span><br><span class="line">    print(row_list_output)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;第12行代码使用MySQLdb模块的<code>connect()</code>方法连接<code>my_suppliers</code>，即前面我们创建的MySQL数据库。在连接时，我们需要指定一些通用参数。<code>host</code>是数据库所在的机器的主机名，在这里，MySQL服务器保存在我们的计算机上，所以<code>host</code>是<code>localhost</code>。<code>port</code>是MySQL服务器的TCP/IP连接端口号，这里我们使用的端口号是默认的端口号3306。<code>db</code>是想要连接的数据库名称。<code>user</code>是进行数据库连接的用户的用户名，<code>passwd</code>即为密码。在这里我们作为“root”用户进行连接，使用的密码就是在安装MySQL服务器时创建的密码。我们此前新建了一个新用户，如果想使用新用户，我们只需要把用户名和密码相应地替换掉即可。<br>&emsp;&emsp;我们在命令行窗口中运行这个脚本，得到输出结果。<br><img src="https://img-blog.csdnimg.cn/20200211162509331.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;这个输出结果证明了数据被成功地加载到了<code>Suppliers</code>表中，并被成功读出。<br>&emsp;&emsp;我们打开MySQL命令行客户端，输入命令<code>SELECT * FROM Suppliers;</code>，可以看到一个表格，其中列出了<code>Suppliers</code>数据表中所有的列以及每列中的12行数据。<br><img src="https://img-blog.csdnimg.cn/20200211162818607.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2020/02/10/MySQL%20Community%208.0.19.0%20msi%E7%89%88%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">
                 MySQL Community 8.0.19.0 msi版安装教程
             </a>
@@ -546,46 +584,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2020/01/24/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BCSV%E6%96%87%E4%BB%B6(5)/">
-                Python数据分析基础之CSV文件(5)
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2020-01-24</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="选取连续的行"><a href="#选取连续的行" class="headerlink" title="选取连续的行"></a>选取连续的行</h2><p>&emsp;&emsp;有时，工作表的头部和尾部是我们不想处理的。在很多情况下，工作表头部是标题、作者信息等，尾部是来源、假设、附加说明、注意事项等，我们并不需要处理这些内容。在这时，我们可以用Python来选取CSV文件中连续的行。<br>&emsp;&emsp;我们把之前的supplier_data.csv文件打开，在工作表头部和尾部分别加入一些不需要处理的内容，如下图所示。<br><img src="https://img-blog.csdnimg.cn/20200124103815623.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h4 id="1-基础Python"><a href="#1-基础Python" class="headerlink" title="1.基础Python"></a>1.基础Python</h4><p>&emsp;&emsp;要使用基础Python选取特定的行，我们需要创建一个变量<code>row_counter</code>来跟踪行索引。在上面的示例中，我们知道应该保留行索引大于或等于3并且小于或等于15的行。代码如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import csv</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">row_counter = 0</span><br><span class="line">with open(input_file, &apos;r&apos;, newline=&apos;&apos;) as csv_in_file:</span><br><span class="line">    with open(output_file, &apos;w&apos;, newline=&apos;&apos;) as csv_out_file:</span><br><span class="line">        filereader = csv.reader(csv_in_file)</span><br><span class="line">        filewriter = csv.writer(csv_out_file)</span><br><span class="line">        for row in filereader:</span><br><span class="line">            if 3 &lt;= row_counter &lt;= 15:</span><br><span class="line">                filewriter.writerow([value.strip() for value in row])</span><br><span class="line">            row_counter += 1</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;如果我们对比一下之前的读写CSV文件的代码，不难发现上面的这个代码只是在原来的基础上稍微做了一下改动，引入变量<code>row_counter</code>，并且在遍历输入文件中所有的行时使用<code>if</code>语句跳过不需要的头部和尾部内容，只保留需要的行。<br>&emsp;&emsp;对于输入文件的前3行，行索引值为0,1,2，此时<code>if</code>的判断结果为<code>False</code>，所以不执行<code>if</code>代码块，并将<code>row_counter</code>的值加1。对于输入文件的最后3行，行索引值为16,17,18，<code>if</code>的判断结果也是<code>False</code>，也不执行<code>if</code>代码块，并将<code>row_counter</code>的值加1。<br>&emsp;&emsp;而对于想要保留的行，它们的行索引值为3~15，即<code>row_counter</code>在3和15之间。此时<code>if</code>判断结果为<code>True</code>，执行<code>if</code>代码块，处理这些行并将其写入输出文件。在列表生成式中，使用<code>strip()</code>函数除去每行两端的空格、制表符和换行符。<br>&emsp;&emsp;我们在命令行窗口中运行这个脚本，并打开输出文件查看结果。<br><img src="https://img-blog.csdnimg.cn/20200124111120350.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h4 id="2-pandas"><a href="#2-pandas" class="headerlink" title="2.pandas"></a>2.pandas</h4><p>&emsp;&emsp;在pandas模块中，<code>drop()</code>函数可以根据行索引或列标题来丢弃行或列。也就是说，我们只需要使用<code>drop</code>函数丢弃掉前3行和后3行（即行索引为0,1,2,16,17,18的行）即可达到目的。代码如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import pandas as pd</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">data_frame = pd.read_csv(input_file, header=None)</span><br><span class="line">data_frame = data_frame.drop([0, 1, 2, 16, 17, 18])</span><br><span class="line">data_frame.columns = data_frame.iloc[0]</span><br><span class="line">data_frame = data_frame.reindex(data_frame.index.drop(3))</span><br><span class="line">data_frame.to_csv(output_file, index=False)</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;pandas模块中的<code>iloc</code>函数功能强大，它可以根据行索引选取一个单独行作为列索引。<code>reindex()</code>函数可以为数据框重新生成索引。<br>&emsp;&emsp;此处省略输出结果。  </p>
-<h2 id="添加标题行"><a href="#添加标题行" class="headerlink" title="添加标题行"></a>添加标题行</h2><p>&emsp;&emsp;有些时候，电子表格没有标题行，而我们却希望所有列都有列标题。使用Python脚本可以添加列标题。<br>&emsp;&emsp;我们打开supplier_data.csv文件。删除掉标题行，并将其保存为supplier_data_no_header_row.csv。<br><img src="https://img-blog.csdnimg.cn/20200124112545166.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h4 id="1-基础Python-1"><a href="#1-基础Python-1" class="headerlink" title="1.基础Python"></a>1.基础Python</h4><p>&emsp;&emsp;代码如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import csv</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">with open(input_file, &apos;r&apos;, newline=&apos;&apos;) as csv_in_file:</span><br><span class="line">    with open(output_file, &apos;w&apos;, newline=&apos;&apos;) as csv_out_file:</span><br><span class="line">        filereader = csv.reader(csv_in_file)</span><br><span class="line">        filewriter = csv.writer(csv_out_file)</span><br><span class="line">        header_list = [&apos;Supplier Name&apos;, &apos;Invoice Number&apos;, &apos;Part Number&apos;, &apos;Cost&apos;, &apos;Purchase Date&apos;]</span><br><span class="line">        filewriter.writerow(header_list)</span><br><span class="line">        for row in filereader:</span><br><span class="line">            filewriter.writerow(row)</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;在上面的代码中，创建了一个列表变量<code>header_list</code>，其中包含了作为列标题的5个字符串。<code>writerow()</code>函数将这些列表值写入输出文件的第一行。<br>&emsp;&emsp;我们在命令行窗口中运行这个脚本，并打开输出文件查看结果。<br><img src="https://img-blog.csdnimg.cn/20200124113200888.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h4 id="2-pandas-1"><a href="#2-pandas-1" class="headerlink" title="2.pandas"></a>2.pandas</h4><p>&emsp;&emsp;pandas模块中的<code>read_csv()</code>函数可以直接指定输入文件不包含标题行，并可以提供一个列标题列表。代码如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import pandas as pd</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">header_list = [&apos;Supplier Name&apos;, &apos;Invoice Number&apos;, &apos;Part Number&apos;, &apos;Cost&apos;, &apos;Purchase Date&apos;]</span><br><span class="line">data_frame = pd.read_csv(input_file, header=None, names=header_list)</span><br><span class="line">data_frame.to_csv(output_file, index=False)</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;此处省略输出结果。  </p>
-
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -628,6 +626,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2020/02/11/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93(2)/">Python数据分析基础之数据库(2)</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2020/02/10/MySQL%20Community%208.0.19.0%20msi%E7%89%88%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">MySQL Community 8.0.19.0 </a>
             </li>
             
@@ -637,10 +639,6 @@
             
             <li>
                 <a class="footer-post" href="/2020/02/10/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(6)/">Python数据分析基础之Excel文件(6)</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2020/02/09/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(5)/">Python数据分析基础之Excel文件(5)</a>
             </li>
             
         </ul>

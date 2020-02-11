@@ -147,6 +147,46 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2020/01/24/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BCSV%E6%96%87%E4%BB%B6(5)/">
+                Python数据分析基础之CSV文件(5)
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-01-24</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="选取连续的行"><a href="#选取连续的行" class="headerlink" title="选取连续的行"></a>选取连续的行</h2><p>&emsp;&emsp;有时，工作表的头部和尾部是我们不想处理的。在很多情况下，工作表头部是标题、作者信息等，尾部是来源、假设、附加说明、注意事项等，我们并不需要处理这些内容。在这时，我们可以用Python来选取CSV文件中连续的行。<br>&emsp;&emsp;我们把之前的supplier_data.csv文件打开，在工作表头部和尾部分别加入一些不需要处理的内容，如下图所示。<br><img src="https://img-blog.csdnimg.cn/20200124103815623.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h4 id="1-基础Python"><a href="#1-基础Python" class="headerlink" title="1.基础Python"></a>1.基础Python</h4><p>&emsp;&emsp;要使用基础Python选取特定的行，我们需要创建一个变量<code>row_counter</code>来跟踪行索引。在上面的示例中，我们知道应该保留行索引大于或等于3并且小于或等于15的行。代码如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import csv</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">row_counter = 0</span><br><span class="line">with open(input_file, &apos;r&apos;, newline=&apos;&apos;) as csv_in_file:</span><br><span class="line">    with open(output_file, &apos;w&apos;, newline=&apos;&apos;) as csv_out_file:</span><br><span class="line">        filereader = csv.reader(csv_in_file)</span><br><span class="line">        filewriter = csv.writer(csv_out_file)</span><br><span class="line">        for row in filereader:</span><br><span class="line">            if 3 &lt;= row_counter &lt;= 15:</span><br><span class="line">                filewriter.writerow([value.strip() for value in row])</span><br><span class="line">            row_counter += 1</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;如果我们对比一下之前的读写CSV文件的代码，不难发现上面的这个代码只是在原来的基础上稍微做了一下改动，引入变量<code>row_counter</code>，并且在遍历输入文件中所有的行时使用<code>if</code>语句跳过不需要的头部和尾部内容，只保留需要的行。<br>&emsp;&emsp;对于输入文件的前3行，行索引值为0,1,2，此时<code>if</code>的判断结果为<code>False</code>，所以不执行<code>if</code>代码块，并将<code>row_counter</code>的值加1。对于输入文件的最后3行，行索引值为16,17,18，<code>if</code>的判断结果也是<code>False</code>，也不执行<code>if</code>代码块，并将<code>row_counter</code>的值加1。<br>&emsp;&emsp;而对于想要保留的行，它们的行索引值为3~15，即<code>row_counter</code>在3和15之间。此时<code>if</code>判断结果为<code>True</code>，执行<code>if</code>代码块，处理这些行并将其写入输出文件。在列表生成式中，使用<code>strip()</code>函数除去每行两端的空格、制表符和换行符。<br>&emsp;&emsp;我们在命令行窗口中运行这个脚本，并打开输出文件查看结果。<br><img src="https://img-blog.csdnimg.cn/20200124111120350.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h4 id="2-pandas"><a href="#2-pandas" class="headerlink" title="2.pandas"></a>2.pandas</h4><p>&emsp;&emsp;在pandas模块中，<code>drop()</code>函数可以根据行索引或列标题来丢弃行或列。也就是说，我们只需要使用<code>drop</code>函数丢弃掉前3行和后3行（即行索引为0,1,2,16,17,18的行）即可达到目的。代码如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import pandas as pd</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">data_frame = pd.read_csv(input_file, header=None)</span><br><span class="line">data_frame = data_frame.drop([0, 1, 2, 16, 17, 18])</span><br><span class="line">data_frame.columns = data_frame.iloc[0]</span><br><span class="line">data_frame = data_frame.reindex(data_frame.index.drop(3))</span><br><span class="line">data_frame.to_csv(output_file, index=False)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;pandas模块中的<code>iloc</code>函数功能强大，它可以根据行索引选取一个单独行作为列索引。<code>reindex()</code>函数可以为数据框重新生成索引。<br>&emsp;&emsp;此处省略输出结果。  </p>
+<h2 id="添加标题行"><a href="#添加标题行" class="headerlink" title="添加标题行"></a>添加标题行</h2><p>&emsp;&emsp;有些时候，电子表格没有标题行，而我们却希望所有列都有列标题。使用Python脚本可以添加列标题。<br>&emsp;&emsp;我们打开supplier_data.csv文件。删除掉标题行，并将其保存为supplier_data_no_header_row.csv。<br><img src="https://img-blog.csdnimg.cn/20200124112545166.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h4 id="1-基础Python-1"><a href="#1-基础Python-1" class="headerlink" title="1.基础Python"></a>1.基础Python</h4><p>&emsp;&emsp;代码如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import csv</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">with open(input_file, &apos;r&apos;, newline=&apos;&apos;) as csv_in_file:</span><br><span class="line">    with open(output_file, &apos;w&apos;, newline=&apos;&apos;) as csv_out_file:</span><br><span class="line">        filereader = csv.reader(csv_in_file)</span><br><span class="line">        filewriter = csv.writer(csv_out_file)</span><br><span class="line">        header_list = [&apos;Supplier Name&apos;, &apos;Invoice Number&apos;, &apos;Part Number&apos;, &apos;Cost&apos;, &apos;Purchase Date&apos;]</span><br><span class="line">        filewriter.writerow(header_list)</span><br><span class="line">        for row in filereader:</span><br><span class="line">            filewriter.writerow(row)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;在上面的代码中，创建了一个列表变量<code>header_list</code>，其中包含了作为列标题的5个字符串。<code>writerow()</code>函数将这些列表值写入输出文件的第一行。<br>&emsp;&emsp;我们在命令行窗口中运行这个脚本，并打开输出文件查看结果。<br><img src="https://img-blog.csdnimg.cn/20200124113200888.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h4 id="2-pandas-1"><a href="#2-pandas-1" class="headerlink" title="2.pandas"></a>2.pandas</h4><p>&emsp;&emsp;pandas模块中的<code>read_csv()</code>函数可以直接指定输入文件不包含标题行，并可以提供一个列标题列表。代码如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import pandas as pd</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">header_list = [&apos;Supplier Name&apos;, &apos;Invoice Number&apos;, &apos;Part Number&apos;, &apos;Cost&apos;, &apos;Purchase Date&apos;]</span><br><span class="line">data_frame = pd.read_csv(input_file, header=None, names=header_list)</span><br><span class="line">data_frame.to_csv(output_file, index=False)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;此处省略输出结果。  </p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2020/01/23/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BCSV%E6%96%87%E4%BB%B6(4)/">
                 Python数据分析基础之CSV文件(4)
             </a>
@@ -642,62 +682,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/12/21/%E3%80%90%E6%80%BB%E7%BB%93%E7%AF%87%E3%80%91Python%20matplotlib%E4%B9%8B%E4%BD%BF%E7%94%A8%E7%BB%9F%E8%AE%A1%E5%87%BD%E6%95%B0%E7%BB%98%E5%88%B6%E7%AE%80%E5%8D%95%E5%9B%BE%E5%BD%A2/">
-                【总结篇】Python matplotlib之使用统计函数绘制简单图形
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-12-21</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>&emsp;&emsp;作者注：我在这里只总结函数的功能及其用法，程序实例参考链接：<a href="https://github.com/CCH21/Python/tree/master/Python%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8Bmatplotlib%E5%AE%9E%E8%B7%B5" target="_blank" rel="noopener">link</a><br>&emsp;&emsp;我们用下面的语句来导入matplotlib库：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br></pre></td></tr></table></figure>
-<h2 id="绘制简单图形的统计函数及其用法"><a href="#绘制简单图形的统计函数及其用法" class="headerlink" title="绘制简单图形的统计函数及其用法"></a>绘制简单图形的统计函数及其用法</h2><h5 id="1-函数bar"><a href="#1-函数bar" class="headerlink" title="1.函数bar()"></a>1.函数bar()</h5><p>函数bar()用来绘制柱状图。<br>函数功能：在x轴上绘制定性数据的分布特征。<br>调用签名：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.bar(x, y)</span><br></pre></td></tr></table></figure>
-<p>参数说明：<br>x：标示在x轴上的定性数据的类别。<br>y：每种定性数据的类别的数量。  </p>
-<h5 id="2-函数barh"><a href="#2-函数barh" class="headerlink" title="2.函数barh()"></a>2.函数barh()</h5><p>函数barh()用于绘制条形图。<br>函数功能：在y轴上绘制定性数据的分布特征。<br>调用签名：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.barh(x, y)</span><br></pre></td></tr></table></figure>
-<p>参数说明：<br>x：标示在y轴上的定性数据的类别。<br>y：每种定性数据的类别的数量。  </p>
-<h5 id="3-函数hist"><a href="#3-函数hist" class="headerlink" title="3.函数hist()"></a>3.函数hist()</h5><p>函数hist()用于绘制直方图。<br>函数功能：在x轴上绘制定量数据的分布特征。<br>调用签名：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.hist(x)</span><br></pre></td></tr></table></figure>
-<p>参数说明：<br>x：在x轴上绘制箱体的定量数据输入值。  </p>
-<h5 id="4-函数pie"><a href="#4-函数pie" class="headerlink" title="4.函数pie()"></a>4.函数pie()</h5><p>函数pie()用于绘制饼图。<br>函数功能：绘制定性数据的不同类别的百分比。<br>调用签名：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.pie(x)</span><br></pre></td></tr></table></figure>
-<p>参数说明：<br>x：定性数据的不同类别的百分比。  </p>
-<h5 id="5-函数polar"><a href="#5-函数polar" class="headerlink" title="5.函数polar()"></a>5.函数polar()</h5><p>函数polar()用于绘制极线图。<br>函数功能：在极坐标轴上绘制折线图。<br>调用签名：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.polar(theta, r)</span><br></pre></td></tr></table></figure>
-<p>参数说明：<br>theta：每个标记所在射线与极径的夹角。<br>r：每个标记到原点的距离。  </p>
-<h5 id="6-函数scatter"><a href="#6-函数scatter" class="headerlink" title="6.函数scatter()"></a>6.函数scatter()</h5><p>函数scatter()用于绘制气泡图。<br>函数功能：二位数据借助气泡大小展示三维数据。<br>调用签名：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter(x, y)</span><br></pre></td></tr></table></figure>
-<p>参数说明：<br>x：x轴上的数值。<br>y：y轴上的数值。<br>s：散点标记的大小。<br>c：散点标记的颜色。<br>cmap：将浮点数映射成颜色的颜色映射表。  </p>
-<h5 id="7-函数stem"><a href="#7-函数stem" class="headerlink" title="7.函数stem()"></a>7.函数stem()</h5><p>函数stem()用于绘制棉棒图。<br>函数功能：绘制离散有序数据。<br>调用签名：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.stem(x, y)</span><br></pre></td></tr></table></figure>
-<p>参数说明：<br>x：指定棉棒上的x轴基线上的位置。<br>y：绘制棉棒的长度。<br>linefmt：棉棒的样式。<br>markerfmt：棉棒末端的样式。<br>basefmt：指定基线的样式。  </p>
-<h5 id="8-函数boxplot"><a href="#8-函数boxplot" class="headerlink" title="8.函数boxplot()"></a>8.函数boxplot()</h5><p>函数boxplot()用于绘制箱线图。<br>函数功能：绘制箱线图。<br>调用签名：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.boxplot(x)</span><br></pre></td></tr></table></figure>
-<p>参数说明：<br>x：绘制箱线图的输入数据。  </p>
-<h5 id="9-函数errorbar"><a href="#9-函数errorbar" class="headerlink" title="9.函数errorbar()"></a>9.函数errorbar()</h5><p>函数errorbar()用于绘制误差棒图。<br>函数功能：绘制y轴方向或是x轴方向的误差范围。<br>调用签名：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.errorbar(x, y, yerr=a, xerr=b)</span><br></pre></td></tr></table></figure>
-<p>参数说明：<br>x：数据点的水平位置。<br>y：数据点的垂直位置。<br>yerr：y轴方向的数据点的误差计算方法。<br>xerr：x轴方向的数据点的误差计算方法。  </p>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>&emsp;&emsp;如果你有什么想法、意见和建议的话，欢迎联系我。<br>&emsp;&emsp;我的邮箱：<a href="mailto:1398635912@qq.com" target="_blank" rel="noopener">1398635912@qq.com</a></p>
-
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -740,6 +724,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2020/02/11/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93(2)/">Python数据分析基础之数据库(2)</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2020/02/10/MySQL%20Community%208.0.19.0%20msi%E7%89%88%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">MySQL Community 8.0.19.0 </a>
             </li>
             
@@ -749,10 +737,6 @@
             
             <li>
                 <a class="footer-post" href="/2020/02/10/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(6)/">Python数据分析基础之Excel文件(6)</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2020/02/09/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(5)/">Python数据分析基础之Excel文件(5)</a>
             </li>
             
         </ul>
