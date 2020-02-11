@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="查询一个表并将输出写入CSV文件&amp;emsp;&amp;emsp;数据表中有了数据之后，最常见的下一个步骤就是使用查询从表中取出一组数据进行分析。使用Python脚本可以从数据表中查询出一组特定记录。&amp;emsp;&amp;emsp;下面的代码会从Suppliers数据表中查询出Cost列中的值大于700.00的所有记">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Python数据分析基础之数据库(3)"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Welcome to CCH21&#39;s Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Python数据分析基础之数据库(3) - Welcome to CCH21&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2020/02/11/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93(3)/">
+                Python数据分析基础之数据库(3)
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-02-11</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="查询一个表并将输出写入CSV文件"><a href="#查询一个表并将输出写入CSV文件" class="headerlink" title="查询一个表并将输出写入CSV文件"></a>查询一个表并将输出写入CSV文件</h2><p>&emsp;&emsp;数据表中有了数据之后，最常见的下一个步骤就是使用查询从表中取出一组数据进行分析。使用Python脚本可以从数据表中查询出一组特定记录。<br>&emsp;&emsp;下面的代码会从<code>Suppliers</code>数据表中查询出<code>Cost</code>列中的值大于700.00的所有记录，并将这些记录所有列中的值输出。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import csv</span><br><span class="line">import MySQLdb</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line"># CSV输出文件的路径和文件名</span><br><span class="line">output_file = sys.argv[1]</span><br><span class="line"></span><br><span class="line"># 连接MySQL数据库</span><br><span class="line">con = MySQLdb.connect(host=&apos;localhost&apos;, port=3306, db=&apos;my_suppliers&apos;, user=&apos;root&apos;, passwd=&apos;## your password ##&apos;)</span><br><span class="line">c = con.cursor()</span><br><span class="line"></span><br><span class="line"># 创建写文件的对象，并写入标题行</span><br><span class="line">filewriter = csv.writer(open(output_file, &apos;w&apos;, newline=&apos;&apos;), delimiter=&apos;,&apos;)</span><br><span class="line">header = [&apos;Supplier Name&apos;, &apos;Invoice Number&apos;, &apos;Part Number&apos;, &apos;Cost&apos;, &apos;Purchase Date&apos;]</span><br><span class="line">filewriter.writerow(header)</span><br><span class="line"></span><br><span class="line"># 查询Suppliers表，并将结果写入CSV输出文件</span><br><span class="line">c.execute(&quot;&quot;&quot;SELECT *</span><br><span class="line">             FROM Suppliers</span><br><span class="line">             WHERE Cost &gt; 700.0;&quot;&quot;&quot;)</span><br><span class="line">rows = c.fetchall()</span><br><span class="line">for row in rows:</span><br><span class="line">    filewriter.writerow(row)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;在命令行窗口中运行这个脚本，得到CSV输出文件。<br><img src="https://img-blog.csdnimg.cn/20200211181715793.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="更新表中记录"><a href="#更新表中记录" class="headerlink" title="更新表中记录"></a>更新表中记录</h2><p>&emsp;&emsp;更新表中记录的方法与之前的插入新记录的方法类似，只是SQL语句有所变化，将<code>INSERT</code>语句变为了<code>UPDATE</code>语句。代码如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import csv</span><br><span class="line">import MySQLdb</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line"># CSV输入文件的路径和文件名</span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line"></span><br><span class="line"># 连接MySQL数据库</span><br><span class="line">con = MySQLdb.connect(host=&apos;localhost&apos;, port=3306, db=&apos;my_suppliers&apos;, user=&apos;root&apos;, passwd=&apos;## your password ##&apos;)</span><br><span class="line">c = con.cursor()</span><br><span class="line"></span><br><span class="line"># 读取CSV文件并更新特定的行</span><br><span class="line">file_reader = csv.reader(open(input_file, &apos;r&apos;, newline=&apos;&apos;), delimiter=&apos;,&apos;)</span><br><span class="line">header = next(file_reader, None)</span><br><span class="line">for row in file_reader:</span><br><span class="line">    data = []</span><br><span class="line">    for column_index in range(len(header)):</span><br><span class="line">        data.append(str(row[column_index]).strip())</span><br><span class="line">    print(data)</span><br><span class="line">    c.execute(&quot;&quot;&quot;UPDATE Suppliers SET Cost=%s, Purchase_Date=%s WHERE Supplier_Name=%s;&quot;&quot;&quot;, data)</span><br><span class="line">con.commit()</span><br><span class="line"></span><br><span class="line"># 查询Suppliers表</span><br><span class="line">c.execute(&quot;SELECT * FROM Suppliers&quot;)</span><br><span class="line">rows = c.fetchall()</span><br><span class="line">for row in rows:</span><br><span class="line">    output = []</span><br><span class="line">    for column_index in range(len(row)):</span><br><span class="line">        output.append(str(row[column_index]))</span><br><span class="line">    print(output)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;在<code>UPDATE</code>语句中，必须指定想要更新哪一条记录和哪一个列属性。在这里，我们想为一组特定的Supplier Names更新Cost值和Purchase Date值。<code>UPDATE</code>语句中需要几个值，就需要几个<code>%s</code>占位符表示出查询中的值的位置，CSV输入文件中数据的顺序也要同查询中属性的顺序一样。<br>&emsp;&emsp;现在我们新建一个CSV输入文件：<br><img src="https://img-blog.csdnimg.cn/20200211204909672.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;在命令行窗口中运行这个脚本，得到输出结果如下：<br><img src="https://img-blog.csdnimg.cn/20200211205045296.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;输出结果的前两行展示了来自于CSV输入文件中除标题行之外的两行数据。在这两行下面，输出展示了执行更新之后从数据表中取出的12行数据，每行数据占一行。<br>&emsp;&emsp;下面我们来确认一下MySQL数据表中与Supplier X和Supplier Y相关的8行数据是否已被更新。打开MySQL命令行客户端，输入命令<code>SELECT * FROM Suppliers</code>，然后按Enter键。<br><img src="https://img-blog.csdnimg.cn/2020021120553321.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;下面的表格是更新后的数据表。这里我截取了本次和上一次的数据表，为的是有一个明显的对比。我们看到，Supplier X和Supplier Y相关的8行记录已经被更新为CSV输入文件中提供的数据。  </p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    I'd walk a million miles just to see your smile. 
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2020/02/11/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93(3)/">Python数据分析基础之数据库(3)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/02/11/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93(2)/">Python数据分析基础之数据库(2)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/02/10/MySQL%20Community%208.0.19.0%20msi%E7%89%88%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">MySQL Community 8.0.19.0 </a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/02/10/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93(1)/">Python数据分析基础之数据库(1)</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/CCH21" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:1398635912@qq.com" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/" target="_blank" rel="noopener">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
