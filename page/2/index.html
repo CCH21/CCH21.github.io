@@ -147,6 +147,45 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2020/01/28/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BExcel%E6%96%87%E4%BB%B6(1)/">
+                Python数据分析基础之Excel文件(1)
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-01-28</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <blockquote>
+<p>参考资料：<br>《Python数据分析基础》，作者[美]Clinton W. Brownley，译者陈光欣，中国工信出版集团，人民邮电出版社</p>
+</blockquote>
+<h2 id="Excel文件简述"><a href="#Excel文件简述" class="headerlink" title="Excel文件简述"></a>Excel文件简述</h2><p>&emsp;&emsp;Microsoft Excel是Microsoft为使用Windows和Apple Macintosh操作系统的电脑编写的一款电子表格软件，它几乎无处不在，是商业活动中不可或缺的工具。使用Python可以处理Excel文件中的数据。<br>&emsp;&emsp;与Python的csv模块不同，Python中没有处理Excel文件的标准模块。我们需要安装xlrd和xlwt两个模块。  </p>
+<h2 id="内省Excel工作簿"><a href="#内省Excel工作簿" class="headerlink" title="内省Excel工作簿"></a>内省Excel工作簿</h2><p>&emsp;&emsp;我们创建一个Excel工作簿，并在其中添加3个独立的工作表，如下图所示。<br><img src="https://img-blog.csdnimg.cn/20200128212600770.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200128212621474.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200128212629366.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">&emsp;&emsp;Excel文件与CSV文件至少在两个重要方面有所不同。首先，CSV文件是纯文本文件，而Excel文件不是纯文本文件，我们不能在文本编辑器中打开它并查看数据。其次，与CSV文件不同，一个Excel工作簿被设计成包含多个工作表。<br>&emsp;&emsp;通过内省一个工作簿，我们可以在实际开始处理工作簿中的数据之前，检查工作表的数目和每个工作表中的数据类型和数据量。<br>&emsp;&emsp;下面我们使用Python分析上面的工作簿，来确定工作簿中工作表的数量、名称和每个工作表中行列的数量。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import sys</span><br><span class="line">from xlrd import open_workbook</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line"></span><br><span class="line">workbook = open_workbook(input_file)</span><br><span class="line">print(&apos;Number of worksheets: &apos;, workbook.nsheets)</span><br><span class="line">for worksheet in workbook.sheets():</span><br><span class="line">    print(&quot;Worksheet name: &quot;, worksheet.name, &quot;\tRows: &quot;, worksheet.nrows, &quot;\tColumns: &quot;, worksheet.ncols)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;我们来解释一下上面的代码。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from xlrd import open_workbook</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这行代码导入xlrd模块的<code>open_workbook()</code>函数来读取和分析Excel文件。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">workbook = open_workbook(input_file)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这行代码使用<code>open_workbook()</code>函数打开一个Excel输入文件，并赋给对象<code>workbook</code>。可以使用这个对象从工作簿中得到单独的工作表。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for worksheet in workbook.sheets():</span><br><span class="line">    print(&quot;Worksheet name: &quot;, worksheet.name, &quot;\tRows: &quot;, worksheet.nrows, &quot;\tColumns: &quot;, worksheet.ncols)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;<code>for</code>循环语句在工作簿中的所有工作表之间迭代。<code>workbook</code>对象的<code>sheets()</code>方法可以识别出工作簿中所有的工作表。<code>print</code>语句使用<code>workbook</code>对象的<code>name</code>, <code>nrows</code>, <code>ncols</code>属性来确定每个工作表的名称以及行与列的数量。<br>&emsp;&emsp;我们在命令行窗口中运行这个脚本，得到下面的输出结果。<br><img src="https://img-blog.csdnimg.cn/2020012821403180.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2020/01/26/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BCSV%E6%96%87%E4%BB%B6(6)/">
                 Python数据分析基础之CSV文件(6)
             </a>
@@ -653,49 +692,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/12/21/%E3%80%90%E7%AE%97%E6%B3%95%E7%A7%AF%E7%B4%AF%E3%80%91%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%8E%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/">
-                【算法积累】动态规划与斐波那契数列
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-12-21</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>&emsp;&emsp;注：本题来自LeetCode题库70.爬楼梯。  </p>
-<blockquote>
-<p>假设你正在爬楼梯。需要 n 阶你才能到达楼顶。<br>每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？<br>注意：给定 n 是一个正整数。  </p>
-</blockquote>
-<p>&emsp;&emsp;示例1：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入： 2</span><br><span class="line">输出： 2</span><br><span class="line">解释： 有两种方法可以爬到楼顶。</span><br><span class="line">1.  1 阶 + 1 阶</span><br><span class="line">2.  2 阶</span><br></pre></td></tr></table></figure>
-<p> &emsp;&emsp;示例2：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> 输入： 3</span><br><span class="line">输出： 3</span><br><span class="line">解释： 有三种方法可以爬到楼顶。</span><br><span class="line">1.  1 阶 + 1 阶 + 1 阶</span><br><span class="line">2.  1 阶 + 2 阶</span><br><span class="line">3.  2 阶 + 1 阶</span><br></pre></td></tr></table></figure></p>
-<h2 id="解法1：动态规划法"><a href="#解法1：动态规划法" class="headerlink" title="解法1：动态规划法"></a>解法1：动态规划法</h2><p>&emsp;&emsp;不难发现，这个问题可以被分解为一些包含最优子结构的子问题，即它的最优解可以从其子问题的最优解来有效地构建，我们可以使用动态规划来解决这一问题。<br>&emsp;&emsp;假设我们要爬到第n个台阶，则有两种情况：一是爬到第(n-1)个台阶，然后再往上爬1个台阶即可；二是爬到第(n-2)个台阶，然后再往上爬2个台阶即可。也就是说，爬到第n个台阶的方法数，就是爬到第(n-1)个台阶的方法数与爬到第(n-2)个台阶的方法数之和。<br>&emsp;&emsp;特别地，当n=1时，方法数为1；当n=2时，方法数为2（即1+1或直接爬2个台阶）。<br>&emsp;&emsp;代码实现如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 语言：C</span><br><span class="line">// 执行用时：0ms（又是0ms，具体情况未知）</span><br><span class="line">// 内存消耗：6.8MB</span><br><span class="line">int climbStairs(int n)&#123;</span><br><span class="line">    if (n == 1)</span><br><span class="line">        return 1;</span><br><span class="line">    int first, second, third, i;</span><br><span class="line">    first = 1;</span><br><span class="line">    second = 2;</span><br><span class="line">    for (i = 3; i &lt; n + 1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        third = first + second;</span><br><span class="line">        first = second;</span><br><span class="line">        second = third;</span><br><span class="line">    &#125;</span><br><span class="line">    return second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这种解法的时间复杂度为O(n)，空间复杂度为O(n)。  </p>
-<h2 id="解法2：斐波那契数列法"><a href="#解法2：斐波那契数列法" class="headerlink" title="解法2：斐波那契数列法"></a>解法2：斐波那契数列法</h2><p>&emsp;&emsp;我们再分析一下解法1，不难发现这其实就是斐波那契数列。所以这道题还可以用斐波那契数列法来解决。下面给出C和Python 3的代码：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 语言：C</span><br><span class="line">// 执行用时：0ms（我不想再说什么了……为啥又是0啊QAQ……）</span><br><span class="line">// 内存消耗：6.9MB</span><br><span class="line">int climbStairs(int n)&#123;</span><br><span class="line">    if (n == 1)</span><br><span class="line">        return 1;</span><br><span class="line">    int fib[100];</span><br><span class="line">    fib[1] = 1;</span><br><span class="line">    fib[2] = 2;</span><br><span class="line">    int i;</span><br><span class="line">    for (i = 3; i &lt;= n; i++)</span><br><span class="line">        fib[i] = fib[i - 1] + fib[i - 2];</span><br><span class="line">    return fib[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">语言：Python 3</span><br><span class="line">执行用时：36ms（诶它终于不是0ms了嘿嘿QvQ）</span><br><span class="line">内存消耗：12.7MB</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">class Solution:</span><br><span class="line">    def climbStairs(self, n: int) -&gt; int:</span><br><span class="line">        if n == 1:</span><br><span class="line">            return 1</span><br><span class="line">        fib = [1, 1, 2]</span><br><span class="line">        for i in range(3, n + 1):</span><br><span class="line">            next = fib[i - 1] + fib[i - 2]</span><br><span class="line">            fib.append(next)</span><br><span class="line">        return fib[n]</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;同样地，这种解法的时间复杂度为O(n)，空间复杂度为O(n)。  </p>
-<h2 id="解法3：斐波那契公式法"><a href="#解法3：斐波那契公式法" class="headerlink" title="解法3：斐波那契公式法"></a>解法3：斐波那契公式法</h2><p>&emsp;&emsp;既然知道这道题本质上就是斐波那契数列了，那么我们就可以直接使用公式啦！<br>&emsp;&emsp;斐波那契数列的公式如下：<br>$$F_n=\frac{1}{\sqrt{5}}\left(\left(\frac{1+\sqrt{5}}{2}\right)^{n+1}-\left(\frac{1-\sqrt{5}}{2}\right)^{n+1}\right)$$<br>&emsp;&emsp;套用这个公式可以很快地解决本题。Python 3代码如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">语言：Python 3</span><br><span class="line">执行用时：48ms（比上一个方法慢了不少诶QnQ）</span><br><span class="line">内存消耗：12.8MB</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">import math</span><br><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    def climbStairs(self, n: int) -&gt; int:</span><br><span class="line">        return int((pow((1+math.sqrt(5))/2, n+1) - pow((1-math.sqrt(5))/2, n+1)) / math.sqrt(5))</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这种方法的时间复杂度为O(log(n))（pow()将会用去log(n)的时间），空间复杂度为O(1)（使用常量级空间）。  </p>
-
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -738,6 +734,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2020/02/12/%E8%87%AA%E5%AD%A6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E7%BB%AA%E8%AE%BA/">自学数据结构与算法——绪论</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2020/02/11/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93(3)/">Python数据分析基础之数据库(3)</a>
             </li>
             
@@ -747,10 +747,6 @@
             
             <li>
                 <a class="footer-post" href="/2020/02/10/MySQL%20Community%208.0.19.0%20msi%E7%89%88%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">MySQL Community 8.0.19.0 </a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2020/02/10/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93(1)/">Python数据分析基础之数据库(1)</a>
             </li>
             
         </ul>
