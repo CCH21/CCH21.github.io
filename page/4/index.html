@@ -147,6 +147,42 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2019/11/18/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E5%BA%94%E7%94%A8%E2%80%94%E2%80%94%E7%94%A8C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B010%E8%A1%8C%E7%AD%89%E8%85%B0%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/">
+                二维数组应用——用C语言实现10行等腰杨辉三角
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-11-18</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="杨辉三角简介"><a href="#杨辉三角简介" class="headerlink" title="杨辉三角简介"></a>杨辉三角简介</h2><p>&emsp;&emsp;杨辉三角是中国数学史上的一个伟大成就。它是二项式系数在三角形中的一种几何排列。在欧洲叫被称为帕斯卡三角形。帕斯卡（1623-1662）是在1654年发现这一规律的，比杨辉要迟393年，比贾宪迟600年。杨辉三角是中国古代数学的杰出研究成果之一，它把二项式系数图形化，把组合数内在的一些代数性质直观地从图形中体现出来，是一种离散型的数与形的结合。<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9zczMuYmRzdGF0aWMuY29tLzcwY0Z2OFNoX1ExWW54R2twb1dLMUhGNmhoeS9pdC91PTM0Mzk1MTc2OTEsNDE2OTQxNzI5MCZmbT0xNSZncD0wLmdpZg" alt="Alt"><br>&emsp;&emsp;我们把行数定义为n，即第一行为n=1，第二行为n=2，以此类推。我们不难发现如下规律：<br>&emsp;&emsp;1.每行的第一个数字和最后一个数字为1；<br>&emsp;&emsp;2.从n=3开始，每个数等于它上方两个数之和，即第(n+1)行的第m个数等于第n行的第(m-1)个数和第m个数之和；<br>&emsp;&emsp;3.第n行的数字有n项，第m个数和第(n-m+1)个数相等。<br>&emsp;&emsp;接下来，我们先利用C语言的二维数组的相关知识，试着打印出一个10行直角杨辉三角吧。  </p>
+<h2 id="10行直角杨辉三角"><a href="#10行直角杨辉三角" class="headerlink" title="10行直角杨辉三角"></a>10行直角杨辉三角</h2><p>&emsp;&emsp;我们刚刚已经分析了杨辉三角的相关性质，接下来我们用C语言先来编写一个直角的杨辉三角。代码实现如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#define N 10</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	int arr[N][N] = &#123; 0 &#125;;</span><br><span class="line">	int i = 0;</span><br><span class="line">	for (i = 0; i &lt; N; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		int j = 0;</span><br><span class="line">		for (j = 0; j &lt;= i; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			if ((0 == j) || (i == j))</span><br><span class="line">				arr[i][j] = 1;</span><br><span class="line">			else</span><br><span class="line">				arr[i][j] = arr[i - 1][j] + arr[i - 1][j - 1];</span><br><span class="line">			printf(&quot;%4d&quot;, arr[i][j]);</span><br><span class="line">		&#125;</span><br><span class="line">		printf(&quot;\n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;输出结果如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">1   1</span><br><span class="line">1   2   1</span><br><span class="line">1   3   3   1</span><br><span class="line">1   4   6   4   1</span><br><span class="line">1   5  10  10   5   1</span><br><span class="line">1   6  15  20  15   6   1</span><br><span class="line">1   7  21  35  35  21   7   1</span><br><span class="line">1   8  28  56  70  56  28   8   1</span><br><span class="line">1   9  36  84 126 126  84  36   9   1</span><br></pre></td></tr></table></figure>
+<h2 id="从直角三角形到等腰三角形的进阶"><a href="#从直角三角形到等腰三角形的进阶" class="headerlink" title="从直角三角形到等腰三角形的进阶"></a>从直角三角形到等腰三角形的进阶</h2><p>&emsp;&emsp;我们已经成功写出了直角杨辉三角。接下来，我们来试着在它的基础上修改一下代码，让它能打印出等腰杨辉三角。<br>&emsp;&emsp;我们之前用C语言写过打印金字塔图形的程序。想要打印出等腰的金字塔图形，就要找出一些规律，通过控制行与列来控制何时打印空格，何时打印星号。实现从直角杨辉三角到等腰杨辉三角的进阶也是同样的道理，我们要试图控制空格的输出，来达到等腰三角形的效果。<br>&emsp;&emsp;最终用C语言实现如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#define N 10</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	int arr[N][N] = &#123; 0 &#125;;</span><br><span class="line">	int i = 0;</span><br><span class="line">	for (i = 0; i &lt; N; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		int m = 0;</span><br><span class="line">		for (m = 0; m &lt; N - i; m++)</span><br><span class="line">			printf(&quot;  &quot;);</span><br><span class="line">		int j = 0;</span><br><span class="line">		for (j = 0; j &lt;= i; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			if ((0 == j) || (i == j))</span><br><span class="line">				arr[i][j] = 1;</span><br><span class="line">			else</span><br><span class="line">				arr[i][j] = arr[i - 1][j] + arr[i - 1][j - 1];</span><br><span class="line">			printf(&quot;%4d&quot;, arr[i][j]);</span><br><span class="line">		&#125;</span><br><span class="line">		printf(&quot;\n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;输出结果如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">                  1</span><br><span class="line">                1   1</span><br><span class="line">              1   2   1</span><br><span class="line">            1   3   3   1</span><br><span class="line">          1   4   6   4   1</span><br><span class="line">        1   5  10  10   5   1</span><br><span class="line">      1   6  15  20  15   6   1</span><br><span class="line">    1   7  21  35  35  21   7   1</span><br><span class="line">  1   8  28  56  70  56  28   8   1</span><br><span class="line">1   9  36  84 126 126  84  36   9   1</span><br></pre></td></tr></table></figure>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>&emsp;&emsp;以上就是关于用C语言实现等腰杨辉三角的全部内容。如果有什么更好的想法，欢迎大家留言讨论。<br>&emsp;&emsp;我的邮箱：<a href="mailto:1398635912@qq.com" target="_blank" rel="noopener">1398635912@qq.com</a><br>&emsp;&emsp;参考资料：百度百科【杨辉三角】(链接：<a href="https://baike.baidu.com/item/%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/215098?fr=aladdin" target="_blank" rel="noopener">link</a>)</p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2019/11/08/%E7%94%A8Python%E5%AE%9E%E7%8E%B0%E5%9B%9B%E7%A7%8D%E7%AE%80%E5%8D%95%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
                 用Python实现四种简单的排序算法
             </a>
@@ -465,6 +501,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2020/02/15/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E5%AF%92%E5%81%87%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%BB%BB%E5%8A%A1%E6%80%BB%E7%BB%93/">实验室寒假数据处理任务总结</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2020/02/13/%E8%87%AA%E5%AD%A6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E7%AE%97%E6%B3%95/">自学数据结构与算法——算法</a>
             </li>
             
@@ -474,10 +514,6 @@
             
             <li>
                 <a class="footer-post" href="/2020/02/11/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93(3)/">Python数据分析基础之数据库(3)</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2020/02/11/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93(2)/">Python数据分析基础之数据库(2)</a>
             </li>
             
         </ul>
