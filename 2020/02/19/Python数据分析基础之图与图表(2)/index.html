@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="&amp;emsp;&amp;emsp;上一节主要学习了使用matplotlib模块绘制统计图。这一节主要学习使用pandas, seaborn等模块绘制统计图。  
+使用pandas绘制统计图&amp;emsp;&amp;emsp;pandas模块提供了一个可以作用于序列和数据框的函数plot()，简化了基于序列和数据框中的数据">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Python数据分析基础之图与图表(2)"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Welcome to CCH21&#39;s Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Python数据分析基础之图与图表(2) - Welcome to CCH21&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2020/02/19/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%9B%BE%E4%B8%8E%E5%9B%BE%E8%A1%A8(2)/">
+                Python数据分析基础之图与图表(2)
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-02-19</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>&emsp;&emsp;上一节主要学习了使用matplotlib模块绘制统计图。这一节主要学习使用pandas, seaborn等模块绘制统计图。  </p>
+<h2 id="使用pandas绘制统计图"><a href="#使用pandas绘制统计图" class="headerlink" title="使用pandas绘制统计图"></a>使用pandas绘制统计图</h2><p>&emsp;&emsp;pandas模块提供了一个可以作用于序列和数据框的函数<code>plot()</code>，简化了基于序列和数据框中的数据创建图表的过程。<code>plot()</code>函数默认创建折线图，我们可以通过设置参数<code>kind</code>来创建其他类型的图表。<br>&emsp;&emsp;除了使用matplotlib模块创建标准统计图，还可以使用pandas模块可以创建其他类型的统计图，例如六边箱图（hexagonal bin plot）、矩阵散点图、密度图、Andrews曲线图、平行坐标图、延迟图、自相关图和自助抽样图。如果要向统计图中添加第二y轴、误差棒和数据表，使用pandas模块可以很直接地实现。<br>&emsp;&emsp;下面的代码是应用pandas模块创建一对条形图和箱线图的实例。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">plt.style.use(&apos;ggplot&apos;)</span><br><span class="line"></span><br><span class="line"># 准备数据</span><br><span class="line">fig, axes = plt.subplots(nrows=1, ncols=2)      # 创建两个并排放置的子图</span><br><span class="line">ax1, ax2 = axes.ravel()                         # 将两个子图分别赋给变量ax1和ax2</span><br><span class="line">data_frame = pd.DataFrame(np.random.rand(5, 3),</span><br><span class="line">                          index=[&apos;Customer 1&apos;, &apos;Customer 2&apos;, &apos;Customer 3&apos;, &apos;Customer 4&apos;, &apos;Customer 5&apos;],</span><br><span class="line">                          columns=pd.Index([&apos;Metric 1&apos;, &apos;Metric 2&apos;, &apos;Metric 3&apos;], name=&apos;Metrics&apos;))</span><br><span class="line"></span><br><span class="line"># 绘制条形图</span><br><span class="line">data_frame.plot(kind=&apos;bar&apos;, ax=ax1, alpha=0.75, title=&apos;Bar Plot&apos;)       # 创建条形图</span><br><span class="line">plt.setp(ax1.get_xticklabels(), rotation=45, fontsize=10)</span><br><span class="line">plt.setp(ax1.get_yticklabels(), rotation=0, fontsize=10)</span><br><span class="line">ax1.set_xlabel(&apos;Customer&apos;)</span><br><span class="line">ax1.set_ylabel(&apos;Value&apos;)</span><br><span class="line">ax1.xaxis.set_ticks_position(&apos;bottom&apos;)</span><br><span class="line">ax1.yaxis.set_ticks_position(&apos;left&apos;)</span><br><span class="line"></span><br><span class="line"># 绘制箱线图</span><br><span class="line">colors = dict(boxes=&apos;DarkBlue&apos;, whiskers=&apos;Gray&apos;, medians=&apos;Red&apos;, caps=&apos;Black&apos;)       # 为箱线图创建颜色字典</span><br><span class="line">data_frame.plot(kind=&apos;box&apos;, color=colors, sym=&apos;r.&apos;, ax=ax2, title=&apos;Box Plot&apos;)       # 创建箱线图</span><br><span class="line">plt.setp(ax2.get_xticklabels(), rotation=45, fontsize=10)</span><br><span class="line">plt.setp(ax2.get_yticklabels(), rotation=0, fontsize=10)</span><br><span class="line">ax2.set_xlabel(&apos;Metric&apos;)</span><br><span class="line">ax2.set_ylabel(&apos;Value&apos;)</span><br><span class="line">ax1.xaxis.set_ticks_position(&apos;bottom&apos;)</span><br><span class="line">ax1.yaxis.set_ticks_position(&apos;left&apos;)</span><br><span class="line"></span><br><span class="line"># 保存图片</span><br><span class="line">plt.savefig(&apos;pandas_plots.png&apos;, dpi=400, bbox_inches=&apos;tight&apos;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;运行结果如下图所示。<br><img src="https://img-blog.csdnimg.cn/20200219175354373.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="使用seaborn绘制统计图"><a href="#使用seaborn绘制统计图" class="headerlink" title="使用seaborn绘制统计图"></a>使用seaborn绘制统计图</h2><p>&emsp;&emsp;seaborn模块简化了在Python中创建信息丰富的统计图表的过程。它可以创建标准统计图，包括直方图、密度图、条形图、箱线图和散点图。它可以对成对变量之间的相关性、线性与非线性回归模型以及统计估计的不确定性进行可视化。它可以用来在评估变量时检查变量之间的关系，并可以建立统计图矩阵来显示复杂的关系。它有内置的主题和调色板，可以用来制作精美的图标。最后，因为它是建立在matplotlib上的，所以我们可以使用matplotlib的命令来对图形进行更深入的定制。<br>&emsp;&emsp;下面的代码演示了如何使用seaborn创建各种统计图。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import seaborn as sns</span><br><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">sns.set(color_codes=True)</span><br><span class="line"></span><br><span class="line"># 直方图</span><br><span class="line">x = np.random.normal(size=100)</span><br><span class="line">sns.distplot(x, bins=20, kde=False, rug=True, label=&quot;Histogram w/o Density&quot;)</span><br><span class="line">sns.utils.axlabel(&quot;Value&quot;, &quot;Frequency&quot;)</span><br><span class="line">plt.title(&quot;Histogram of a Random Sample from a Normal Distribution&quot;)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.savefig(&quot;seaborn_plot_1.png&quot;, dpi=400, bbox_inches=&apos;tight&apos;)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"># 带有回归直线的散点图与单变量直方图</span><br><span class="line">mean, cov = [5, 10], [(1, .5), (.5, 1)]</span><br><span class="line">data = np.random.multivariate_normal(mean, cov, 200)</span><br><span class="line">data_frame = pd.DataFrame(data, columns=[&quot;x&quot;, &quot;y&quot;])</span><br><span class="line">sns.jointplot(x=&quot;x&quot;, y=&quot;y&quot;, data=data_frame, kind=&quot;reg&quot;).set_axis_labels(&quot;x&quot;, &quot;y&quot;)</span><br><span class="line">plt.suptitle(&quot;Joint Plot of Two Variables with Bivariate and Univariate Graphs&quot;)</span><br><span class="line">plt.savefig(&quot;seaborn_plot_2.png&quot;, dpi=400, bbox_inches=&apos;tight&apos;)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"># 成对变量之间的散点图与单变量直方图</span><br><span class="line">iris = sns.load_dataset(&quot;iris&quot;)</span><br><span class="line">sns.pairplot(iris)</span><br><span class="line">plt.savefig(&quot;seaborn_plot_3.png&quot;, dpi=400, bbox_inches=&apos;tight&apos;)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"># 按照某几个变量生成的箱线图</span><br><span class="line">tips = sns.load_dataset(&quot;tips&quot;)</span><br><span class="line">sns.catplot(x=&quot;time&quot;, y=&quot;total_bill&quot;, hue=&quot;smoker&quot;, col=&quot;day&quot;, data=tips, kind=&quot;box&quot;, height=4, aspect=.5)</span><br><span class="line">plt.savefig(&quot;seaborn_plot_4.png&quot;, dpi=400, bbox_inches=&apos;tight&apos;)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"># 带有bootstrap置信区间的线性回归模型</span><br><span class="line">sns.lmplot(x=&quot;total_bill&quot;, y=&quot;tip&quot;, data=tips)</span><br><span class="line">plt.savefig(&quot;seaborn_plot_5.png&quot;, dpi=400, bbox_inches=&apos;tight&apos;)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"># 带有bootstrap置信区间的逻辑斯蒂回归模型</span><br><span class="line">tips[&quot;big_tip&quot;] = (tips.tip / tips.total_bill) &gt; .15</span><br><span class="line">sns.lmplot(x=&quot;total_bill&quot;, y=&quot;big_tip&quot;, data=tips, logistic=True, y_jitter=.03).set_axis_labels(&quot;Total Bill&quot;, &quot;Big Tip&quot;)</span><br><span class="line">plt.title(&quot;Logistic Regression of Big Tip vs.Total Bill&quot;)</span><br><span class="line">plt.savefig(&quot;seaborn_plot_6.png&quot;, dpi=400, bbox_inches=&apos;tight&apos;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;运行结果如下图所示。<br><img src="https://img-blog.csdnimg.cn/2020021921315838.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/2020021921322176.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200219213242114.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200219213301861.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200219213321535.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200219213346185.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    I'd walk a million miles just to see your smile. 
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2020/02/19/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%9B%BE%E4%B8%8E%E5%9B%BE%E8%A1%A8(2)/">Python数据分析基础之图与图表(2)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/02/19/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%9B%BE%E4%B8%8E%E5%9B%BE%E8%A1%A8(1)/">Python数据分析基础之图与图表(1)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/02/18/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">Python数据分析基础之应用程序</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/02/15/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E5%AF%92%E5%81%87%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%BB%BB%E5%8A%A1%E6%80%BB%E7%BB%93/">实验室寒假数据处理任务总结</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/CCH21" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:1398635912@qq.com" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/" target="_blank" rel="noopener">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
