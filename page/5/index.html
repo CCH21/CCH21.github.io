@@ -147,6 +147,41 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2019/10/31/%E4%BD%BF%E7%94%A8Hexo+Github%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/">
+                使用Hexo+Github搭建属于自己的博客
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-10-31</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前几天，我尝试用<strong>Hexo+Github</strong>搭建了属于我自己的博客。几经波折，当最后我成功搭建之后，喜悦感、成就感、自豪感油然而生。接下来我给大家分享一下搭建博客的经验。<br>我的电脑系统为Windows 10家庭中文版，系统类型为64位操作系统，基于x64的处理器。</p>
+<h1 id="相关步骤"><a href="#相关步骤" class="headerlink" title="相关步骤"></a>相关步骤</h1><h2 id="Step-1：安装Node-js和配置Node-js环境"><a href="#Step-1：安装Node-js和配置Node-js环境" class="headerlink" title="Step 1：安装Node.js和配置Node.js环境"></a>Step 1：安装Node.js和配置Node.js环境</h2><p>我们进入Node.js的官网，下载这个12.13.0版本的Node.js并安装它。<br>安装好之后，我们来检测一下PATH环境变量是否配置了Node.js。<br>打开cmd，输入命令<code>path</code>之后，输出了如下结果：<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9ncmFwaC5iYWlkdS5jb20vcmVzb3VyY2UvMTExYzE0ODZkZTIwNjE4NmU1NGIxMDE1NzI0NDE5NjQuanBn?x-oss-process=image/format,png" alt="avatar"><br>可以看出，环境变量中已经包含了D:\nodejs。<br>打开cmd，输入命令<code>node -v</code>和<code>npm -v</code>，我们可以看到版本号。这说明我们已经安装成功了。  </p>
+<h2 id="Step-2：安装Git和配置Git环境"><a href="#Step-2：安装Git和配置Git环境" class="headerlink" title="Step 2：安装Git和配置Git环境"></a>Step 2：安装Git和配置Git环境</h2><p>我们进入Git官网，下载最新的Git 2.23.0版本。<br>进入安装向导，选择安装位置之后，安装向导会让我们选择组件。在这里我选择的是<em>Additional icons<em>、</em>Windows Explorer integration<em>、</em>Git LFS(Large File Support)<em>、</em>Associate .git\</em> configuration files with the default text editor<em>以及</em>Associate .sh files to be run with Bash*。接下来，一路Next之后，点击Install，我们成功安装好了Git。<br>这里不得不提的是，我们如何判断自己是否安装成功了呢？其实，安装成功之后有一个典型的象征，就是在电脑上任何位置单击鼠标右键之后，都能够出现这两个选项：Git GUI Here和Git Bash Here。不妨动手试一试，一旦出现上述两个选项，恭喜你，你已经成功安装了Git。  </p>
+<h2 id="Step-3：Github账户注册和新建Repository"><a href="#Step-3：Github账户注册和新建Repository" class="headerlink" title="Step 3：Github账户注册和新建Repository"></a>Step 3：Github账户注册和新建Repository</h2><p>这个没什么好说的。只有一点需要注意：<br>在新建Repository的时候，Repository name必须遵守<strong>账户名.github.io</strong>的格式，否则接下来很可能会出现棘手的问题。我们还需要勾选下方的“Initialize this repository with a README”。</p>
+<h2 id="Step-4：安装Hexo"><a href="#Step-4：安装Hexo" class="headerlink" title="Step 4：安装Hexo"></a>Step 4：安装Hexo</h2><p>首先，你需要在自己认为合适的地方新建一个文件夹。我是在D盘新建了一个名为blog的文件夹。接下来，在cmd中进入该文件夹。<br>1.输入<code>npm install hexo -g</code>，开始安装Hexo。<br>2.在安装好之后，输入<code>hexo -v</code>，<strong>如果出现了一串版本号，说明Hexo已经安装成功了。</strong><br>3.输入<code>hexo init</code>，初始化该文件夹。需要说明的是，这一步所花费的时间可能会有些长，保持耐心。<br>4.当看到<code>Start blogging with Hexo!</code>的时候，你距离成功完成这一个Step已经很近了。输入<code>npm install</code>，安装所需组件。<br>5.输入<code>hexo g</code>，开始你的首次体验吧！<br>6.输入<code>hexo s</code>，开启服务器，访问该网址。有些电脑可能会遇到这样一个问题：在访问网址的时候，页面一直无法跳转。这可能是因为端口被占用了。遇到这种问题该怎么办呢？我们按Ctrl+C键停止服务器。【注意！！！这里的Ctrl+C并不是复制的意思！！！】接着，我们输入<code>hexo server -p 端口号</code>来改变端口号。试着访问一下这个新的网址吧！  </p>
+<h2 id="Step-5：将Hexo和Github联系起来"><a href="#Step-5：将Hexo和Github联系起来" class="headerlink" title="Step 5：将Hexo和Github联系起来"></a>Step 5：将Hexo和Github联系起来</h2><p>1.如果是第一次的话，我们需要先设置Git的user name和user email。 单击右键，选择“Git Bash Here”。输入<code>git config --global user.name &quot;用户名&quot;</code>来设置user name。输入<code>git config --global user.email &quot;邮箱号&quot;</code>来设置user email。<br>2.输入<code>cd ~/.ssh</code>，检查是否有.ssh文件夹。这里我要偷偷说一句，其实没有也没什么关系的。<br>3.输入<code>ls</code>，列出该文件下的内容。<br>4.输入<code>ssh-keygen -t rsa -C &quot;邮箱号&quot;</code>，<strong>连按三次Enter键</strong>，生成密钥。最后我们得到了id_rsa和id_rsa.pub两个文件。<br>5.输入<code>eval &quot;$(ssh-agent -s)&quot;</code>，添加密钥到ssh-agent。<br>6.输入<code>ssh-add ~/.ssh/id_rsa</code>，添加生成的SSH key到ssh-agent。<br>7.登录Github，在头像下找到Settings，添加SSH。我们点击“New SSH key”，新建一个SSH key。在“Title”栏写<code>blog</code>，“Key”栏中将id_rsa.pub里面的内容复制粘贴上去。【id_rsa.pub文件的存储路径为C:\Users\Administrator\.ssh，右键选择打开方式，选择用记事本打开即可。】<br>8.输入<code>ssh -T git@github.com</code>，测试是否成功添加了SSH。如果你看到了“Hi 用户名! ”，那么恭喜你，你已经成功将Hexo和Github联系起来了！  </p>
+<h2 id="Step-6：配置Deployment"><a href="#Step-6：配置Deployment" class="headerlink" title="Step 6：配置Deployment"></a>Step 6：配置Deployment</h2><p>在blog文件夹中，我们找到_config.yml文件，在末尾修改Repository值。Repository值是Github的Repository中的SSH。<strong>我们该如何找到它呢？</strong>在Repository右侧有一个绿色的框框，里面写着“Clone or download”，单击，再点击“Use SSH”就可以了。怎么样，很简单吧？  </p>
+<h2 id="Step-7：新建一篇博客，生成并部署文章"><a href="#Step-7：新建一篇博客，生成并部署文章" class="headerlink" title="Step 7：新建一篇博客，生成并部署文章"></a>Step 7：新建一篇博客，生成并部署文章</h2><p>打开cmd，输入<code>hexo new post &quot;Hello Hexo&quot;</code>，我们可以看到，这时候在D:\blog\source\_posts目录下已经创建了Hello-Hexo.md文件。<br>在生成并部署文章之前，我们还需要在cmd中输入<code>npm install hexo-deployer-git --save</code>，安装一个扩展。<br>使用编辑器编辑好文章之后，在cmd中输入<code>hexo d -g</code>，生成并部署文章。部署成功后访问http://用户名.github.io，我们就能看到我们写的文章了！  </p>
+<h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><p>看完这篇教程之后，你是不是也觉得使用Hexo+Github搭建属于自己的博客是一件很容易的事情呢？赶快动手试一试吧！<br>第一次写博客，如果有什么意见和建议想对我这个小白提的话，请联系我哟！<br><strong>我的邮箱：<a href="mailto:1398635912@qq.com" target="_blank" rel="noopener">1398635912@qq.com</a></strong></p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2019/10/31/%E5%A6%82%E4%BD%95%E7%94%A8C%E8%AF%AD%E8%A8%80%E5%92%8CPython%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AABMI%E6%8C%87%E6%95%B0%E8%AE%A1%E7%AE%97%E5%99%A8/">
                 如何用C语言和Python编写一个BMI指数计算器
             </a>
@@ -264,6 +299,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2020/02/28/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%8F%8F%E8%BF%B0%E6%80%A7%E7%BB%9F%E8%AE%A1%E4%B8%8E%E5%BB%BA%E6%A8%A1(1)/">Python数据分析基础之描述性统计与建模(1)</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2020/02/20/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%9B%BE%E4%B8%8E%E5%9B%BE%E8%A1%A8%EF%BC%88ggplot%E7%95%AA%E5%A4%96%E7%AF%87%EF%BC%89/">Python数据分析基础之图与图表（ggplot番</a>
             </li>
             
@@ -273,10 +312,6 @@
             
             <li>
                 <a class="footer-post" href="/2020/02/19/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%9B%BE%E4%B8%8E%E5%9B%BE%E8%A1%A8(1)/">Python数据分析基础之图与图表(1)</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2020/02/18/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">Python数据分析基础之应用程序</a>
             </li>
             
         </ul>

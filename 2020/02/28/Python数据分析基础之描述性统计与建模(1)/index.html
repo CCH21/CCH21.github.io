@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="葡萄酒质量数据集&amp;emsp;&amp;emsp;葡萄酒质量数据集包括两个文件——红葡萄酒文件和白葡萄酒文件。红葡萄酒文件中包含1599条观测，白葡萄酒文件包含4898条观测。两个文件中都有1个输出变量和11个输入变量。输出变量是酒的质量，是一个从0（低质量）到10（高质量）的评分。输入变量是葡萄酒的物理化学">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Python数据分析基础之描述性统计与建模(1)"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Welcome to CCH21&#39;s Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Python数据分析基础之描述性统计与建模(1) - Welcome to CCH21&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2020/02/28/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%8F%8F%E8%BF%B0%E6%80%A7%E7%BB%9F%E8%AE%A1%E4%B8%8E%E5%BB%BA%E6%A8%A1(1)/">
+                Python数据分析基础之描述性统计与建模(1)
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-02-28</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="葡萄酒质量数据集"><a href="#葡萄酒质量数据集" class="headerlink" title="葡萄酒质量数据集"></a>葡萄酒质量数据集</h2><p>&emsp;&emsp;葡萄酒质量数据集包括两个文件——红葡萄酒文件和白葡萄酒文件。红葡萄酒文件中包含1599条观测，白葡萄酒文件包含4898条观测。两个文件中都有1个输出变量和11个输入变量。输出变量是酒的质量，是一个从0（低质量）到10（高质量）的评分。输入变量是葡萄酒的物理化学成分和特性，包括非挥发性酸、挥发性酸、柠檬酸、残余糖分、氯化物、游离二氧化硫、总二氧化硫、密度、pH值、硫酸盐和酒精含量。<br>&emsp;&emsp;我们把这两个数据集合成一个数据集，保存在文件winequality-both.csv中。这个数据集中应该包括一个标题行和6497条。另外，还应该再添加一列，用来区分这行数据是红葡萄酒还是白葡萄酒的数据。<br>&emsp;&emsp;想要下载数据集？<a href="https://github.com/cbrownley/foundations-for-analytics-with-python/blob/master/statistics/winequality-both.csv" target="_blank" rel="noopener">点我</a>！<br><img src="https://img-blog.csdnimg.cn/2020022715304774.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="描述性统计"><a href="#描述性统计" class="headerlink" title="描述性统计"></a>描述性统计</h2><p>&emsp;&emsp;我们来对这个数据集进行分析。首先，我们要计算出每列的总体描述性统计量、质量列中的唯一值以及和这个唯一值对应的观测数量。代码如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">import seaborn as sns</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import statsmodels.api as sm</span><br><span class="line">import statsmodels.formula.api as smf</span><br><span class="line">from statsmodels.formula.api import ols, glm</span><br><span class="line"></span><br><span class="line"># 将数据集读入到pandas数据框中</span><br><span class="line">wine = pd.read_csv(&apos;winequality-both.csv&apos;, sep=&apos;,&apos;, header=0)</span><br><span class="line">wine.columns = wine.columns.str.replace(&apos; &apos;, &apos;_&apos;)</span><br><span class="line">print(wine.head())</span><br><span class="line"></span><br><span class="line"># 显示所有变量的描述性统计量</span><br><span class="line">print(wine.describe())</span><br><span class="line"></span><br><span class="line"># 找出唯一值</span><br><span class="line">print(sorted(wine.quality.unique()))</span><br><span class="line"></span><br><span class="line"># 计算值的频率</span><br><span class="line">print(wine.quality.value_counts())</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;在使用pandas模块的<code>read_csv()</code>方法将文本文件读入一个pandas数据框之后，我们使用<code>head()</code>函数检查一下标题行和前五行数据，确保数据被正确加载。第17行代码使用pandas的<code>describe()</code>函数打印出数据集中每个数值型变量的摘要统计量。第20行代码使用<code>unique()</code>识别出质量列中的唯一值，并以升序打印在屏幕上。最后，第23行代码计算出质量列中每个唯一值在数据集中出现的次数，并把它们以降序打印到屏幕上。<br>&emsp;&emsp;这段代码的运行结果如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">  type  fixed_acidity  volatile_acidity  ...  sulphates  alcohol  quality</span><br><span class="line">0  red            7.4              0.70  ...       0.56      9.4        5</span><br><span class="line">1  red            7.8              0.88  ...       0.68      9.8        5</span><br><span class="line">2  red            7.8              0.76  ...       0.65      9.8        5</span><br><span class="line">3  red           11.2              0.28  ...       0.58      9.8        6</span><br><span class="line">4  red            7.4              0.70  ...       0.56      9.4        5</span><br><span class="line"></span><br><span class="line">[5 rows x 13 columns]</span><br><span class="line">       fixed_acidity  volatile_acidity  ...      alcohol      quality</span><br><span class="line">count    6497.000000       6497.000000  ...  6497.000000  6497.000000</span><br><span class="line">mean        7.215307          0.339666  ...    10.491801     5.818378</span><br><span class="line">std         1.296434          0.164636  ...     1.192712     0.873255</span><br><span class="line">min         3.800000          0.080000  ...     8.000000     3.000000</span><br><span class="line">25%         6.400000          0.230000  ...     9.500000     5.000000</span><br><span class="line">50%         7.000000          0.290000  ...    10.300000     6.000000</span><br><span class="line">75%         7.700000          0.400000  ...    11.300000     6.000000</span><br><span class="line">max        15.900000          1.580000  ...    14.900000     9.000000</span><br><span class="line"></span><br><span class="line">[8 rows x 12 columns]</span><br><span class="line">[3, 4, 5, 6, 7, 8, 9]</span><br><span class="line">6    2836</span><br><span class="line">5    2138</span><br><span class="line">7    1079</span><br><span class="line">4     216</span><br><span class="line">8     193</span><br><span class="line">3      30</span><br><span class="line">9       5</span><br><span class="line">Name: quality, dtype: int64</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;输出显示，质量评分中有6497个观测，评分范围从3到9，平均质量评分为5.8，标准差为0.87；质量列中的唯一值是3、4、5、6、7、8和9；有2836个观测的质量评分为6，2138个观测的质量评分为5，1079个观测的质量评分为7，216个观测的质量评分为4，193个观测的质量评分为8，30个观测的质量评分为3，5个观测的质量评分为9。</p>
+<h2 id="分组、直方图与t检验"><a href="#分组、直方图与t检验" class="headerlink" title="分组、直方图与t检验"></a>分组、直方图与t检验</h2><p>&emsp;&emsp;下面我们分别分析红葡萄酒数据和白葡萄酒数据，看看统计量是否会保持不变。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line"># 按照葡萄酒类型显示质量的描述性统计量</span><br><span class="line">print(wine.groupby(&apos;type&apos;)[[&apos;quality&apos;]].describe().unstack(&apos;type&apos;))</span><br><span class="line"></span><br><span class="line"># 按照葡萄酒类型显示质量的特定分位数值</span><br><span class="line">print(wine.groupby(&apos;type&apos;)[[&apos;quality&apos;]].quantile([0.25, 0.75]).unstack(&apos;type&apos;))</span><br><span class="line"></span><br><span class="line"># 按照葡萄酒类型查看质量分布</span><br><span class="line">red_wine = wine.loc[wine[&apos;type&apos;] == &apos;red&apos;, &apos;quality&apos;]</span><br><span class="line">white_wine = wine.loc[wine[&apos;type&apos;] == &apos;white&apos;, &apos;quality&apos;]</span><br><span class="line">sns.set_style(&quot;dark&quot;)</span><br><span class="line">print(sns.distplot(red_wine, norm_hist=True, kde=False, color=&quot;red&quot;, label=&quot;Red wine&quot;))</span><br><span class="line">print(sns.distplot(white_wine, norm_hist=True, kde=False, color=&quot;white&quot;, label=&quot;White wine&quot;))</span><br><span class="line">sns.utils.axlabel(&quot;Quality Score&quot;, &quot;Density&quot;)</span><br><span class="line">plt.title(&quot;Distribution of Quality by Wine Type&quot;)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"># 检验红葡萄酒和白葡萄酒的平均质量是否有所不同</span><br><span class="line">print(wine.groupby([&apos;type&apos;])[[&apos;quality&apos;]].agg([&apos;std&apos;]))</span><br><span class="line">tstat, pvalue, df = sm.stats.ttest_ind(red_wine, white_wine)</span><br><span class="line">print(&apos;tstat: %.3f pvalue: %.4f&apos; % (tstat, pvalue))</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;<code>groupby()</code>函数使用<code>type</code>列中的两个值将数据分为两组。方括号可以生成一个列表，列表中的元素是用来生成输出的列。在这里我们只对质量列应用<code>describe()</code>函数。这些命令的结果就是生成一列统计量，来自红葡萄酒数据的计算结果和白葡萄酒数据的计算结果是相互垂直地堆叠在一起的。<code>unstack()</code>函数将结果重新排列，这样红葡萄酒和白葡萄酒的统计量就会显示在并排的两列中。<code>quantile()</code>函数对质量列计算第25百分位数和第75百分位数。<br>&emsp;&emsp;接下来，我们使用seaborn创建直方图，红条表示红葡萄酒，白条表示白葡萄酒。因为白葡萄酒数据比红葡萄酒多，所以直方图显示密度分布而不是频率分布。<br>&emsp;&emsp;最后，进行一下t检验，判断红葡萄酒和白葡萄酒的平均评分是否有区别。在这里我们想知道红葡萄酒和白葡萄酒评分的标准差是否相同，所以在t检验中可以使用合并方差。<br>&emsp;&emsp;下面是这段代码的运行结果。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">                type </span><br><span class="line">quality  count  red      1599.000000</span><br><span class="line">                white    4898.000000</span><br><span class="line">         mean   red         5.636023</span><br><span class="line">                white       5.877909</span><br><span class="line">         std    red         0.807569</span><br><span class="line">                white       0.885639</span><br><span class="line">         min    red         3.000000</span><br><span class="line">                white       3.000000</span><br><span class="line">         25%    red         5.000000</span><br><span class="line">                white       5.000000</span><br><span class="line">         50%    red         6.000000</span><br><span class="line">                white       6.000000</span><br><span class="line">         75%    red         6.000000</span><br><span class="line">                white       6.000000</span><br><span class="line">         max    red         8.000000</span><br><span class="line">                white       9.000000</span><br><span class="line">dtype: float64</span><br><span class="line">     quality      </span><br><span class="line">type     red white</span><br><span class="line">0.25     5.0   5.0</span><br><span class="line">0.75     6.0   6.0</span><br><span class="line">AxesSubplot(0.125,0.11;0.775x0.77)</span><br><span class="line">AxesSubplot(0.125,0.11;0.775x0.77)</span><br><span class="line">        quality</span><br><span class="line">            std</span><br><span class="line">type           </span><br><span class="line">red    0.807569</span><br><span class="line">white  0.885639</span><br><span class="line">tstat: -9.686 pvalue: 0.0000</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20200227210016145.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;由绘制的密度分布直方图和输出结果可以得出结论：两种葡萄酒的评分都近似正态分布；t检验统计量为-9.686，p值为0.000，这说明白葡萄酒的平均质量评分在统计意义上大于红葡萄酒的平均质量评分。  </p>
+<h2 id="成对变量之间的关系和相关性"><a href="#成对变量之间的关系和相关性" class="headerlink" title="成对变量之间的关系和相关性"></a>成对变量之间的关系和相关性</h2><p>&emsp;&emsp;前面已经检查了输出变量，下面简单研究一下输入变量。让我们计算一下输入变量两两之间的相关性，并为一些输入变量创建带有回归直线的散点图：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line"># 计算所有变量的相关矩阵</span><br><span class="line">print(wine.corr())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 从红葡萄酒和白葡萄酒的数据中取出一个“小”样本来进行绘图</span><br><span class="line">def take_sample(data_frame, replace=False, n=200):</span><br><span class="line">    return data_frame.loc[np.random.choice(data_frame.index, replace=replace, size=n)]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">reds_sample = take_sample(wine.loc[wine[&apos;type&apos;] == &apos;red&apos;, :])</span><br><span class="line">whites_sample = take_sample(wine.loc[wine[&apos;type&apos;] == &apos;white&apos;, :])</span><br><span class="line">wine_sample = pd.concat([reds_sample, whites_sample])</span><br><span class="line">wine[&apos;in_sample&apos;] = np.where(wine.index.isin(wine_sample.index), 1., 0.)</span><br><span class="line">print(pd.crosstab(wine.in_sample, wine.type, margins=True))</span><br><span class="line"></span><br><span class="line"># 查看成对变量之间的关系</span><br><span class="line">sns.set_style(&quot;dark&quot;)</span><br><span class="line">g = sns.pairplot(wine_sample, kind=&apos;reg&apos;, plot_kws=&#123;&quot;ci&quot;: False, &quot;x_jitter&quot;: 0.25, &quot;y_jitter&quot;: 0.25&#125;, hue=&apos;type&apos;,</span><br><span class="line">                 diag_kind=&apos;hist&apos;, diag_kws=&#123;&quot;bins&quot;: 10, &quot;alpha&quot;: 1.0&#125;, palette=dict(red=&quot;red&quot;, white=&quot;white&quot;),</span><br><span class="line">                 markers=[&quot;o&quot;, &quot;s&quot;], vars=[&apos;quality&apos;, &apos;alcohol&apos;, &apos;residual_sugar&apos;])</span><br><span class="line">print(g)</span><br><span class="line">plt.suptitle(&apos;Histograms and Scatter Plots of Quality, Alcohol, and Residual Sugar&apos;, fontsize=14,</span><br><span class="line">             horizontalalignment=&apos;center&apos;, verticalalignment=&apos;top&apos;, x=0.5, y=0.999)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;<code>corr()</code>函数可以计算出数据集中所有变量两两之间的线性相关性。<br>&emsp;&emsp;数据集中有6000多个点，所以如果将它们都画在统计图中，就很难分辨出清楚的点。我们定义了一个函数<code>take_sample()</code>，用来抽取在统计图中使用的样本点。这个函数使用pandas数据框索引和numpy的<code>random.choice()</code>函数随机选择一个行的子集。我们是用这个函数对红葡萄酒和白葡萄酒分别进行抽样，并将抽样所得的两个数据框连接成一个数据框。然后，在wine数据框中创建一个新列<code>in_sample</code>，并使用numpy的<code>where()</code>函数和pandas的<code>isin()</code>函数对这个新列进行填充，填充的值根据此行的索引值是否在抽样数据的索引值中分别设为1和0.最后，我们使用pandas的<code>crosstab()</code>函数来确认<code>in_sample</code>列中包含400个1（200条红葡萄酒数据和200条白葡萄酒数据）和6097个0。<br>&emsp;&emsp;seaborn的<code>pairplot()</code>函数可以创建一个统计图矩阵。主对角线上的图以直方图或密度图的形式显示了每个变量的单变量分布，对角线之外的图以散点图的形式显示了每两个变量之间的双变量分布，散点图中可以有回归直线，也可以没有。因为质量评分都是整数，所以加上一点振动可以更容易看出数据在何处集中。<br>&emsp;&emsp;这段代码的运行结果如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">                      fixed_acidity  volatile_acidity  ...   alcohol   quality</span><br><span class="line">fixed_acidity              1.000000          0.219008  ... -0.095452 -0.076743</span><br><span class="line">volatile_acidity           0.219008          1.000000  ... -0.037640 -0.265699</span><br><span class="line">citric_acid                0.324436         -0.377981  ... -0.010493  0.085532</span><br><span class="line">residual_sugar            -0.111981         -0.196011  ... -0.359415 -0.036980</span><br><span class="line">chlorides                  0.298195          0.377124  ... -0.256916 -0.200666</span><br><span class="line">free_sulfur_dioxide       -0.282735         -0.352557  ... -0.179838  0.055463</span><br><span class="line">total_sulfur_dioxide      -0.329054         -0.414476  ... -0.265740 -0.041385</span><br><span class="line">density                    0.458910          0.271296  ... -0.686745 -0.305858</span><br><span class="line">pH                        -0.252700          0.261454  ...  0.121248  0.019506</span><br><span class="line">sulphates                  0.299568          0.225984  ... -0.003029  0.038485</span><br><span class="line">alcohol                   -0.095452         -0.037640  ...  1.000000  0.444319</span><br><span class="line">quality                   -0.076743         -0.265699  ...  0.444319  1.000000</span><br><span class="line"></span><br><span class="line">[12 rows x 12 columns]</span><br><span class="line">type        red  white   All</span><br><span class="line">in_sample                   </span><br><span class="line">0.0        1399   4698  6097</span><br><span class="line">1.0         200    200   400</span><br><span class="line">All        1599   4898  6497</span><br><span class="line">&lt;seaborn.axisgrid.PairGrid object at 0x00000249B4D11E48&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20200227221539322.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;根据相关系数的符号，从输出中可以知道酒精含量、硫酸盐、pH值、游离二氧化硫和柠檬酸这些指标与质量是正相关的，相反，非挥发性酸、挥发性酸、残余糖分、氯化物、总二氧化硫和密度这些指标与质量是负相关的。<br>&emsp;&emsp;从统计图中可以看出，对于红葡萄酒和白葡萄酒来说，酒精含量的均值和标准差是大致相同的，但是，白葡萄酒残余糖分的均值和标准差却大于红葡萄酒残余糖分的均值和标准差。从回归直线可以看出，对于两种类型的葡萄酒，酒精含量增加时，质量评分也随之提高，相反，残余糖分增加时，质量评分则随之降低。这两个变量对白葡萄酒的影响都要大于对红葡萄酒的影响。  </p>
+<h2 id="使用最小二乘估计进行线性回归"><a href="#使用最小二乘估计进行线性回归" class="headerlink" title="使用最小二乘估计进行线性回归"></a>使用最小二乘估计进行线性回归</h2><p>&emsp;&emsp;相关系数和两两变量之间的统计图有助于对两个变量之间的关系进行量化和可视化，但是它们不能测量出每个自变量在其他自变量不变时与因变量之间的关系。线性回归可以解决这个问题。<br>&emsp;&emsp;线性回归模型如下：$$y_i\sim N(\mu_i,\sigma^2),$$$$\mu_i=\beta_0+\beta_1x_{i1}+\beta_2x_{i2}+…+\beta_px_{ip}$$对于$i=1,2,…，n$个观测和$p$个自变量。<br>&emsp;&emsp;这个模型表示观测$y_i$服从均值为$\mu_i$方差为$\sigma^2$的正态分布（高斯分布），其中$\mu_i$依赖于自变量，$\sigma^2$为一个常数。也就是说，给定了自变量的值之后，我们就可以得到一个具体的质量评分，但在另一天，给定同样的自变量值，我们可能会得到一个和前面不同的质量评分。但是，经过很多天自变量取同样的值（也就是一个很长的周期），质量评分会落在$\mu_i±\sigma$这个范围内。<br>&emsp;&emsp;下面我们使用statsmodel包来进行线性回归：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">my_formula = &apos;quality ~ alcohol + chlorides + citric_acid + density +fixed_acidity + free_sulfur_dioxide + pH&apos; \</span><br><span class="line">             &apos;+ residual_sugar + sulphates + total_sulfur_dioxide + volatile_acidity&apos;</span><br><span class="line"></span><br><span class="line">lm = ols(my_formula, data=wine).fit()</span><br><span class="line"></span><br><span class="line"># 或者，也可以使用广义线性模型（glm）语法进行线性回归</span><br><span class="line"># lm = glm(my_formula, data=wine, family=sm.families.Gaussian()).fit()</span><br><span class="line"></span><br><span class="line">print(lm.summary())</span><br><span class="line">print(&quot;\nQuantities you can extract from the result:\n%s&quot; % dir(lm))</span><br><span class="line">print(&quot;Coefficients:\n%s&quot; % lm.params)</span><br><span class="line">print(&quot;Coefficient Std Errors:\n%s&quot; % lm.bse)</span><br><span class="line">print(&quot;\nAdj. R-squared:\n%.2f&quot; % lm.rsquared_adj)</span><br><span class="line">print(&quot;\nF-statistic: %.1f   P-value: %.2f&quot; % (lm.fvalue, lm.f_pvalue))</span><br><span class="line">print(&quot;\nNumber of obs: %d   Number of fitted values: %d&quot; % (lm.nobs, len(lm.fittedvalues)))</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;运行结果如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">                            OLS Regression Results                            </span><br><span class="line">==============================================================================</span><br><span class="line">Dep. Variable:                quality   R-squared:                       0.292</span><br><span class="line">Model:                            OLS   Adj. R-squared:                  0.291</span><br><span class="line">Method:                 Least Squares   F-statistic:                     243.3</span><br><span class="line">Date:                Thu, 27 Feb 2020   Prob (F-statistic):               0.00</span><br><span class="line">Time:                        23:03:10   Log-Likelihood:                -7215.5</span><br><span class="line">No. Observations:                6497   AIC:                         1.445e+04</span><br><span class="line">Df Residuals:                    6485   BIC:                         1.454e+04</span><br><span class="line">Df Model:                          11                                         </span><br><span class="line">Covariance Type:            nonrobust                                         </span><br><span class="line">========================================================================================</span><br><span class="line">                           coef    std err          t      P&gt;|t|      [0.025      0.975]</span><br><span class="line">----------------------------------------------------------------------------------------</span><br><span class="line">Intercept               55.7627     11.894      4.688      0.000      32.447      79.079</span><br><span class="line">alcohol                  0.2670      0.017     15.963      0.000       0.234       0.300</span><br><span class="line">chlorides               -0.4837      0.333     -1.454      0.146      -1.136       0.168</span><br><span class="line">citric_acid             -0.1097      0.080     -1.377      0.168      -0.266       0.046</span><br><span class="line">density                -54.9669     12.137     -4.529      0.000     -78.760     -31.173</span><br><span class="line">fixed_acidity            0.0677      0.016      4.346      0.000       0.037       0.098</span><br><span class="line">free_sulfur_dioxide      0.0060      0.001      7.948      0.000       0.004       0.007</span><br><span class="line">pH                       0.4393      0.090      4.861      0.000       0.262       0.616</span><br><span class="line">residual_sugar           0.0436      0.005      8.449      0.000       0.033       0.054</span><br><span class="line">sulphates                0.7683      0.076     10.092      0.000       0.619       0.917</span><br><span class="line">total_sulfur_dioxide    -0.0025      0.000     -8.969      0.000      -0.003      -0.002</span><br><span class="line">volatile_acidity        -1.3279      0.077    -17.162      0.000      -1.480      -1.176</span><br><span class="line">==============================================================================</span><br><span class="line">Omnibus:                      144.075   Durbin-Watson:                   1.646</span><br><span class="line">Prob(Omnibus):                  0.000   Jarque-Bera (JB):              324.712</span><br><span class="line">Skew:                          -0.006   Prob(JB):                     3.09e-71</span><br><span class="line">Kurtosis:                       4.095   Cond. No.                     2.49e+05</span><br><span class="line">==============================================================================</span><br><span class="line"></span><br><span class="line">Warnings:</span><br><span class="line">[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</span><br><span class="line">[2] The condition number is large, 2.49e+05. This might indicate that there are</span><br><span class="line">strong multicollinearity or other numerical problems.</span><br><span class="line"></span><br><span class="line">Quantities you can extract from the result:</span><br><span class="line">[&apos;HC0_se&apos;, &apos;HC1_se&apos;, &apos;HC2_se&apos;, &apos;HC3_se&apos;, &apos;_HCCM&apos;, &apos;__class__&apos;, &apos;__delattr__&apos;, &apos;__dict__&apos;, &apos;__dir__&apos;, &apos;__doc__&apos;, &apos;__eq__&apos;, &apos;__format__&apos;, &apos;__ge__&apos;, &apos;__getattribute__&apos;, &apos;__gt__&apos;, &apos;__hash__&apos;, &apos;__init__&apos;, &apos;__init_subclass__&apos;, &apos;__le__&apos;, &apos;__lt__&apos;, &apos;__module__&apos;, &apos;__ne__&apos;, &apos;__new__&apos;, &apos;__reduce__&apos;, &apos;__reduce_ex__&apos;, &apos;__repr__&apos;, &apos;__setattr__&apos;, &apos;__sizeof__&apos;, &apos;__str__&apos;, &apos;__subclasshook__&apos;, &apos;__weakref__&apos;, &apos;_cache&apos;, &apos;_data_attr&apos;, &apos;_get_robustcov_results&apos;, &apos;_is_nested&apos;, &apos;_wexog_singular_values&apos;, &apos;aic&apos;, &apos;bic&apos;, &apos;bse&apos;, &apos;centered_tss&apos;, &apos;compare_f_test&apos;, &apos;compare_lm_test&apos;, &apos;compare_lr_test&apos;, &apos;condition_number&apos;, &apos;conf_int&apos;, &apos;conf_int_el&apos;, &apos;cov_HC0&apos;, &apos;cov_HC1&apos;, &apos;cov_HC2&apos;, &apos;cov_HC3&apos;, &apos;cov_kwds&apos;, &apos;cov_params&apos;, &apos;cov_type&apos;, &apos;df_model&apos;, &apos;df_resid&apos;, &apos;diagn&apos;, &apos;eigenvals&apos;, &apos;el_test&apos;, &apos;ess&apos;, &apos;f_pvalue&apos;, &apos;f_test&apos;, &apos;fittedvalues&apos;, &apos;fvalue&apos;, &apos;get_influence&apos;, &apos;get_prediction&apos;, &apos;get_robustcov_results&apos;, &apos;initialize&apos;, &apos;k_constant&apos;, &apos;llf&apos;, &apos;load&apos;, &apos;model&apos;, &apos;mse_model&apos;, &apos;mse_resid&apos;, &apos;mse_total&apos;, &apos;nobs&apos;, &apos;normalized_cov_params&apos;, &apos;outlier_test&apos;, &apos;params&apos;, &apos;predict&apos;, &apos;pvalues&apos;, &apos;remove_data&apos;, &apos;resid&apos;, &apos;resid_pearson&apos;, &apos;rsquared&apos;, &apos;rsquared_adj&apos;, &apos;save&apos;, &apos;scale&apos;, &apos;ssr&apos;, &apos;summary&apos;, &apos;summary2&apos;, &apos;t_test&apos;, &apos;t_test_pairwise&apos;, &apos;tvalues&apos;, &apos;uncentered_tss&apos;, &apos;use_t&apos;, &apos;wald_test&apos;, &apos;wald_test_terms&apos;, &apos;wresid&apos;]</span><br><span class="line">Coefficients:</span><br><span class="line">Intercept               55.762750</span><br><span class="line">alcohol                  0.267030</span><br><span class="line">chlorides               -0.483714</span><br><span class="line">citric_acid             -0.109657</span><br><span class="line">density                -54.966942</span><br><span class="line">fixed_acidity            0.067684</span><br><span class="line">free_sulfur_dioxide      0.005970</span><br><span class="line">pH                       0.439296</span><br><span class="line">residual_sugar           0.043559</span><br><span class="line">sulphates                0.768252</span><br><span class="line">total_sulfur_dioxide    -0.002481</span><br><span class="line">volatile_acidity        -1.327892</span><br><span class="line">dtype: float64</span><br><span class="line">Coefficient Std Errors:</span><br><span class="line">Intercept               11.893899</span><br><span class="line">alcohol                  0.016728</span><br><span class="line">chlorides                0.332683</span><br><span class="line">citric_acid              0.079619</span><br><span class="line">density                 12.137473</span><br><span class="line">fixed_acidity            0.015573</span><br><span class="line">free_sulfur_dioxide      0.000751</span><br><span class="line">pH                       0.090371</span><br><span class="line">residual_sugar           0.005156</span><br><span class="line">sulphates                0.076123</span><br><span class="line">total_sulfur_dioxide     0.000277</span><br><span class="line">volatile_acidity         0.077373</span><br><span class="line">dtype: float64</span><br><span class="line"></span><br><span class="line">Adj. R-squared:</span><br><span class="line">0.29</span><br><span class="line"></span><br><span class="line">F-statistic: 243.3   P-value: 0.00</span><br><span class="line"></span><br><span class="line">Number of obs: 6497   Number of fitted values: 6497</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;字符串变量<code>my_formula</code>包含的是类似R语言语法的回归公式定义。波浪线左侧的变量<code>quality</code>是因变量，波浪线右侧的变量是自变量。<br>&emsp;&emsp;下一行代码使用公式和数据你喝一个普通最小二乘回归模型，并将结果赋给变量<code>lm</code>。被注释掉的那一行代码使用广义线性模型（glm）的语法代替普通最小二乘语法也可以拟合同样的模型。  </p>
+<blockquote>
+<p>Tips:<br>dir()：不带参数时，返回当前范围内的变量、方法和定义的类型列表；带参数时，返回参数的属性、方法列表<br>lm.params：以一个序列的形式返回模型系数<br>lm.rsquared_adj：返回修正R方<br>lm.fvalue：返回F统计量<br>lm.f_pvalue：返回F统计量的p值<br>lm.fittedvalues：返回拟合值</p>
+</blockquote>
+<h2 id="系数解释"><a href="#系数解释" class="headerlink" title="系数解释"></a>系数解释</h2><p>&emsp;&emsp;在这个模型中，某个自变量系数的意义是，在其他自变量保持不变的情况下，这个自变量发生1个单位的变化时，导致葡萄酒质量评分发生的平均变化。<br>&emsp;&emsp;并不是所有的系数都需要解释。例如，截距系数的意义是当所有自变量的值都为0时的期望评分。因为没有任何一种葡萄酒的各种成分都为0，所以截距系数没有具体意义。  </p>
+<h2 id="自变量标准化"><a href="#自变量标准化" class="headerlink" title="自变量标准化"></a>自变量标准化</h2><p>&emsp;&emsp;关于这个模型，普通最小二乘回归是通过使残差平方和最小化来估计未知的$\beta$参数值的，这里的残差是指自变量观测值与拟合值之间的差别。因为残差大小是依赖于自变量的测量单位的，所以如果自变量的测量单位相差很大的话，那么将自变量标准化后，就可以更容易对模型进行解释了。对自变量进行标准化的方法是，先从自变量的每个观测值中减去均值，然后再除以这个自变量的标准差。自变量标准化完成以后，它的均值为0，标准差为1。  </p>
+<blockquote>
+<p>在 <em>Data Analysis Using Regression and Multilevel/Hierarchical Models</em> (Cambridge University Press, 2007, p.56) 中，Gelman and Hill建议在数据集中既有连续型自变量又有二值型自变量的情况下，用两杯标准差去除，而不是用一倍标准差。这样的话，标准化自变量一个单位的变化就对应于均值上下一个标准差的变化。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line"># 创建一个名为dependent_variable的序列来保存质量数据</span><br><span class="line">dependent_variable = wine[&apos;quality&apos;]</span><br><span class="line"></span><br><span class="line"># 创建一个名为independent_variables的数据框来保存初始的葡萄酒数据集中除quality、type和in_sample之外的所有变量</span><br><span class="line">independent_variables = wine[wine.columns.difference([&apos;quality&apos;, &apos;type&apos;, &apos;in_sample&apos;])]</span><br><span class="line"></span><br><span class="line"># 对自变量进行标准化</span><br><span class="line"># 对每个变量，在每个观测中减去变量的均值</span><br><span class="line"># 并且使用结果除以变量的标准差</span><br><span class="line">independent_variables_standardized = (independent_variables</span><br><span class="line">                                      - independent_variables.mean()) / independent_variables.std()</span><br><span class="line"></span><br><span class="line"># 将因变量quality作为一列添加到自变量数据框中</span><br><span class="line"># 创建一个带有标准化自变量的新数据集</span><br><span class="line">wine_standardized = pd.concat([dependent_variable, independent_variables_standardized], axis=1)</span><br><span class="line"></span><br><span class="line"># 重新进行线性回归，并查看一下摘要统计</span><br><span class="line">lm_standardized = ols(my_formula, data=wine_standardized).fit()</span><br><span class="line">print(lm_standardized.summary())</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;运行结果如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">                            OLS Regression Results                            </span><br><span class="line">==============================================================================</span><br><span class="line">Dep. Variable:                quality   R-squared:                       0.292</span><br><span class="line">Model:                            OLS   Adj. R-squared:                  0.291</span><br><span class="line">Method:                 Least Squares   F-statistic:                     243.3</span><br><span class="line">Date:                Fri, 28 Feb 2020   Prob (F-statistic):               0.00</span><br><span class="line">Time:                        16:31:15   Log-Likelihood:                -7215.5</span><br><span class="line">No. Observations:                6497   AIC:                         1.445e+04</span><br><span class="line">Df Residuals:                    6485   BIC:                         1.454e+04</span><br><span class="line">Df Model:                          11                                         </span><br><span class="line">Covariance Type:            nonrobust                                         </span><br><span class="line">========================================================================================</span><br><span class="line">                           coef    std err          t      P&gt;|t|      [0.025      0.975]</span><br><span class="line">----------------------------------------------------------------------------------------</span><br><span class="line">Intercept                5.8184      0.009    637.785      0.000       5.800       5.836</span><br><span class="line">alcohol                  0.3185      0.020     15.963      0.000       0.279       0.358</span><br><span class="line">chlorides               -0.0169      0.012     -1.454      0.146      -0.040       0.006</span><br><span class="line">citric_acid             -0.0159      0.012     -1.377      0.168      -0.039       0.007</span><br><span class="line">density                 -0.1648      0.036     -4.529      0.000      -0.236      -0.093</span><br><span class="line">fixed_acidity            0.0877      0.020      4.346      0.000       0.048       0.127</span><br><span class="line">free_sulfur_dioxide      0.1060      0.013      7.948      0.000       0.080       0.132</span><br><span class="line">pH                       0.0706      0.015      4.861      0.000       0.042       0.099</span><br><span class="line">residual_sugar           0.2072      0.025      8.449      0.000       0.159       0.255</span><br><span class="line">sulphates                0.1143      0.011     10.092      0.000       0.092       0.137</span><br><span class="line">total_sulfur_dioxide    -0.1402      0.016     -8.969      0.000      -0.171      -0.110</span><br><span class="line">volatile_acidity        -0.2186      0.013    -17.162      0.000      -0.244      -0.194</span><br><span class="line">==============================================================================</span><br><span class="line">Omnibus:                      144.075   Durbin-Watson:                   1.646</span><br><span class="line">Prob(Omnibus):                  0.000   Jarque-Bera (JB):              324.712</span><br><span class="line">Skew:                          -0.006   Prob(JB):                     3.09e-71</span><br><span class="line">Kurtosis:                       4.095   Cond. No.                         9.61</span><br><span class="line">==============================================================================</span><br><span class="line"></span><br><span class="line">Warnings:</span><br><span class="line">[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;自变量标准化会改变对模型系数的解释。现在每个自变量系数的含义是，不同的葡萄酒在其他自变量均相同的情况下，某个自变量相差1个标准差，会使葡萄酒的质量评分平均相差多少个标准差。<br>&emsp;&emsp;自变量标准化同样会改变对截距的解释。当解释变量被标准化后，截距表示的就是当所有自变量取值为均值时因变量的均值。  </p>
+<h2 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 使用葡萄酒数据集中的前10个观测创建10个“新”观测</span><br><span class="line"># 新观测中只包含模型中使用的自变量</span><br><span class="line">new_observations = wine.loc[wine.index.isin(range(10)), independent_variables.columns]</span><br><span class="line"></span><br><span class="line"># 基于新观测中的葡萄酒特性预测质量评分</span><br><span class="line">y_predicted = lm.predict(new_observations)</span><br><span class="line"></span><br><span class="line"># 将预测值保留两位小数并打印到屏幕上</span><br><span class="line">y_predicted_rounded = [round(score, 2) for score in y_predicted]</span><br><span class="line">print(y_predicted_rounded)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;运行结果如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[5.0, 4.92, 5.03, 5.68, 5.0, 5.04, 5.02, 5.3, 5.24, 5.69]</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    I'd walk a million miles just to see your smile. 
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2020/02/28/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%8F%8F%E8%BF%B0%E6%80%A7%E7%BB%9F%E8%AE%A1%E4%B8%8E%E5%BB%BA%E6%A8%A1(1)/">Python数据分析基础之描述性统计与建模(1)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/02/20/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%9B%BE%E4%B8%8E%E5%9B%BE%E8%A1%A8%EF%BC%88ggplot%E7%95%AA%E5%A4%96%E7%AF%87%EF%BC%89/">Python数据分析基础之图与图表（ggplot番</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/02/19/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%9B%BE%E4%B8%8E%E5%9B%BE%E8%A1%A8(2)/">Python数据分析基础之图与图表(2)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/02/19/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%9B%BE%E4%B8%8E%E5%9B%BE%E8%A1%A8(1)/">Python数据分析基础之图与图表(1)</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/CCH21" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:1398635912@qq.com" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/" target="_blank" rel="noopener">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
