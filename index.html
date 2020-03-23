@@ -147,6 +147,174 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2020/03/23/%E3%80%90Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0%E3%80%91requests%E6%A8%A1%E5%9D%97%E5%9F%BA%E7%A1%80/">
+                '【Python网络爬虫笔记】requests模块'
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-03-23</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p><strong>学习资源</strong>：<a href="https://www.icourse163.org/learn/BIT-1001870001?tid=1001962001#/learn/announce" target="_blank" rel="noopener">中国大学MOOC Python网络爬虫与信息提取 北京理工大学计算机学院 嵩天</a>  </p>
+<hr>
+<h2 id="安装requests模块"><a href="#安装requests模块" class="headerlink" title="安装requests模块"></a>安装requests模块</h2><p>&emsp;&emsp;我使用的是Anaconda 3，其中自带了requests模块供我们使用。如果没有requests模块的话，只需要以管理员身份打开cmd，输入命令<code>pip install requests</code>即可。  </p>
+<h2 id="requests模块的7个主要方法"><a href="#requests模块的7个主要方法" class="headerlink" title="requests模块的7个主要方法"></a>requests模块的7个主要方法</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>requests.request()</td>
+<td>构造一个请求，是支撑以下各方法的基础方法</td>
+</tr>
+<tr>
+<td>requests.get()</td>
+<td>获取HTML网页的主要方法，对应于HTTP的GET</td>
+</tr>
+<tr>
+<td>requests.head()</td>
+<td>获取HTML网页头信息，对应于HTTP的HEAD</td>
+</tr>
+<tr>
+<td>requests.post()</td>
+<td>向HTML网页提交POST请求，对应于HTTP的POST</td>
+</tr>
+<tr>
+<td>requests.put()</td>
+<td>向HTML网页提交PUT请求，对应于HTTP的PUT</td>
+</tr>
+<tr>
+<td>requests.patch()</td>
+<td>向HTML网页提交局部修改请求，对应于HTTP的PATCH</td>
+</tr>
+<tr>
+<td>requests.delete()</td>
+<td>向HTML网页提交删除请求，对应于HTTP的DELETE</td>
+</tr>
+</tbody></table>
+<p><strong>1.requests.request()</strong><br><strong>语法</strong><br><code>requests.request(method, url, **kwargs)</code><br><strong>参数说明</strong><br>(1)<code>method</code>：请求方式，包括GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS。<br>(2)<code>url</code>：拟获取页面的URL链接。<br>(3)<code>**kwargs</code>：控制访问的参数，共13个，均为可选项。  </p>
+<table>
+<thead>
+<tr>
+<th>**kwargs参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>params</td>
+<td>字典或字节序列，作为参数增加到URL中</td>
+</tr>
+<tr>
+<td>data</td>
+<td>字典、字节序列或文件对象，作为Request的内容</td>
+</tr>
+<tr>
+<td>json</td>
+<td>JSON格式的数据，作为Request的内容</td>
+</tr>
+<tr>
+<td>headers</td>
+<td>字典，HTTP定制头</td>
+</tr>
+<tr>
+<td>cookies</td>
+<td>字典或CookieJar，Request中的cookie</td>
+</tr>
+<tr>
+<td>auth</td>
+<td>元组，支持HTTP认证功能</td>
+</tr>
+<tr>
+<td>files</td>
+<td>字典，传输文件</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>设定超时时间（单位：秒）</td>
+</tr>
+<tr>
+<td>proxies</td>
+<td>字典，设定访问代理服务器，可以增加登录认证</td>
+</tr>
+<tr>
+<td>allow_redirects</td>
+<td>True（默认）或False，重定向开关</td>
+</tr>
+<tr>
+<td>stream</td>
+<td>True（默认）或False，获取内容立即下载开关</td>
+</tr>
+<tr>
+<td>verify</td>
+<td>True（默认）或False，认定SSL证书开关</td>
+</tr>
+<tr>
+<td>cert</td>
+<td>本地SSL证书路径</td>
+</tr>
+</tbody></table>
+<p><strong>2.requests.get()</strong><br><strong>语法</strong><br><code>requests.get(url, params=None, **kwargs)</code><br><strong>参数说明</strong><br>(1)<code>url</code>：拟获取页面的URL链接。<br>(2)<code>params</code>：URL中的额外参数，字典或字节流格式。<br>(3)<code>**kwargs</code>：12个控制访问的参数。  </p>
+<p><strong>3.requests.head()</strong><br><strong>语法</strong><br><code>requests.head(url, **kwargs)</code><br><strong>参数说明</strong><br>(1)<code>url</code>：拟获取页面的URL链接。<br>(2)<code>**kwargs</code>：12个控制访问的参数。  </p>
+<p><strong>4.requests.post()</strong><br><strong>语法</strong><br><code>requests.post(url, data=None, json=None, **kwargs)</code><br><strong>参数说明</strong><br>(1)<code>url</code>：拟更新页面的URL链接。<br>(2)<code>data</code>：字典、字节序列或文件，Request的内容。<br>(3)<code>json</code>：JSON格式的数据，Request的内容。<br>(4)<code>**kwargs</code>：12个控制访问的参数。  </p>
+<p><strong>5.requests.put()</strong><br><strong>语法</strong><br><code>requests.put(url, data=None, **kwargs)</code><br><strong>参数说明</strong><br>(1)<code>url</code>：拟更新页面的URL链接。<br>(2)<code>data</code>：字典、字节序列或文件，Request的内容。<br>(3)<code>**kwargs</code>：12个控制访问的参数。  </p>
+<p><strong>6.requests.patch()</strong><br><strong>语法</strong><br><code>requests.patch(url, data=None, **kwargs)</code><br><strong>参数说明</strong><br>(1)<code>url</code>：拟更新页面的URL链接。<br>(2)<code>data</code>：字典、字节序列或文件，Request的内容。<br>(3)<code>**kwargs</code>：12个控制访问的参数。  </p>
+<p><strong>7.requests.delete()</strong><br><strong>语法</strong><br><code>requests.delete(url, **kwargs)</code><br><strong>参数说明</strong><br>(1)<code>url</code>：拟删除页面的URL链接。<br>(2)<code>**kwargs</code>：12个控制访问的参数。  </p>
+<h2 id="requests模块的2个重要对象"><a href="#requests模块的2个重要对象" class="headerlink" title="requests模块的2个重要对象"></a>requests模块的2个重要对象</h2><p><img src="https://img-blog.csdnimg.cn/20200323164044630.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;Response对象包含服务器返回的所有信息，也包含请求的Request信息。下表是Response对象的属性：  </p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>r.status_code</td>
+<td>HTTP请求的返回状态，200表示连接成功，404表示失败</td>
+</tr>
+<tr>
+<td>r.text</td>
+<td>HTTP响应内容的字符串形式，即url对应的页面内容</td>
+</tr>
+<tr>
+<td>r.encoding</td>
+<td>从HTTP header中猜测的响应内容编码方式</td>
+</tr>
+<tr>
+<td>r.appartment_encoding</td>
+<td>从内容中分析出的响应内容编码方式（备选编码方式）</td>
+</tr>
+<tr>
+<td>r.content</td>
+<td>HTTP响应内容的二进制形式</td>
+</tr>
+</tbody></table>
+<p>&emsp;&emsp;下面针对Response的编码进行说明。<br>&emsp;&emsp;<code>r.encoding</code>：如果header中不存在charset，则认为编码为ISO-8859-1，<code>r.text</code>根据<code>r.coding</code>显示网页内容。<br>&emsp;&emsp;<code>r.apparent_encoding</code>：根据网页内容分析出的编码方式，可以看作是<code>r.encoding</code>的备选。  </p>
+<h2 id="爬取网页的通用代码框架"><a href="#爬取网页的通用代码框架" class="headerlink" title="爬取网页的通用代码框架"></a>爬取网页的通用代码框架</h2><p>&emsp;&emsp;首先我们要理解requests模块的异常。网络连接是有风险的，所以异常处理很重要。下表是对requests模块的异常的说明：<br>异常|说明<br>——|——<br>requests.ConnectionError|网络连接错误异常，如DNS查询失败、拒绝连接等<br>requests.HTTPError|HTTP错误异常<br>requests.URLRequired|URL缺失异常<br>requests.TooManyRedirects|超过最大重定向次数，产生重定向异常<br>requests.ConnectTimeout|连接远程服务器超时异常<br>requests.Timeout|请求URL超时，产生超时异常</p>
+<p>&emsp;&emsp;下面是爬取网页的通用代码框架：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def getHTMLText(url):</span><br><span class="line">    try:</span><br><span class="line">        r = requests.get(url, timeout=30)</span><br><span class="line">        r.raise_for_status()    # 如果状态不是200，引发HTTPError异常</span><br><span class="line">        r.encoding = r.apparent_encoding</span><br><span class="line">        return r.text</span><br><span class="line">    except:</span><br><span class="line">        return &apos;产生异常&apos;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    url = &apos;http://www.baidu.com&apos;</span><br><span class="line">    print(getHTMLText(url))</span><br></pre></td></tr></table></figure>
+
+<h2 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h2><p>&emsp;&emsp;HTTP是Hypertext Transfer Protocol的缩写，中文名称为超文本传输协议。URL是通过HTTP协议存取资源的Internet路径，一个URL对应一个数据资源。<br>&emsp;&emsp;下表是HTTP协议对资源的操作：<br>方法|说明<br>——|——<br>GET|请求获取URL位置的资源<br>HEAD|请求获取URL位置资源的响应消息报告，即获得该资源的头部信息<br>POST|请求向URL位置的资源后附加新的数据<br>PUT|请求向URL位置存储一个资源，覆盖原URL位置的资源<br>PATCH|请求局部更新URL位置的资源，即改变该处资源的部分内容<br>DELETE|请求删除URL位置存储的资源</p>
+<p>&emsp;&emsp;通过URL和命令管理资源，操作独立无状态，网络通道及服务器成为了黑盒子。<br>&emsp;&emsp;下面来讨论PATCH和PUT的区别。我们假设URL位置有一组数据UserInfo，包括UserID、UserName等20个字段。我们的需求是用户修改UserName，其他不变。如果采用PATCH，则仅向URL提交UserName的局部更新请求。如果采用PUT，则必须将所有字段一并提交到URL，未提交字段被删除。PATCH的最主要好处是节省网络带宽。  </p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2020/03/16/%E5%AE%9E%E9%AA%8C%E5%AE%A420200314%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%BB%BB%E5%8A%A1%E6%80%BB%E7%BB%93/">
                 实验室20200314数据处理任务总结
             </a>
@@ -604,39 +772,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2020/02/12/%E8%87%AA%E5%AD%A6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E7%BB%AA%E8%AE%BA/">
-                自学数据结构与算法——绪论
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2020-02-12</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <blockquote>
-<p>参考资料：《大话数据结构》，作者程杰，清华大学出版社  </p>
-</blockquote>
-<h2 id="什么是数据结构"><a href="#什么是数据结构" class="headerlink" title="什么是数据结构"></a>什么是数据结构</h2><p>&emsp;&emsp;数据结构是一门研究非数值计算的程序设计问题中的操作对象，以及它们之间的关系和操作等相关问题的学科。这里不得不提一个著名的公式：<strong>程序设计=数据结构+算法</strong>。<br>&emsp;&emsp;在说数据结构之前，我们应该先要了解什么是数据。<strong>数据</strong>是描述客观事物的符号，是计算机中可以操作的对象，是能被计算机识别，并输入给计算机处理的符号集合。数据包括整型、实型等<strong>数值类型</strong>，也包括字符、声音、图像、视频等<strong>非数值类型</strong>。也就是说，这里所说的数据其实就是符号，他们具备两个前提：<strong>可以输入到计算机中</strong>，<strong>能被计算机程序处理</strong>。<br>&emsp;&emsp;<strong>数据元素</strong>是组成数据的、有一定意义的基本单位，在计算机中通常作为整体处理，也被称为<strong>记录</strong>。一个数据元素可以由若干个<strong>数据项</strong>组成。举个简单的例子，在人类中，人就是数据元素，而人的眼睛、耳朵、鼻子、手、脚等就是数据项，人的姓名、性别、年龄、联系方式等也可以是数据项。具体有哪些数据项，要视系统而决定。<strong>数据项是数据不可分割的最小单位</strong>。<br>&emsp;&emsp;<strong>数据对象</strong>是性质相同的数据元素的集合，是数据的子集。<br><img src="https://img-blog.csdnimg.cn/20200212213008839.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;以上说的这么多都属于数据的范畴，接下来我们来说一下什么是结构。<br>&emsp;&emsp;简单来说，结构就是关系。而严格来说，<strong>结构</strong>是指各个组成部分相互搭配和排列的方式。不同数据元素之间不是独立的，而是存在特定的关系。<br>&emsp;&emsp;说了这么多，<strong>数据结构</strong>就是相互之间存在一种或多种特定关系的数据元素的集合。在计算机中，数据元素并不是孤立、杂乱无序的，而是具有内在联系的数据集合。数据元素之间存在的一种或多种特定关系，也就是数据的组织形式。  </p>
-<h2 id="逻辑结构和物理结构"><a href="#逻辑结构和物理结构" class="headerlink" title="逻辑结构和物理结构"></a>逻辑结构和物理结构</h2><p>&emsp;&emsp;数据结构分为<strong>逻辑结构</strong>和<strong>物理结构</strong>。<br><img src="https://img-blog.csdnimg.cn/20200212210205553.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;逻辑结构是指数据对象中数据元素之间的相互关系，分为以下四种：<br>&emsp;&emsp;1.集合结构：集合结构中的数据元素除了<strong>同属于一个集合</strong>外，它们之间<strong>没有其它关系</strong>。它类似于数学中的集合。如下图所示。<br><img src="https://img-blog.csdnimg.cn/20200212210631112.png" alt="在这里插入图片描述"><br>&emsp;&emsp;2.线性结构：线性结构中的数据元素之间是<strong>一对一</strong>的关系。如下图所示。<br><img src="https://img-blog.csdnimg.cn/20200212210603680.png" alt="在这里插入图片描述"><br>&emsp;&emsp;3.树形结构：树型结构中的数据元素之间存在一种<strong>一对多</strong>的层次关系。如下图所示。<br><img src="https://img-blog.csdnimg.cn/20200212210744649.png" alt="在这里插入图片描述"><br>&emsp;&emsp;4.图形结构：图形结构的数据元素是<strong>多对多</strong>的关系。如下图所示。<br><img src="https://img-blog.csdnimg.cn/2020021221085452.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;说完了逻辑结构，我们再来说一说物理结构（也叫存储结构）。物理结构是指数据的逻辑结构在计算机中的存储形式。它分为以下两种结构：<br>&emsp;&emsp;1.顺序存储结构：是把数据元素存放在地址连续的存储单元里，其数据间的逻辑关系和物理关系是一致的。数组就是这样的顺序存储结构。顺序存储结构如下图所示。<br><img src="https://img-blog.csdnimg.cn/20200212211255349.png" alt="在这里插入图片描述"><br>&emsp;&emsp;2.链式存储结构：是把数据元素存放在任意的存储单元里，这组存储单元可以是连续的，也可以是不连续的。数据元素的存储关系并不能反映其逻辑关系，因此需要用一个指针存放数据元素的地址，通过地址就可以找到相关联数据元素的位置。链式存储结构如下图所示。<br><img src="https://img-blog.csdnimg.cn/20200212211541182.png" alt="在这里插入图片描述"></p>
-<h2 id="抽象数据类型"><a href="#抽象数据类型" class="headerlink" title="抽象数据类型"></a>抽象数据类型</h2><p>&emsp;&emsp;<strong>数据类型</strong>是指一组性质相同的值的集合及定义在此集合上的一些操作的总称。数据类型按照值的不同进行划分。在高级语言中，每个变量、常量和表达式都有各自的取值范围。类型用来说明变量或表达式的取值范围和所能进行的操作。<br>&emsp;&emsp;在C语言中，按照取值的不同，数据类型可以分为两类。一类是<strong>原子类型</strong>，它是<strong>不可以再分解</strong>的基本类型，包括整型、实型、字符型等。另一类是<strong>结构类型</strong>，它由若干个类型组合而成，是<strong>可以再分解</strong>的，比如整型数组就是由若干个整型数据组成的。<br>&emsp;&emsp;<strong>抽象数据类型</strong>（Abstract Data Type, ADT）是指一个数学模型及定义在该模型上的一组操作。抽象数据类型的定义仅取决于它的一组逻辑特性，而与其在计算机内部如何表示和实现无关。“抽象”的意义在于数据类型的数学抽象特性。事实上，抽象数据类型<strong>体现了程序设计中问题分解、抽象和信息隐藏的特性</strong>。<br>&emsp;&emsp;下面给出了描述抽象数据类型的标准格式。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ADT 抽象数据类型名</span><br><span class="line">Data</span><br><span class="line">    数据元素之间逻辑关系的定义</span><br><span class="line">Operation</span><br><span class="line">    操作1</span><br><span class="line">        初始条件</span><br><span class="line">        操作结果描述</span><br><span class="line">    操作2</span><br><span class="line">        ……</span><br><span class="line">    操作n</span><br><span class="line">        ……</span><br><span class="line">endADT</span><br></pre></td></tr></table></figure>
-
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -679,6 +814,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2020/03/23/%E3%80%90Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0%E3%80%91requests%E6%A8%A1%E5%9D%97%E5%9F%BA%E7%A1%80/">&#39;【Python网络爬虫笔记】requests模块</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2020/03/16/%E5%AE%9E%E9%AA%8C%E5%AE%A420200314%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%BB%BB%E5%8A%A1%E6%80%BB%E7%BB%93/">实验室20200314数据处理任务总结</a>
             </li>
             
@@ -688,10 +827,6 @@
             
             <li>
                 <a class="footer-post" href="/2020/02/28/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%8F%8F%E8%BF%B0%E6%80%A7%E7%BB%9F%E8%AE%A1%E4%B8%8E%E5%BB%BA%E6%A8%A1(1)/">Python数据分析基础之描述性统计与建模(1)</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2020/02/20/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%9B%BE%E4%B8%8E%E5%9B%BE%E8%A1%A8%EF%BC%88ggplot%E7%95%AA%E5%A4%96%E7%AF%87%EF%BC%89/">Python数据分析基础之图与图表（ggplot番</a>
             </li>
             
         </ul>
