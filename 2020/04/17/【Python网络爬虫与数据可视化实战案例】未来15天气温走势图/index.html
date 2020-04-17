@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="需求描述&amp;emsp;&amp;emsp;打开天气网，点击上方城市名称，再点击“15天天气”，进入如下页面。这里以天津为例。)&amp;emsp;&amp;emsp;可以看到，这里是有未来15天的天气和气温状况的。我们要做的就是把每天的最高和最低气温爬取下来，并做成折线图的形式。  
+需求分析&amp;emsp;&amp;emsp;任意选取">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="【Python网络爬虫与数据可视化实战案例】未来15天气温走势图"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Welcome to CCH21&#39;s Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>【Python网络爬虫与数据可视化实战案例】未来15天气温走势图 - Welcome to CCH21&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2020/04/17/%E3%80%90Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%E3%80%91%E6%9C%AA%E6%9D%A515%E5%A4%A9%E6%B0%94%E6%B8%A9%E8%B5%B0%E5%8A%BF%E5%9B%BE/">
+                【Python网络爬虫与数据可视化实战案例】未来15天气温走势图
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-04-17</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="需求描述"><a href="#需求描述" class="headerlink" title="需求描述"></a>需求描述</h2><p>&emsp;&emsp;打开<a href="https://www.tianqi.com/" target="_blank" rel="noopener">天气网</a>，点击上方城市名称，再点击“15天天气”，进入如下页面。这里以天津为例。<br><img src="https://img-blog.csdnimg.cn/20200417100135778.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200417100219388.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200417100041540.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;可以看到，这里是有未来15天的天气和气温状况的。我们要做的就是把每天的最高和最低气温爬取下来，并做成折线图的形式。  </p>
+<h2 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h2><p>&emsp;&emsp;任意选取一天的气温，单击鼠标右键检查元素（这里我使用的是Firefox浏览器，不同浏览器可能略有不同）进入查看器。我们得到了下图所示的HTML结构。<br><img src="https://img-blog.csdnimg.cn/20200417100539947.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;可以看出，每一天的天气信息都存储在<code>class</code>属性为<code>table_day</code>的<code>div</code>标签之中，而气温信息则存储在<code>div</code>标签内部的<code>class</code>属性为<code>temp</code>的<code>li</code>标签之中。那么，我们只需要定位到这个标签，对该标签内的文本进行提取，即可获得这15天的最高气温和最低气温。  </p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>&emsp;&emsp;首先我们需要导入相关的模块。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">import requests</span><br><span class="line">from pyecharts import Line</span><br><span class="line">from bs4 import BeautifulSoup</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;对网站发起请求，获取页面的数据。即进行UA伪装后对URL发起GET请求。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">headers = &#123;&apos;User-Agent&apos;: &apos;Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0&apos;&#125;</span><br><span class="line">url = &apos;https://www.tianqi.com/tianjin/15/&apos;</span><br><span class="line">response = requests.get(url=url, headers=headers)</span><br><span class="line">page_text = response.text</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;筛选出有关气温信息的内容。<br>&emsp;&emsp;在筛选出<code>class</code>属性为<code>temp</code>的<code>li</code>标签的文本之后，我使用了正则表达式来分离最高气温值与最低气温值，并保存到对应的列表中。以波浪线作为切入点，波浪线前的数字即为最低气温，波浪线后的数字即为最高气温。获取正则匹配的文本之后，对字符串进行切片，然后使用<code>eval()</code>函数将其转化为数字形式存放在列表中。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">soup = BeautifulSoup(page_text, &apos;html.parser&apos;)</span><br><span class="line">div_list = soup.find_all(class_=&apos;box_day&apos;)</span><br><span class="line">table_day_list = div_list[0].find_all(class_=&apos;table_day&apos;)</span><br><span class="line">low_temp = []</span><br><span class="line">high_temp = []</span><br><span class="line">for i in range(len(table_day_list)):</span><br><span class="line">    li = table_day_list[i].find(class_=&apos;temp&apos;).text</span><br><span class="line">    low = eval(re.search(r&apos;(\d*)~&apos;, li).group()[:-1])</span><br><span class="line">    low_temp.append(low)</span><br><span class="line">    high = eval(re.search(r&apos;~(\d*)&apos;, li).group()[1:])</span><br><span class="line">    high_temp.append(high)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;最后一步，使用pyecharts模块进行数据可视化。<br>&emsp;&emsp;这里我偷了个懒，<code>attr</code>列表中的内容是可以在筛选数据的过程中一并获取的。写代码的时候为了方便就自己写了<code>attr</code>列表。这样写有个缺点，就是在做下一次的15天气温预报的时候需要手动更改<code>attr</code>列表中的元素。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">attr = [&apos;2020-04-16&apos;, &apos;2020-04-17&apos;, &apos;2020-04-18&apos;, &apos;2020-04-19&apos;, &apos;2020-04-20&apos;, &apos;2020-04-21&apos;, &apos;2020-04-22&apos;, &apos;2020-04-23&apos;,</span><br><span class="line">        &apos;2020-04-24&apos;, &apos;2020-04-25&apos;, &apos;2020-04-26&apos;, &apos;2020-04-27&apos;, &apos;2020-04-28&apos;, &apos;2020-04-29&apos;, &apos;2020-04-30&apos;]</span><br><span class="line">line = Line(&apos;天津未来15天的气温走势&apos;, &apos;日期：2020-04-16至2020-04-30&apos;)</span><br><span class="line">line.add(&apos;日最低气温&apos;, attr, low_temp, is_smooth=False, mark_point=[&apos;min&apos;], mark_line=[&apos;average&apos;])</span><br><span class="line">line.add(&apos;日最高气温&apos;, attr, high_temp, is_smooth=False, mark_point=[&apos;max&apos;], mark_line=[&apos;average&apos;])</span><br><span class="line">line.render(&apos;天津未来15天气温走势图.html&apos;)</span><br></pre></td></tr></table></figure>
+<h2 id="完整代码及结果展示"><a href="#完整代码及结果展示" class="headerlink" title="完整代码及结果展示"></a>完整代码及结果展示</h2><p>&emsp;&emsp;该样例的完整代码如下：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import re</span><br><span class="line">import requests</span><br><span class="line">from pyecharts import Line</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line"></span><br><span class="line"># 爬取天气网天津2020-04-16至2020-04-30的最高和最低气温</span><br><span class="line">headers = &#123;&apos;User-Agent&apos;: &apos;Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0&apos;&#125;</span><br><span class="line">url = &apos;https://www.tianqi.com/tianjin/15/&apos;</span><br><span class="line">response = requests.get(url=url, headers=headers)</span><br><span class="line">page_text = response.text</span><br><span class="line"></span><br><span class="line"># 筛选出所需数据</span><br><span class="line">soup = BeautifulSoup(page_text, &apos;html.parser&apos;)</span><br><span class="line">div_list = soup.find_all(class_=&apos;box_day&apos;)</span><br><span class="line">table_day_list = div_list[0].find_all(class_=&apos;table_day&apos;)</span><br><span class="line">low_temp = []</span><br><span class="line">high_temp = []</span><br><span class="line">for i in range(len(table_day_list)):</span><br><span class="line">    li = table_day_list[i].find(class_=&apos;temp&apos;).text</span><br><span class="line">    low = eval(re.search(r&apos;(\d*)~&apos;, li).group()[:-1])</span><br><span class="line">    low_temp.append(low)</span><br><span class="line">    high = eval(re.search(r&apos;~(\d*)&apos;, li).group()[1:])</span><br><span class="line">    high_temp.append(high)</span><br><span class="line"></span><br><span class="line"># 数据可视化</span><br><span class="line">attr = [&apos;2020-04-16&apos;, &apos;2020-04-17&apos;, &apos;2020-04-18&apos;, &apos;2020-04-19&apos;, &apos;2020-04-20&apos;, &apos;2020-04-21&apos;, &apos;2020-04-22&apos;, &apos;2020-04-23&apos;,</span><br><span class="line">        &apos;2020-04-24&apos;, &apos;2020-04-25&apos;, &apos;2020-04-26&apos;, &apos;2020-04-27&apos;, &apos;2020-04-28&apos;, &apos;2020-04-29&apos;, &apos;2020-04-30&apos;]</span><br><span class="line">line = Line(&apos;天津未来15天的气温走势&apos;, &apos;日期：2020-04-16至2020-04-30&apos;)</span><br><span class="line">line.add(&apos;日最低气温&apos;, attr, low_temp, is_smooth=False, mark_point=[&apos;min&apos;], mark_line=[&apos;average&apos;])</span><br><span class="line">line.add(&apos;日最高气温&apos;, attr, high_temp, is_smooth=False, mark_point=[&apos;max&apos;], mark_line=[&apos;average&apos;])</span><br><span class="line">line.render(&apos;天津未来15天气温走势图.html&apos;)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;运行这个程序可以得到一个HTML文件。使用浏览器打开，得到下图所示的结果：<br><img src="https://img-blog.csdnimg.cn/20200417102754913.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    I'd walk a million miles just to see your smile. 
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2020/04/17/%E3%80%90Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%E3%80%91%E6%9C%AA%E6%9D%A515%E5%A4%A9%E6%B0%94%E6%B8%A9%E8%B5%B0%E5%8A%BF%E5%9B%BE/">【Python网络爬虫与数据可视化实战案例】未来1</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/03/25/%E3%80%90Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0%E3%80%91%E4%BF%A1%E6%81%AF%E6%A0%87%E8%AE%B0%E4%B8%8E%E6%8F%90%E5%8F%96%E6%96%B9%E6%B3%95/">【Python网络爬虫笔记】信息标记与提取方法</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/03/24/%E3%80%90Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0%E3%80%91BeautifulSoup%E6%A8%A1%E5%9D%97%E5%9F%BA%E7%A1%80/">【Python网络爬虫笔记】BeautifulSo</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/03/23/%E3%80%90Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0%E3%80%91requests%E6%A8%A1%E5%9D%97%E5%9F%BA%E7%A1%80/">&#39;【Python网络爬虫笔记】requests模块</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/CCH21" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:1398635912@qq.com" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/" target="_blank" rel="noopener">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
