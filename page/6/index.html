@@ -10,8 +10,6 @@
 
     <!--Description-->
     
-        <meta name="description" content="基本字符串分析的失败&amp;emsp;&amp;emsp;在上一节我们讲了使用Python对CSV文件进行读写。事实上，当列中包含额外的逗号时，CSV分析会失败。&amp;emsp;&amp;emsp;我们打开supplier_data.csv，将Cost列中的最后两个成本数量分别改为$6,015.00和$1,006,015.0">
-    
 
     <!--Author-->
     
@@ -20,7 +18,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Python数据分析基础之CSV文件(2)"/>
+        <meta property="og:title" content="Welcome to CCH21&#39;s Blog"/>
     
 
     <!--Open Graph Description-->
@@ -31,7 +29,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="website" />
     
 
     <!--Page Cover-->
@@ -42,7 +40,7 @@
 
     <!-- Title -->
     
-    <title>Python数据分析基础之CSV文件(2) - Welcome to CCH21&#39;s Blog</title>
+    <title>page - Welcome to CCH21&#39;s Blog</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -137,59 +135,72 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
+            <h1 id="main-title" class="title">Welcome to CCH21's Blog</h1>
+        
     </div>
 </header>
 
         <section class="main">
             
+                
 <div class="post">
 
-    <div class="post-header">
+    <div class="post-header index">
         <h1 class="title">
-            <a href="/2020/01/19/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E4%B9%8BCSV%E6%96%87%E4%BB%B6(2)/">
-                Python数据分析基础之CSV文件(2)
+            <a href="/2019/10/28/hello-world/">
+                Hello World
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2020-01-19</span>
+                <span class="date">2019-10-28</span>
             
             
             
         </div>
     </div>
 
-    <div class="content">
-
-        <!-- Gallery -->
-        
-
-        <!-- Post Content -->
-        <h2 id="基本字符串分析的失败"><a href="#基本字符串分析的失败" class="headerlink" title="基本字符串分析的失败"></a>基本字符串分析的失败</h2><p>&emsp;&emsp;在上一节我们讲了使用Python对CSV文件进行读写。事实上，当列中包含额外的逗号时，CSV分析会失败。<br>&emsp;&emsp;我们打开supplier_data.csv，将Cost列中的最后两个成本数量分别改为$6,015.00和$1,006,015.00，如下图所示。<br><img src="https://img-blog.csdnimg.cn/20200119164515385.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">&emsp;&emsp;之前的脚本是按照行中的逗号分析每行数据的，这会让脚本错误地拆分最后两行的数据，因为数据中有逗号。<br>&emsp;&emsp;有很多方法可以改进这个脚本中的代码，使它可以正确地处理包含逗号的数值。我们可以使用正则表达式，但为了不使脚本复杂化，我们可以使用Python内置的csv模块。这个模块可以方便灵活地处理复杂的CSV文件。  </p>
-<h2 id="修改后的脚本读写CSV文件"><a href="#修改后的脚本读写CSV文件" class="headerlink" title="修改后的脚本读写CSV文件"></a>修改后的脚本读写CSV文件</h2><p>&emsp;&emsp;使用Python内置的csv模块处理CSV文件的一个优点是，这个模块就是被设计用于正确处理数据值中的嵌入逗号和其他复杂模式的，它可以识别出这些模式并正确地处理数据。<br>&emsp;&emsp;修改后的代码如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import csv</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">input_file = sys.argv[1]</span><br><span class="line">output_file = sys.argv[2]</span><br><span class="line"></span><br><span class="line">with open(input_file, &apos;r&apos;, newline=&apos;&apos;) as csv_in_file:</span><br><span class="line">    with open(output_file, &apos;w&apos;, newline=&apos;&apos;) as csv_out_file:</span><br><span class="line">        filereader = csv.reader(csv_in_file, delimiter=&apos;,&apos;)</span><br><span class="line">        filewriter = csv.writer(csv_out_file, delimiter=&apos;,&apos;)</span><br><span class="line">        for row_list in filereader:</span><br><span class="line">            print(row_list)</span><br><span class="line">            filewriter.writerow(row_list)</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;我们来解释一下上面的代码。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这行代码导入csv模块，以便可以使用其中的函数来分析输入文件，写入输入文件。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">filereader = csv.reader(csv_in_file, delimiter=&apos;,&apos;)</span><br><span class="line">filewriter = csv.writer(csv_out_file, delimiter=&apos;,&apos;)</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这两行代码使用csv模块中的<code>reader()</code>函数和<code>writer()</code>函数分别创建了一个文件读取对象<code>filereader</code>和文件写入对象<code>filewriter</code>。这两个函数中的第二个参数<code>delimiter=&#39;,&#39;</code>是默认分隔符，如果输入文件和输出文件都是用逗号分隔的，就不需要指定这个参数。这里指定分隔符函数，是为了防备待处理的输入文件或要写入的输出文件具有不同的分隔符，例如分号<code>;</code>或制表符<code>\t</code>。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filewriter.writerow(row_list)</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这行代码使用<code>filewriter</code>对象的<code>writerow()</code>函数来将每行中的列表值写入输出文件。<br>&emsp;&emsp;我们在命令行窗口运行这个脚本，如下图所示。<br><img src="https://img-blog.csdnimg.cn/20200119170337420.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200119170405927.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-
-    </div>
-
     
+        <div class="content">
+            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 
-    
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-    <!-- Comments -->
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+        </div>
     
 
 </div>
+            
         </section>
-
     </div>
 </div>
+
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="wrap-pagination">
+                <a class="" href="/page/5/">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </a>
+                <a class="disabled" href="/">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
 
 
 </div>
