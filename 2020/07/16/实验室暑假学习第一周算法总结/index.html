@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="LeetCode 378. 有序矩阵中第K小的元素难度&amp;emsp;中等  
+给定一个n × n矩阵，其中每行和每列元素均按升序排序，找到矩阵中第k小的元素。请注意，它是排序后的第k小元素，而不是第k个不同的元素。  
+示例  
+12345678matrix = [   [ 1,  5,  9],  ">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="实验室暑假学习第一周算法总结"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Welcome to CCH21&#39;s Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>实验室暑假学习第一周算法总结 - Welcome to CCH21&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2020/07/16/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E5%81%87%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E5%91%A8%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">
+                实验室暑假学习第一周算法总结
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-07-16</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="LeetCode-378-有序矩阵中第K小的元素"><a href="#LeetCode-378-有序矩阵中第K小的元素" class="headerlink" title="LeetCode 378. 有序矩阵中第K小的元素"></a>LeetCode 378. 有序矩阵中第K小的元素</h2><p><strong>难度</strong>&emsp;中等  </p>
+<p>给定一个<code>n × n</code>矩阵，其中每行和每列元素均按升序排序，找到矩阵中第<code>k</code>小的元素。<br>请注意，它是排序后的第<code>k</code>小元素，而不是第<code>k</code>个不同的元素。  </p>
+<p><strong>示例</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">matrix = [</span><br><span class="line">   [ 1,  5,  9],</span><br><span class="line">   [10, 11, 13],</span><br><span class="line">   [12, 13, 15]</span><br><span class="line">],</span><br><span class="line">k = 8,</span><br><span class="line"></span><br><span class="line">返回 13。</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示</strong><br>你可以假设 k 的值永远是有效的，<code>1 ≤ k ≤ n²</code>。  </p>
+<hr>
+<p><strong>解法一</strong>&emsp;将矩阵转化为一维数组并排序<br>语言：Python 3  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">kthSmallest</span><span class="params">(self, matrix: List[List[int]], k: int)</span> -&gt; int:</span></span><br><span class="line">        matrix = [i <span class="keyword">for</span> j <span class="keyword">in</span> matrix <span class="keyword">for</span> i <span class="keyword">in</span> j]</span><br><span class="line">        matrix = sorted(matrix)</span><br><span class="line">        <span class="keyword">return</span> matrix[k - <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<p><strong>解法二</strong>&emsp;二分查找法<br>语言：C  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">kthSmallest</span><span class="params">(<span class="keyword">int</span>** matrix, <span class="keyword">int</span> matrixSize, <span class="keyword">int</span>* matrixColSize, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left = matrix[<span class="number">0</span>][<span class="number">0</span>], right = matrix[matrixSize - <span class="number">1</span>][matrixSize - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (check(matrix, matrixSize, mid, k)) &#123;</span><br><span class="line">            left = mid + <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            right = mid;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> left;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span>** matrix, <span class="keyword">int</span> matrixSize, <span class="keyword">int</span> mid, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> i = matrixSize - <span class="number">1</span>, j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &gt;= <span class="number">0</span> &amp;&amp; j &lt; matrixSize) &#123;</span><br><span class="line">        <span class="keyword">if</span> (matrix[i][j] &lt;= mid) &#123;</span><br><span class="line">            j++;</span><br><span class="line">            num += i + <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            i--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (num &gt;= k)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>依据题意，矩阵里的元素是自左上至右下递增的，即<code>matrix[0][0]</code>为最小值，记为<code>left</code>，<code>matrix[n-1][n-1]</code>为最大值，记为<code>right</code>。这样，所要查找的元素<code>x</code>必定满足<code>left ≤ x ≤ right</code>。<br>与此同时，我们可以发现，任取一个数<code>mid</code>，<code>mid</code>满足<code>left ≤ mid ≤ right</code>，都有如下性质：矩阵中不大于<code>mid</code>的数全部分布在矩阵的左上角，大于<code>mid</code>的数全部分布在矩阵的右下角。<br>下面借用一下LeetCode官方题解给出的图来帮助理解，取<code>mid = 8</code>，则矩阵被一条锯齿线分为左上和右下两个部分。<br><img src="https://img-blog.csdnimg.cn/20200716151119759.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>将起始位置设置为<code>matrix[n-1][0]</code>，初始化计数变量<code>num = 0</code>，设当前位置为<code>matrix[i][j]</code>。若<code>matrix[i][j] ≤ mid</code>，则将当前所在列的不大于<code>mid</code>的数的数量（即<code>i + 1</code>）累加到计数变量<code>num</code>中，并向右移动（即<code>j</code>自加1）；否则，向上移动（即<code>i</code>自减1）。这样，只需要自下而上地沿着锯齿线走一遍，即可统计出矩阵中有多少个数字不大于<code>mid</code>了。<br>计算矩阵中有多少数不大于<code>mid</code>，若数量不小于<code>k</code>，则所要查找的元素<code>x</code>不大于<code>mid</code>；若数量小于<code>k</code>，则所要查找的元素<code>x</code>大于<code>mid</code>。二分查找结束后，即可找出<code>x</code>。  </p>
+<h2 id="LeetCode-697-数组的度"><a href="#LeetCode-697-数组的度" class="headerlink" title="LeetCode 697. 数组的度"></a>LeetCode 697. 数组的度</h2><p><strong>难度</strong>&emsp;简单  </p>
+<p>给定一个非空且只包含非负数的整数数组<code>nums</code>，数组的度的定义是指数组里任一元素出现频数的最大值。<br>你的任务是找到与<code>nums</code>拥有相同大小的度的最短连续子数组，返回其长度。  </p>
+<p><strong>示例1</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入: [1, 2, 2, 3, 1]</span><br><span class="line">输出: 2</span><br><span class="line">解释: </span><br><span class="line">输入数组的度是2，因为元素1和2的出现频数最大，均为2.</span><br><span class="line">连续子数组里面拥有相同度的有如下所示:</span><br><span class="line">[1, 2, 2, 3, 1], [1, 2, 2, 3], [2, 2, 3, 1], [1, 2, 2], [2, 2, 3], [2, 2]</span><br><span class="line">最短连续子数组[2, 2]的长度为2，所以返回2.</span><br></pre></td></tr></table></figure>
+<p><strong>示例2</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,2,3,1,4,2]</span><br><span class="line">输出: 6</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong><br><code>nums.length</code>在1到50,000区间范围内。<br><code>nums[i]</code>是一个在0到49,999范围内的整数。  </p>
+<hr>
+<p><strong>解法</strong>&emsp;HashMap<br>语言：C  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findShortestSubArray</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> count[<span class="number">50000</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> left[<span class="number">50000</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> right[<span class="number">50000</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> degree = <span class="number">0</span>;                             <span class="comment">/* 初始化数组的度 */</span></span><br><span class="line">    <span class="keyword">int</span> min = numsSize;                         <span class="comment">/* 初始化最短连续子数组的长度 */</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numsSize; i++) &#123;</span><br><span class="line">        count[nums[i]]++;</span><br><span class="line">        <span class="keyword">if</span> (count[nums[i]] == <span class="number">1</span>)                <span class="comment">/* 首次出现记录左值 */</span></span><br><span class="line">            left[nums[i]] = i;</span><br><span class="line">        right[nums[i]] = i;                     <span class="comment">/* 记录右值 */</span></span><br><span class="line">        <span class="keyword">if</span> (count[nums[i]] &gt; degree)            <span class="comment">/* 记录数组的度 */</span></span><br><span class="line">            degree = count[nums[i]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numsSize; i++)</span><br><span class="line">        <span class="keyword">if</span> (count[nums[i]] == degree)</span><br><span class="line">            min = right[nums[i]] - left[nums[i]] + <span class="number">1</span> &lt; min ? (right[nums[i]] - left[nums[i]] + <span class="number">1</span>) : min;</span><br><span class="line">    <span class="keyword">return</span> min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先定义三个数组<code>count</code>, <code>left</code>, <code>right</code>。其中<code>count</code>的作用是计数，以给定数组<code>nums</code>的元素<code>nums[i]</code>作为下标，其对应的元素值即为<code>nums[i]</code>的值在数组<code>nums</code>中出现的次数。<code>left</code>和<code>right</code>分别记录<code>nums[i]</code>的值第一次出现和最后一次出现时所对应的下标<code>i</code>，我将其称之为元素<code>nums[i]</code>对应的的左值和右值。接下来初始化数组的度<code>degree = 0</code>，初始化最短连续子数组的长度<code>min = numsSize</code>。<br>对<code>nums</code>数组进行遍历，记录每个元素出现的次数和其对应的左右值。在记录左右值的时候要注意，如果某个元素是第一次记录，则要记录左值和右值；否则，只刷新右值即可，左值不需要更改。每遍历完一个元素，刷新一次数组的度，即如果<code>count[nums[i]] &gt; degree</code>，令<code>degree = count[nums[i]]</code>。<br>最后，遍历<code>count</code>数组，如果<code>count[nums[i]]</code>与<code>degree</code>相等，则取<code>right[nums[i]] - left[nums[i]] + 1</code>和<code>min</code>的较小者赋值给<code>min</code>。这样，完全遍历<code>count</code>之后得到的<code>min</code>即为本题所求。  </p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    I'd walk a million miles just to see your smile. 
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2020/07/16/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E5%81%87%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E5%91%A8%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">实验室暑假学习第一周算法总结</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/07/15/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E5%81%87%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E7%88%AC%E8%99%AB/">实验室暑假学习第一周任务总结——爬虫</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/05/10/%E5%9F%BA%E4%BA%8EFluent-Terminal%E5%92%8CCmder%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E7%BE%8E%E8%A7%82%E7%9A%84Windows%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/">基于Fluent Terminal和Cmder打造</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/04/24/%E3%80%90Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%E3%80%91%E8%BF%9115%E5%B9%B4%E7%9A%84%E4%B8%AD%E5%9B%BD%E5%9B%BD%E5%86%85%E7%94%9F%E4%BA%A7%E6%80%BB%E5%80%BC/">【Python网络爬虫与数据可视化实战案例】近15</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/CCH21" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:1398635912@qq.com" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/" target="_blank" rel="noopener">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
