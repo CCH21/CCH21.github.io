@@ -147,6 +147,180 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2020/07/22/%E3%80%90Linux%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%E3%80%91%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/">
+                【Linux自学笔记】常用命令介绍与目录相关命令
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-07-22</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <blockquote>
+<p>本次学习过程使用的Linux发行版均为Ubuntu 20.04 LTS。  </p>
+</blockquote>
+<h2 id="终端使用技巧"><a href="#终端使用技巧" class="headerlink" title="终端使用技巧"></a>终端使用技巧</h2><p>1.放大终端界面：<strong>Ctrl</strong> + <strong>Shift</strong> + <strong>=</strong><br>2.缩小终端界面：<strong>Ctrl</strong> + <strong>-</strong><br>3.自动补全：在输入文件、目录或命令的前一部分字母之后，按下Tab键，如果输入的内容没有歧义，则会自动补全；如果还存在其他文件、目录或命令，再按一下Tab键，系统会提示可能存在的命令。  </p>
+<h2 id="常用命令介绍"><a href="#常用命令介绍" class="headerlink" title="常用命令介绍"></a>常用命令介绍</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>对应英文</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>ls</code></td>
+<td>list</td>
+<td>查看当前文件夹下的内容</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>pwd</code></td>
+<td>print work directory</td>
+<td>查看当前所在文件夹</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>cd [目录名]</code></td>
+<td>change directory</td>
+<td>切换文件夹</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>touch [文件名]</code></td>
+<td>touch</td>
+<td>如果文件不存在，新建文件</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>mkdir [目录名]</code></td>
+<td>make directory</td>
+<td>创建目录</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>rm [文件名]</code></td>
+<td>remove</td>
+<td>删除指定的文件名</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>clear</code></td>
+<td>clear</td>
+<td>清屏</td>
+</tr>
+<tr>
+<td><img src="https://img-blog.csdnimg.cn/20200722001159444.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200722001239501.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>## Linux终端命令格式</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>##### 终端命令格式</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command [-options] [parameter]</span><br></pre></td></tr></table></figure></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>说明</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1.<code>command</code>：命令名，相应功能的英文单词或单词的缩写。</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2.<code>-options</code>：选项，可用来对命令进行控制，也可以省略。</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3.<code>parameter</code>：传给命令的参数，可以是零个、一个或者多个。</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.<code>[]</code>代表可选。</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>##### 查阅命令帮助信息</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command --help</span><br></pre></td></tr></table></figure></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>说明：</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>显示<code>command</code>命令的帮助信息。</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="https://img-blog.csdnimg.cn/2020072200141313.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man command</span><br></pre></td></tr></table></figure>
+<p><strong>说明</strong><br>查阅<code>command</code>命令的使用手册。<br><code>man</code>是manual的缩写，是Linux提供的一个手册，包含了绝大部分的命令、函数的详细使用说明。<br><strong>操作键</strong><br>操作键|功能<br>—|—<br>空格键|显示手册页的下一屏<br>Enter键|一次滚动手册页的一行<br>b|回滚一屏<br>f|前滚一屏<br>q|退出<br>/word|搜索word字符串<br><img src="https://img-blog.csdnimg.cn/20200722001512901.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="目录相关命令"><a href="#目录相关命令" class="headerlink" title="目录相关命令"></a>目录相关命令</h2><h5 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h5><p><strong>说明</strong><br><code>ls</code>是英文单词list的简写，其功能为查看当前文件夹下的内容。<br><strong>Linux文件和目录的特点</strong><br>1.Linux文件或目录名称最长可以有<code>256</code>个字符。<br>2.以<code>.</code>开头的文件为隐藏文件，需要用<code>-a</code>参数才能显示。<br>3.<code>.</code>代表当前目录。<br>4.<code>..</code>代表上一级目录。<br><strong>ls常用选项</strong><br>参数|含义<br>—|—<br><code>-a</code>|显示指定目录下所有子目录与文件，包括隐藏文件<br><code>-l</code>|以列表方式显示文件的详细信息<br><code>-h</code>|配合-l以人性化的方式显示文件大小<br>注：<code>ls -l -h</code>也可以写成<code>ls -lh</code>。<br><img src="https://img-blog.csdnimg.cn/20200722001635912.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200722001725752.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200722001834555.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>ls通配符的使用</strong><br>通配符|含义<br>—|—<br><code>*</code>|代表任意个字符<br><code>?</code>|代表任意一个字符，且至少一个<br><code>[]</code>|表示可以匹配字符组中的任意一个字符<br><code>[abc]</code>|匹配a, b, c中的任意一个字符<br><code>[a-f]</code>|匹配从a到f范围内的任意一个字符<br><img src="https://img-blog.csdnimg.cn/20200722002252176.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<hr>
+<h5 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h5><p><strong>说明</strong><br><code>cd</code>是英文词组change directory的简写，其功能为更改当前的工作目录。<br><strong>注意</strong><br>Linux所有的<strong>目录</strong>和<strong>文件名</strong>都是<strong>大小写敏感</strong>的。<br><strong>命令</strong><br>命令|说明<br>—|—<br><code>cd</code>|切换到当前用户的主目录<code>/home/用户目录</code><br><code>cd ~</code>|切换到当前用户的主目录<code>/home/用户目录</code><br><code>cd .</code>|保持在当前目录不变<br><code>cd ..</code>|切换到上级目录<br><code>cd -</code>|可以在最近两次工作目录之间切换<br><img src="https://img-blog.csdnimg.cn/20200722002519934.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>相对路径和绝对路径</strong><br>相对路径：在输入路径时，最前面不是<code>/</code>或<code>~</code>，表示相对当前目录所在的目录位置。<br>绝对路径：在输入路径时，最前面是<code>/</code>或<code>~</code>，表示从根目录或home目录开始的具体目录位置。  </p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2020/07/21/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E5%81%87%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">
                 实验室暑假学习第二周算法总结
             </a>
@@ -654,42 +828,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2020/03/16/%E5%AE%9E%E9%AA%8C%E5%AE%A420200314%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%BB%BB%E5%8A%A1%E6%80%BB%E7%BB%93/">
-                实验室20200314数据处理任务总结
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2020-03-16</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>如果你想获取数据集和代码，<a href="https://github.com/CCH21/Lab_MLGroup_Tasks/tree/master/Task_20200314" target="_blank" rel="noopener">请点这里</a>。  </p>
-<hr>
-<h2 id="任务描述"><a href="#任务描述" class="headerlink" title="任务描述"></a>任务描述</h2><p><strong>基本要求</strong><br>把样本文件中的数据按下面的样例格式写入输出文件。需要注意的是，输入文件中所有的<code>暂无数据</code>均按<code>暂无</code>写入输出文件，所有的<code>None</code>均按<code>NULL</code>写入输出文件。样本文件中共240条数据。<br><strong>输入文件样例</strong><br>样本文件ori_data的数据样例如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Tue Mar 19 16:23:02 2019,杭州租房网 &gt;  萧山租房 &gt;  钱江世纪城租房 &gt;   佳境天城人合苑租房  , 合租·佳境天城人合苑4室1厅, 2430元/月(季付价), 公寓 独立卫生间 近地铁 押一付一 随时看房 , 合租 4室1厅2卫 16㎡ 朝南  房屋信息  基本信息 发布：12天前 入住：随时入住   租期：暂无数据 看房：随时可看   楼层：5/18层 电梯：暂无数据   车位：暂无数据 用水：暂无数据   用电：暂无数据 燃气：暂无数据   采暖：暂无数据  ,None, 地址和交通距离地铁2号线-振宁路329m, end </span><br><span class="line">Tue Mar 19 16:23:02 2019,杭州租房 &gt;  滨江租房 &gt;  浦沿租房 &gt;   朗诗寓·东信大道店租房  , None,  朗诗寓·东信大道店  2550元/月起  ,None, None, None, None, 地址和交通, end</span><br></pre></td></tr></table></figure>
-<p><strong>输出文件样例</strong><br>输出文件dea_data的数据样例如下：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Tue Mar 19 杭州  萧山  钱江世纪城  佳境天城人合苑 2430元/月 16㎡ 4室 2卫 1厅 朝南 5/18层 NULL 随时入住 暂无 暂无 暂无 暂无 暂无 暂无</span><br><span class="line">Tue Mar 19 杭州  滨江  浦沿  朗诗寓·东信大道店 2550元/月 NULL NULL NULL NULL NULL NULL NULL NULL NULL NULL NULL NULL NULL NULL</span><br></pre></td></tr></table></figure>
-<h2 id="任务分析"><a href="#任务分析" class="headerlink" title="任务分析"></a>任务分析</h2><p>&emsp;&emsp;首先我注意到的一点是，样本文件是Unix(LF)格式的，可能需要考虑一下文件编码格式的问题。<br><img src="https://img-blog.csdnimg.cn/20200316213827242.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;其次，不难发现每一行的数据之间都是以逗号为分隔符，这是在提醒我们使用Python的csv模块来进行处理。<br>&emsp;&emsp;在处理之前，应当先清洗掉那些没有用处的数据，这样可以使后面的处理工作条理更加清晰。<br>&emsp;&emsp;输出样例是有特定的格式的，我们可以导入Python的re模块，利用正则表达式来进行数据的筛选。  </p>
-<h2 id="源代码及简单说明"><a href="#源代码及简单说明" class="headerlink" title="源代码及简单说明"></a>源代码及简单说明</h2><p>&emsp;&emsp;关于程序的说明已经通过注释的形式写在了下面的代码里。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"></span><br><span class="line">import csv</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">with open(&apos;ori_data&apos;, mode=&apos;r&apos;, encoding=&apos;utf-8&apos;, newline=&apos;&apos;) as csv_in_file:</span><br><span class="line">    with open(&apos;dea_data_output&apos;, mode=&apos;w&apos;, newline=&apos;&apos;) as out_file:</span><br><span class="line">        filereader = csv.reader(csv_in_file)</span><br><span class="line">        for row_list in filereader:</span><br><span class="line">            # 创建要写入输出文件的输出字符串</span><br><span class="line">            out_str = &apos;&apos;</span><br><span class="line"></span><br><span class="line">            # 删去共有的无用信息</span><br><span class="line">            row_list.pop()</span><br><span class="line">            row_list.pop(2)</span><br><span class="line">            row_list.pop(3)</span><br><span class="line"></span><br><span class="line">            # 修改前三列的数据</span><br><span class="line">            row_list[0] = re.search(r&apos;Tue Mar 19&apos;, row_list[0]).group()</span><br><span class="line">            row_list[1] = &apos;&apos;.join(row_list[1].split())</span><br><span class="line">            row_list[1] = &apos;&apos;.join(row_list[1].replace(&apos;&gt;&apos;, &apos;&apos;).replace(&apos;租房&apos;, &apos;  &apos;).replace(&apos;网&apos;, &apos;&apos;).rstrip())</span><br><span class="line">            row_list[2] = re.search(r&apos;(\d*)元/月&apos;, row_list[2]).group()</span><br><span class="line"></span><br><span class="line">            # 根据列表长度删去各自的无用信息</span><br><span class="line">            if len(row_list) == 9:</span><br><span class="line">                row_list.pop()</span><br><span class="line">                row_list.pop()</span><br><span class="line">                row_list.pop()</span><br><span class="line">                row_list.pop()</span><br><span class="line">                row_list.pop()</span><br><span class="line">            elif len(row_list) == 8:</span><br><span class="line">                row_list.pop()</span><br><span class="line">                row_list.pop()</span><br><span class="line">                row_list.pop()</span><br><span class="line">                row_list.pop()</span><br><span class="line">            elif len(row_list) == 7:</span><br><span class="line">                row_list.pop()</span><br><span class="line">                row_list.pop()</span><br><span class="line">                row_list.pop()</span><br><span class="line">            elif len(row_list) == 6:</span><br><span class="line">                row_list.pop()</span><br><span class="line">                row_list.pop()</span><br><span class="line"></span><br><span class="line">            # 修改最后一列的信息</span><br><span class="line">            if row_list[-1].strip() == &apos;None&apos;:</span><br><span class="line">                row_list[-1] = &apos;NULL NULL NULL NULL NULL NULL NULL NULL NULL NULL NULL NULL NULL NULL&apos;</span><br><span class="line">            else:</span><br><span class="line">                s = &apos;&apos;</span><br><span class="line">                # 房屋面积</span><br><span class="line">                s += re.search(r&apos;(\d*㎡)&apos;, row_list[-1]).group()</span><br><span class="line">                s += &apos; &apos;</span><br><span class="line">                # 室、卫、厅</span><br><span class="line">                s += re.search(r&apos;(\d*室)&apos;, row_list[-1]).group()</span><br><span class="line">                s += &apos; &apos;</span><br><span class="line">                s += re.search(r&apos;(\d*卫)&apos;, row_list[-1]).group()</span><br><span class="line">                s += &apos; &apos;</span><br><span class="line">                s += re.search(r&apos;(\d*厅)&apos;, row_list[-1]).group()</span><br><span class="line">                s += &apos; &apos;</span><br><span class="line">                # 房屋朝向</span><br><span class="line">                s += re.search(r&apos;朝\w&apos;, row_list[-1]).group()</span><br><span class="line">                s += &apos; &apos;</span><br><span class="line">                # 所在楼层</span><br><span class="line">                if re.search(r&apos;(\d*/\d*层)&apos;, row_list[-1]) is None:</span><br><span class="line">                    s += &apos;NULL&apos;</span><br><span class="line">                else:</span><br><span class="line">                    if re.search(r&apos;(\d*/\d*层)&apos;, row_list[-1]).group()[0] == &apos;/&apos;:</span><br><span class="line">                        s += &apos;NULL&apos;</span><br><span class="line">                    else:</span><br><span class="line">                        s += re.search(r&apos;(\d*/\d*层)&apos;, row_list[-1]).group()</span><br><span class="line">                s += &apos; &apos;</span><br><span class="line">                # 租期</span><br><span class="line">                if re.search(r&apos;(\d*~\d*年)&apos;, row_list[-1]) is None:</span><br><span class="line">                    s += &apos;NULL&apos;</span><br><span class="line">                else:</span><br><span class="line">                    s += re.search(r&apos;(\d*~\d*年)&apos;, row_list[-1]).group()</span><br><span class="line">                s += &apos; &apos;</span><br><span class="line">                # 入住</span><br><span class="line">                if re.search(r&apos;随时入住&apos;, row_list[-1]) is None:</span><br><span class="line">                    s += &apos;NULL&apos;</span><br><span class="line">                else:</span><br><span class="line">                    s += re.search(r&apos;随时入住&apos;, row_list[-1]).group()</span><br><span class="line">                s += &apos; &apos;</span><br><span class="line">                # 电梯</span><br><span class="line">                if re.search(r&apos;电梯：有&apos;, row_list[-1]):</span><br><span class="line">                    s += &apos;有 &apos;</span><br><span class="line">                elif re.search(r&apos;电梯：无&apos;, row_list[-1]):</span><br><span class="line">                    s += &apos;无 &apos;</span><br><span class="line">                elif re.search(r&apos;电梯：暂无数据&apos;, row_list[-1]):</span><br><span class="line">                    s += &apos;暂无 &apos;</span><br><span class="line">                # 车位</span><br><span class="line">                if re.search(r&apos;车位：免费&apos;, row_list[-1]):</span><br><span class="line">                    s += &apos;免费 &apos;</span><br><span class="line">                elif re.search(r&apos;车位：租用&apos;, row_list[-1]):</span><br><span class="line">                    s += &apos;租用 &apos;</span><br><span class="line">                elif re.search(r&apos;车位：暂无数据&apos;, row_list[-1]):</span><br><span class="line">                    s += &apos;暂无 &apos;</span><br><span class="line">                # 用水</span><br><span class="line">                if re.search(r&apos;用水：民水&apos;, row_list[-1]):</span><br><span class="line">                    s += &apos;民水 &apos;</span><br><span class="line">                elif re.search(r&apos;用水：商水&apos;, row_list[-1]):</span><br><span class="line">                    s += &apos;商水 &apos;</span><br><span class="line">                elif re.search(r&apos;用水：暂无数据&apos;, row_list[-1]):</span><br><span class="line">                    s += &apos;暂无 &apos;</span><br><span class="line">                # 用电</span><br><span class="line">                if re.search(r&apos;用电：民电&apos;, row_list[-1]):</span><br><span class="line">                    s += &apos;民电 &apos;</span><br><span class="line">                elif re.search(r&apos;用电：商电&apos;, row_list[-1]):</span><br><span class="line">                    s += &apos;商电 &apos;</span><br><span class="line">                elif re.search(r&apos;用电：暂无数据&apos;, row_list[-1]):</span><br><span class="line">                    s += &apos;暂无 &apos;</span><br><span class="line">                # 燃气</span><br><span class="line">                if re.search(r&apos;燃气：有&apos;, row_list[-1]):</span><br><span class="line">                    s += &apos;有 &apos;</span><br><span class="line">                elif re.search(r&apos;燃气：无&apos;, row_list[-1]):</span><br><span class="line">                    s += &apos;无 &apos;</span><br><span class="line">                elif re.search(r&apos;燃气：暂无数据&apos;, row_list[-1]):</span><br><span class="line">                    s += &apos;暂无 &apos;</span><br><span class="line">                # 采暖</span><br><span class="line">                if re.search(r&apos;采暖：自采暖&apos;, row_list[-1]):</span><br><span class="line">                    s += &apos;自采暖&apos;</span><br><span class="line">                elif re.search(r&apos;采暖：集中供暖&apos;, row_list[-1]):</span><br><span class="line">                    s += &apos;集中&apos;</span><br><span class="line">                elif re.search(r&apos;采暖：暂无数据&apos;, row_list[-1]):</span><br><span class="line">                    s += &apos;暂无&apos;</span><br><span class="line">                row_list[-1] = s</span><br><span class="line"></span><br><span class="line">            # 向输出字符串内添加信息</span><br><span class="line">            out_str += row_list[0] + &apos; &apos; + row_list[1] + &apos; &apos; + row_list[2] + &apos; &apos; + row_list[3] + &apos;\n&apos;</span><br><span class="line"></span><br><span class="line">            # 写入文件</span><br><span class="line">            out_file.write(out_str)</span><br></pre></td></tr></table></figure>
-<h2 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h2><p>&emsp;&emsp;左侧的dea_data文件是原有的输出样例，右侧的dea_data_output文件是通过运行上面的程序得到的输出文件。<br><img src="https://img-blog.csdnimg.cn/20200316215154114.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -732,6 +870,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2020/07/22/%E3%80%90Linux%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%E3%80%91%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/">【Linux自学笔记】常用命令介绍与目录相关命令</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2020/07/21/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E5%81%87%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">实验室暑假学习第二周算法总结</a>
             </li>
             
@@ -741,10 +883,6 @@
             
             <li>
                 <a class="footer-post" href="/2020/07/15/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E5%81%87%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E7%88%AC%E8%99%AB/">实验室暑假学习第一周任务总结——爬虫</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2020/05/10/%E5%9F%BA%E4%BA%8EFluent-Terminal%E5%92%8CCmder%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E7%BE%8E%E8%A7%82%E7%9A%84Windows%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/">基于Fluent Terminal和Cmder打造</a>
             </li>
             
         </ul>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="本次学习过程使用的Linux发行版均为Ubuntu 20.04 LTS。  
+
+终端使用技巧1.放大终端界面：Ctrl + Shift + =2.缩小终端界面：Ctrl + -3.自动补全：在输入文件、目录或命令的前一部分字母之后，按下Tab键，如果输入的内容没有歧义，则会自动补全；如果还存在其他文">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="【Linux自学笔记】常用命令介绍与目录相关命令"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Welcome to CCH21&#39;s Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>【Linux自学笔记】常用命令介绍与目录相关命令 - Welcome to CCH21&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2020/07/22/%E3%80%90Linux%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%E3%80%91%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/">
+                【Linux自学笔记】常用命令介绍与目录相关命令
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-07-22</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <blockquote>
+<p>本次学习过程使用的Linux发行版均为Ubuntu 20.04 LTS。  </p>
+</blockquote>
+<h2 id="终端使用技巧"><a href="#终端使用技巧" class="headerlink" title="终端使用技巧"></a>终端使用技巧</h2><p>1.放大终端界面：<strong>Ctrl</strong> + <strong>Shift</strong> + <strong>=</strong><br>2.缩小终端界面：<strong>Ctrl</strong> + <strong>-</strong><br>3.自动补全：在输入文件、目录或命令的前一部分字母之后，按下Tab键，如果输入的内容没有歧义，则会自动补全；如果还存在其他文件、目录或命令，再按一下Tab键，系统会提示可能存在的命令。  </p>
+<h2 id="常用命令介绍"><a href="#常用命令介绍" class="headerlink" title="常用命令介绍"></a>常用命令介绍</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>对应英文</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>ls</code></td>
+<td>list</td>
+<td>查看当前文件夹下的内容</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>pwd</code></td>
+<td>print work directory</td>
+<td>查看当前所在文件夹</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>cd [目录名]</code></td>
+<td>change directory</td>
+<td>切换文件夹</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>touch [文件名]</code></td>
+<td>touch</td>
+<td>如果文件不存在，新建文件</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>mkdir [目录名]</code></td>
+<td>make directory</td>
+<td>创建目录</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>rm [文件名]</code></td>
+<td>remove</td>
+<td>删除指定的文件名</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>clear</code></td>
+<td>clear</td>
+<td>清屏</td>
+</tr>
+<tr>
+<td><img src="https://img-blog.csdnimg.cn/20200722001159444.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200722001239501.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>## Linux终端命令格式</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>##### 终端命令格式</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command [-options] [parameter]</span><br></pre></td></tr></table></figure></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>说明</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1.<code>command</code>：命令名，相应功能的英文单词或单词的缩写。</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2.<code>-options</code>：选项，可用来对命令进行控制，也可以省略。</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3.<code>parameter</code>：传给命令的参数，可以是零个、一个或者多个。</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4.<code>[]</code>代表可选。</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>##### 查阅命令帮助信息</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command --help</span><br></pre></td></tr></table></figure></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>说明：</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>显示<code>command</code>命令的帮助信息。</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="https://img-blog.csdnimg.cn/2020072200141313.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man command</span><br></pre></td></tr></table></figure>
+<p><strong>说明</strong><br>查阅<code>command</code>命令的使用手册。<br><code>man</code>是manual的缩写，是Linux提供的一个手册，包含了绝大部分的命令、函数的详细使用说明。<br><strong>操作键</strong><br>操作键|功能<br>—|—<br>空格键|显示手册页的下一屏<br>Enter键|一次滚动手册页的一行<br>b|回滚一屏<br>f|前滚一屏<br>q|退出<br>/word|搜索word字符串<br><img src="https://img-blog.csdnimg.cn/20200722001512901.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="目录相关命令"><a href="#目录相关命令" class="headerlink" title="目录相关命令"></a>目录相关命令</h2><h5 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h5><p><strong>说明</strong><br><code>ls</code>是英文单词list的简写，其功能为查看当前文件夹下的内容。<br><strong>Linux文件和目录的特点</strong><br>1.Linux文件或目录名称最长可以有<code>256</code>个字符。<br>2.以<code>.</code>开头的文件为隐藏文件，需要用<code>-a</code>参数才能显示。<br>3.<code>.</code>代表当前目录。<br>4.<code>..</code>代表上一级目录。<br><strong>ls常用选项</strong><br>参数|含义<br>—|—<br><code>-a</code>|显示指定目录下所有子目录与文件，包括隐藏文件<br><code>-l</code>|以列表方式显示文件的详细信息<br><code>-h</code>|配合-l以人性化的方式显示文件大小<br>注：<code>ls -l -h</code>也可以写成<code>ls -lh</code>。<br><img src="https://img-blog.csdnimg.cn/20200722001635912.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200722001725752.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200722001834555.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>ls通配符的使用</strong><br>通配符|含义<br>—|—<br><code>*</code>|代表任意个字符<br><code>?</code>|代表任意一个字符，且至少一个<br><code>[]</code>|表示可以匹配字符组中的任意一个字符<br><code>[abc]</code>|匹配a, b, c中的任意一个字符<br><code>[a-f]</code>|匹配从a到f范围内的任意一个字符<br><img src="https://img-blog.csdnimg.cn/20200722002252176.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<hr>
+<h5 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h5><p><strong>说明</strong><br><code>cd</code>是英文词组change directory的简写，其功能为更改当前的工作目录。<br><strong>注意</strong><br>Linux所有的<strong>目录</strong>和<strong>文件名</strong>都是<strong>大小写敏感</strong>的。<br><strong>命令</strong><br>命令|说明<br>—|—<br><code>cd</code>|切换到当前用户的主目录<code>/home/用户目录</code><br><code>cd ~</code>|切换到当前用户的主目录<code>/home/用户目录</code><br><code>cd .</code>|保持在当前目录不变<br><code>cd ..</code>|切换到上级目录<br><code>cd -</code>|可以在最近两次工作目录之间切换<br><img src="https://img-blog.csdnimg.cn/20200722002519934.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>相对路径和绝对路径</strong><br>相对路径：在输入路径时，最前面不是<code>/</code>或<code>~</code>，表示相对当前目录所在的目录位置。<br>绝对路径：在输入路径时，最前面是<code>/</code>或<code>~</code>，表示从根目录或home目录开始的具体目录位置。  </p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    I'd walk a million miles just to see your smile. 
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2020/07/22/%E3%80%90Linux%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%E3%80%91%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/">【Linux自学笔记】常用命令介绍与目录相关命令</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/07/21/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E5%81%87%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">实验室暑假学习第二周算法总结</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/07/16/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E5%81%87%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E5%91%A8%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">实验室暑假学习第一周算法总结</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/07/15/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E5%81%87%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E7%88%AC%E8%99%AB/">实验室暑假学习第一周任务总结——爬虫</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/CCH21" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:1398635912@qq.com" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/" target="_blank" rel="noopener">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
