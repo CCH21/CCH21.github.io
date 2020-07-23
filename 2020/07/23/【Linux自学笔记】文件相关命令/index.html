@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="创建和删除操作touch说明创建文件或修改文件时间。如果文件不存在，可以创建一个空白文件。如果文件已经存在，可以修改文件的末次修改日期。  
+
+mkdir说明创建一个新的目录。可选参数-p：可以递归创建目录。注意新建目录的名称不能与当前目录中已有的目录或文件同名。  
+
+rm说明删除文件或目录。注意">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="【Linux自学笔记】文件相关命令"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Welcome to CCH21&#39;s Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>【Linux自学笔记】文件相关命令 - Welcome to CCH21&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2020/07/23/%E3%80%90Linux%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%E3%80%91%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/">
+                【Linux自学笔记】文件相关命令
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-07-23</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="创建和删除操作"><a href="#创建和删除操作" class="headerlink" title="创建和删除操作"></a>创建和删除操作</h2><h5 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h5><p><strong>说明</strong><br>创建文件或修改文件时间。<br>如果文件不存在，可以创建一个空白文件。<br>如果文件已经存在，可以修改文件的末次修改日期。  </p>
+<hr>
+<h5 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h5><p><strong>说明</strong><br>创建一个新的目录。<br><strong>可选参数</strong><br><code>-p</code>：可以递归创建目录。<br><strong>注意</strong><br>新建目录的名称不能与当前目录中已有的目录或文件同名。  </p>
+<hr>
+<h5 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h5><p><strong>说明</strong><br>删除文件或目录。<br><strong>注意</strong><br>使用<code>rm</code>命令删除的文件或目录<strong>不可恢复</strong>。<br><strong>rm常用选项</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-f</code></td>
+<td>强制删除，忽略不存在的文件，无需提示</td>
+</tr>
+<tr>
+<td><code>-r</code></td>
+<td>递归地删除目录下的内容，删除目录时必须加此参数</td>
+</tr>
+</tbody></table>
+<h2 id="拷贝和移动文件"><a href="#拷贝和移动文件" class="headerlink" title="拷贝和移动文件"></a>拷贝和移动文件</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>对应英文</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>tree [目录名]</code></td>
+<td>tree</td>
+<td>以树状图列出文件目录结构</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>cp 源文件 目标文件</code></td>
+<td>copy</td>
+<td>复制文件或目录</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>mv 源文件 目标文件</code></td>
+<td>move</td>
+<td>移动文件或目录，文件或目录重命名</td>
+</tr>
+</tbody></table>
+<h5 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h5><p><strong>说明</strong><br>以树状图列出文件目录结构。<br><strong>参数</strong><br><code>-d</code>：只显示目录。  </p>
+<hr>
+<h5 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h5><p><strong>说明</strong><br>复制文件或目录到另一个文件或目录中。<br><strong>cp常用选项</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-f</code></td>
+<td>已经存在的目标文件直接覆盖，不会提示</td>
+</tr>
+<tr>
+<td><code>-i</code></td>
+<td>覆盖文件前提示</td>
+</tr>
+<tr>
+<td><code>-r</code></td>
+<td>若给出的源文件是目录文件，则<code>cp</code>将递归复制该目录下的所有子目录和文件，目标文件必须为一个目录名</td>
+</tr>
+</tbody></table>
+<hr>
+<h5 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h5><p><strong>说明</strong><br>移动文件或目录，也可以给文件或目录重命名。<br><strong>参数</strong><br><code>-i</code>：覆盖文件前提示。  </p>
+<h2 id="查看文件内容"><a href="#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>对应英文</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>cat 文件名</code></td>
+<td>concatenate</td>
+<td>查看文件内容、创建文件、文件合并、追加文件内容等功能</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>more 文件名</code></td>
+<td>more</td>
+<td>分屏显示文件内容</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>grep 搜索文本 文件名</code></td>
+<td>grep</td>
+<td>搜索文本文件内容</td>
+</tr>
+</tbody></table>
+<h5 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h5><p><strong>说明</strong><br><code>cat</code>命令可以用来查看文件内容、创建文件、文件合并、追加文件内容等功能。<br><code>cat</code>会一次显示所有的内容，适合查看<strong>内容较少的文本文件</strong>。<br><strong>cat常用选项</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-b</code></td>
+<td>对非空输出行编号</td>
+</tr>
+<tr>
+<td><code>-n</code></td>
+<td>对输出的所有行编号</td>
+</tr>
+</tbody></table>
+<p>在Linux中，<code>nl</code>命令与<code>cat -b</code>的效果等价。  </p>
+<hr>
+<h5 id="more"><a href="#more" class="headerlink" title="more"></a>more</h5><p><strong>说明</strong><br><code>more</code>命令可以用于分屏显示文件内容，每次只显示一页内容。<br><code>more</code>命令适合于查看<strong>内容较多的文本文件</strong>。<br><strong>操作键</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>操作键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>空格键</td>
+<td>显示手册页的下一屏</td>
+</tr>
+<tr>
+<td>Enter键</td>
+<td>一次滚动手册页的一行</td>
+</tr>
+<tr>
+<td>b</td>
+<td>回滚一屏</td>
+</tr>
+<tr>
+<td>f</td>
+<td>前滚一屏</td>
+</tr>
+<tr>
+<td>q</td>
+<td>退出</td>
+</tr>
+<tr>
+<td>/word</td>
+<td>搜索word字符串</td>
+</tr>
+</tbody></table>
+<hr>
+<h5 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h5><p><strong>说明</strong><br><code>grep</code>命令可以搜索文本文件内容。<br><code>grep</code>允许对文本文件进行模式查找（正则表达式）。<br><strong>grep常用选项</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-n</code></td>
+<td>显示匹配行及行号</td>
+</tr>
+<tr>
+<td><code>-v</code></td>
+<td>显示不包含匹配文本的所有行（相当于求反）</td>
+</tr>
+<tr>
+<td><code>-i</code></td>
+<td>忽略大小写</td>
+</tr>
+</tbody></table>
+<p><strong>grep常用的两种模式查找</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>^a</code></td>
+<td>行首，搜寻以<code>a</code>开头的行</td>
+</tr>
+<tr>
+<td><code>ke$</code></td>
+<td>行尾，搜寻以<code>ke</code>结束的行</td>
+</tr>
+</tbody></table>
+<h2 id="其他文件相关命令"><a href="#其他文件相关命令" class="headerlink" title="其他文件相关命令"></a>其他文件相关命令</h2><h5 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h5><p><code>echo</code>会在终端中显示参数指定的文字，通常会和重定向联合使用。  </p>
+<hr>
+<h5 id="重定向-gt-和-gt-gt"><a href="#重定向-gt-和-gt-gt" class="headerlink" title="重定向&gt;和&gt;&gt;"></a>重定向&gt;和&gt;&gt;</h5><p>Linux允许将命令执行结果重定向到一个文件，将本应显示在终端上的内容输出或追加到指定文件中。<br><code>&gt;</code>表示输出，会覆盖文件原有的内容。<br><code>&gt;&gt;</code>表示追加，会将内容追加到已有文件的末尾。  </p>
+<hr>
+<h5 id="管道"><a href="#管道" class="headerlink" title="管道 |"></a>管道 |</h5><p>Linux允许将一个命令的输出通过管道作为另一个命令的输入。<br>常用的管道命令有：<code>more</code>, <code>grep</code>等。  </p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    I'd walk a million miles just to see your smile. 
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2020/07/23/%E3%80%90Linux%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%E3%80%91%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/">【Linux自学笔记】文件相关命令</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/07/22/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E5%81%87%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%BA%8C%E5%91%A8%E4%BB%BB%E5%8A%A1%E6%80%BB%E7%BB%93-%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">实验室暑假学习第二周任务总结--简单的数据处理</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/07/22/%E3%80%90Linux%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%E3%80%91%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/">【Linux自学笔记】常用命令介绍与目录相关命令</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/07/21/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E5%81%87%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">实验室暑假学习第二周算法总结</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/CCH21" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:1398635912@qq.com" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/" target="_blank" rel="noopener">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

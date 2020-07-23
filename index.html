@@ -147,6 +147,230 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2020/07/23/%E3%80%90Linux%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%E3%80%91%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/">
+                【Linux自学笔记】文件相关命令
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-07-23</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="创建和删除操作"><a href="#创建和删除操作" class="headerlink" title="创建和删除操作"></a>创建和删除操作</h2><h5 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h5><p><strong>说明</strong><br>创建文件或修改文件时间。<br>如果文件不存在，可以创建一个空白文件。<br>如果文件已经存在，可以修改文件的末次修改日期。  </p>
+<hr>
+<h5 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h5><p><strong>说明</strong><br>创建一个新的目录。<br><strong>可选参数</strong><br><code>-p</code>：可以递归创建目录。<br><strong>注意</strong><br>新建目录的名称不能与当前目录中已有的目录或文件同名。  </p>
+<hr>
+<h5 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h5><p><strong>说明</strong><br>删除文件或目录。<br><strong>注意</strong><br>使用<code>rm</code>命令删除的文件或目录<strong>不可恢复</strong>。<br><strong>rm常用选项</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-f</code></td>
+<td>强制删除，忽略不存在的文件，无需提示</td>
+</tr>
+<tr>
+<td><code>-r</code></td>
+<td>递归地删除目录下的内容，删除目录时必须加此参数</td>
+</tr>
+</tbody></table>
+<h2 id="拷贝和移动文件"><a href="#拷贝和移动文件" class="headerlink" title="拷贝和移动文件"></a>拷贝和移动文件</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>对应英文</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>tree [目录名]</code></td>
+<td>tree</td>
+<td>以树状图列出文件目录结构</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>cp 源文件 目标文件</code></td>
+<td>copy</td>
+<td>复制文件或目录</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>mv 源文件 目标文件</code></td>
+<td>move</td>
+<td>移动文件或目录，文件或目录重命名</td>
+</tr>
+</tbody></table>
+<h5 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h5><p><strong>说明</strong><br>以树状图列出文件目录结构。<br><strong>参数</strong><br><code>-d</code>：只显示目录。  </p>
+<hr>
+<h5 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h5><p><strong>说明</strong><br>复制文件或目录到另一个文件或目录中。<br><strong>cp常用选项</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-f</code></td>
+<td>已经存在的目标文件直接覆盖，不会提示</td>
+</tr>
+<tr>
+<td><code>-i</code></td>
+<td>覆盖文件前提示</td>
+</tr>
+<tr>
+<td><code>-r</code></td>
+<td>若给出的源文件是目录文件，则<code>cp</code>将递归复制该目录下的所有子目录和文件，目标文件必须为一个目录名</td>
+</tr>
+</tbody></table>
+<hr>
+<h5 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h5><p><strong>说明</strong><br>移动文件或目录，也可以给文件或目录重命名。<br><strong>参数</strong><br><code>-i</code>：覆盖文件前提示。  </p>
+<h2 id="查看文件内容"><a href="#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>对应英文</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>cat 文件名</code></td>
+<td>concatenate</td>
+<td>查看文件内容、创建文件、文件合并、追加文件内容等功能</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>more 文件名</code></td>
+<td>more</td>
+<td>分屏显示文件内容</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>grep 搜索文本 文件名</code></td>
+<td>grep</td>
+<td>搜索文本文件内容</td>
+</tr>
+</tbody></table>
+<h5 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h5><p><strong>说明</strong><br><code>cat</code>命令可以用来查看文件内容、创建文件、文件合并、追加文件内容等功能。<br><code>cat</code>会一次显示所有的内容，适合查看<strong>内容较少的文本文件</strong>。<br><strong>cat常用选项</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-b</code></td>
+<td>对非空输出行编号</td>
+</tr>
+<tr>
+<td><code>-n</code></td>
+<td>对输出的所有行编号</td>
+</tr>
+</tbody></table>
+<p>在Linux中，<code>nl</code>命令与<code>cat -b</code>的效果等价。  </p>
+<hr>
+<h5 id="more"><a href="#more" class="headerlink" title="more"></a>more</h5><p><strong>说明</strong><br><code>more</code>命令可以用于分屏显示文件内容，每次只显示一页内容。<br><code>more</code>命令适合于查看<strong>内容较多的文本文件</strong>。<br><strong>操作键</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>操作键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>空格键</td>
+<td>显示手册页的下一屏</td>
+</tr>
+<tr>
+<td>Enter键</td>
+<td>一次滚动手册页的一行</td>
+</tr>
+<tr>
+<td>b</td>
+<td>回滚一屏</td>
+</tr>
+<tr>
+<td>f</td>
+<td>前滚一屏</td>
+</tr>
+<tr>
+<td>q</td>
+<td>退出</td>
+</tr>
+<tr>
+<td>/word</td>
+<td>搜索word字符串</td>
+</tr>
+</tbody></table>
+<hr>
+<h5 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h5><p><strong>说明</strong><br><code>grep</code>命令可以搜索文本文件内容。<br><code>grep</code>允许对文本文件进行模式查找（正则表达式）。<br><strong>grep常用选项</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-n</code></td>
+<td>显示匹配行及行号</td>
+</tr>
+<tr>
+<td><code>-v</code></td>
+<td>显示不包含匹配文本的所有行（相当于求反）</td>
+</tr>
+<tr>
+<td><code>-i</code></td>
+<td>忽略大小写</td>
+</tr>
+</tbody></table>
+<p><strong>grep常用的两种模式查找</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>^a</code></td>
+<td>行首，搜寻以<code>a</code>开头的行</td>
+</tr>
+<tr>
+<td><code>ke$</code></td>
+<td>行尾，搜寻以<code>ke</code>结束的行</td>
+</tr>
+</tbody></table>
+<h2 id="其他文件相关命令"><a href="#其他文件相关命令" class="headerlink" title="其他文件相关命令"></a>其他文件相关命令</h2><h5 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h5><p><code>echo</code>会在终端中显示参数指定的文字，通常会和重定向联合使用。  </p>
+<hr>
+<h5 id="重定向-gt-和-gt-gt"><a href="#重定向-gt-和-gt-gt" class="headerlink" title="重定向&gt;和&gt;&gt;"></a>重定向&gt;和&gt;&gt;</h5><p>Linux允许将命令执行结果重定向到一个文件，将本应显示在终端上的内容输出或追加到指定文件中。<br><code>&gt;</code>表示输出，会覆盖文件原有的内容。<br><code>&gt;&gt;</code>表示追加，会将内容追加到已有文件的末尾。  </p>
+<hr>
+<h5 id="管道"><a href="#管道" class="headerlink" title="管道 |"></a>管道 |</h5><p>Linux允许将一个命令的输出通过管道作为另一个命令的输入。<br>常用的管道命令有：<code>more</code>, <code>grep</code>等。  </p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2020/07/22/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E5%81%87%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%BA%8C%E5%91%A8%E4%BB%BB%E5%8A%A1%E6%80%BB%E7%BB%93-%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">
                 实验室暑假学习第二周任务总结--简单的数据处理
             </a>
@@ -682,46 +906,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2020/03/24/%E3%80%90Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0%E3%80%91BeautifulSoup%E6%A8%A1%E5%9D%97%E5%9F%BA%E7%A1%80/">
-                【Python网络爬虫笔记】BeautifulSoup模块
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2020-03-24</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p><strong>学习资源</strong>：<a href="https://www.icourse163.org/learn/BIT-1001870001?tid=1001962001#/learn/announce" target="_blank" rel="noopener">中国大学MOOC Python网络爬虫与信息提取 北京理工大学计算机学院 嵩天</a>  </p>
-<hr>
-<h2 id="安装BeautifulSoup模块"><a href="#安装BeautifulSoup模块" class="headerlink" title="安装BeautifulSoup模块"></a>安装BeautifulSoup模块</h2><p>&emsp;&emsp;和requests模块一样，如果使用Anaconda 3的话，是自带BeautifulSoup模块的。如果没有BeautifulSoup模块的话，只需要以管理员身份打开cmd，输入命令<code>pip install beautifulsoup4</code>即可安装。  </p>
-<h2 id="BeautifulSoup的基本元素"><a href="#BeautifulSoup的基本元素" class="headerlink" title="BeautifulSoup的基本元素"></a>BeautifulSoup的基本元素</h2><p>&emsp;&emsp;BeautifulSoup是解析、遍历、维护“标签树”的功能库。<br><img src="https://img-blog.csdnimg.cn/20200324201521332.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200324201541942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;要想引用BeautifulSoup模块，我们需要以下面的语句来导入：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">import bs4</span><br></pre></td></tr></table></figure>
-<p>即主要是用BeautifulSoup类。<br><img src="https://img-blog.csdnimg.cn/20200324203426379.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;下表是对BeautifulSoup库解析器的说明：<br>解析器|使用方法|条件<br>——|——|——<br>bs4的HTML解析器|BeautifulSoup(mk, ‘html.parser’)|安装bs4库<br>lxml的HTML解析器|BeautifulSoup(mk, ‘lxml’)|pip install lxml<br>lxml的XML解析器|BeautifulSoup(mk, ‘xml’)|pip install lxml<br>html5lib的解析器|BeautifulSoup(mk, ‘html5lib’)|pip install html5lib</p>
-<p>&emsp;&emsp;下面来简单说明BeautifulSoup类的基本元素：<br>基本元素|说明<br>——|——<br>Tag|标签，最基本的信息组织单元，分别用&lt;&gt;和&lt;/&gt;标明开头和结尾<br>Name|标签的名字，&lt;p&gt;…&lt;/p&gt;的名字是“p”，格式：&lt;tag&gt;.name<br>Attributes|标签的属性，字典形式组织，格式：&lt;tag&gt;.attrs<br>NavigableString|标签内非属性字符串，&lt;&gt;…&lt;/&gt;中字符串，格式：&lt;tag&gt;.string<br>Comment|标签内字符串的注释部分，一种特殊的Comment类型</p>
-<p><img src="https://img-blog.csdnimg.cn/20200324205435707.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200324205450962.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200324205508452.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200324205529537.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200324205543114.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200324205608809.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="基于bs4的HTML内容遍历方法"><a href="#基于bs4的HTML内容遍历方法" class="headerlink" title="基于bs4的HTML内容遍历方法"></a>基于bs4的HTML内容遍历方法</h2><p>&emsp;&emsp;HTML的基本格式是：&lt;&gt;…&lt;/&gt;构成了所属关系，形成了标签的树形结构，如下图所示：<br><img src="https://img-blog.csdnimg.cn/2020032421113193.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>&emsp;&emsp;对标签树的遍历可以分为三种：下行遍历、上行遍历和平行遍历。<br><img src="https://img-blog.csdnimg.cn/20200324211329389.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>标签树的下行遍历</strong><br>属性|说明<br>——|——<br>.contents|子节点的列表，将&lt;tag&gt;所有儿子节点存入列表<br>.children|子节点的迭代类型，与.contents类似，用于循环遍历儿子节点<br>.descendants|子孙节点的迭代类型，包含所有子孙节点，用于循环遍历</p>
-<p>&emsp;&emsp;BeautifulSoup类型是标签树的根节点。  </p>
-<p><strong>标签树的上行遍历</strong><br>属性|说明<br>——|——<br>.parent|节点的父亲标签<br>.parents|节点先辈标签的迭代类型，用于循环遍历先辈节点</p>
-<p><strong>标签树的平行遍历</strong><br>属性|说明<br>——|——<br>.next_sibling|返回按照HTML文本顺序的下一个平行节点标签<br>.previous_sibling|返回按照HTML文本顺序的上一个平行节点标签<br>.next_siblings|迭代类型，返回按照HTML文本顺序的后续所有平行节点标签<br>.previous_siblings|迭代类型，返回按照HTML文本顺序的前续所有平行节点标签</p>
-<p><img src="https://img-blog.csdnimg.cn/20200324212731322.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20200324212755118.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="基于bs4的HTML格式输出"><a href="#基于bs4的HTML格式输出" class="headerlink" title="基于bs4的HTML格式输出"></a>基于bs4的HTML格式输出</h2><p><strong>prettify()方法</strong><br>&emsp;&emsp;<code>prettify()</code>为HTML文本&lt;&gt;及其内容增加<code>\n</code>。该方法可用于标签，语法为<code>&lt;tag&gt;.prettify()</code>。<br><img src="https://img-blog.csdnimg.cn/20200324213122609.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>bs4的编码</strong><br>&emsp;&emsp;bs4将任何HTML输入都变成utf-8编码。<br><img src="https://img-blog.csdnimg.cn/20200324213241216.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -764,6 +948,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2020/07/23/%E3%80%90Linux%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%E3%80%91%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/">【Linux自学笔记】文件相关命令</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2020/07/22/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E5%81%87%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%BA%8C%E5%91%A8%E4%BB%BB%E5%8A%A1%E6%80%BB%E7%BB%93-%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">实验室暑假学习第二周任务总结--简单的数据处理</a>
             </li>
             
@@ -773,10 +961,6 @@
             
             <li>
                 <a class="footer-post" href="/2020/07/21/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E5%81%87%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">实验室暑假学习第二周算法总结</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2020/07/16/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E5%81%87%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E5%91%A8%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">实验室暑假学习第一周算法总结</a>
             </li>
             
         </ul>
