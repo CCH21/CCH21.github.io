@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="LeetCode 3. 无重复字符的最长子串难度&amp;emsp;中等  
+给定一个字符串，请你找出其中不含有重复字符的最长子串的长度。  
+示例1  
+123输入: &amp;quot;abcabcbb&amp;quot;输出: 3解释: 因为无重复字符的最长子串是&amp;quot;abc&amp;quot;，所以其长度为3。
+示例">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="实验室暑假学习第三周算法总结"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Welcome to CCH21&#39;s Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>实验室暑假学习第三周算法总结 - Welcome to CCH21&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2020/07/27/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E5%81%87%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%89%E5%91%A8%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">
+                实验室暑假学习第三周算法总结
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-07-27</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="LeetCode-3-无重复字符的最长子串"><a href="#LeetCode-3-无重复字符的最长子串" class="headerlink" title="LeetCode 3. 无重复字符的最长子串"></a>LeetCode 3. 无重复字符的最长子串</h2><p><strong>难度</strong>&emsp;中等  </p>
+<p>给定一个字符串，请你找出其中不含有重复字符的<strong>最长子串</strong>的长度。  </p>
+<p><strong>示例1</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;abcabcbb&quot;</span><br><span class="line">输出: 3</span><br><span class="line">解释: 因为无重复字符的最长子串是&quot;abc&quot;，所以其长度为3。</span><br></pre></td></tr></table></figure>
+<p><strong>示例2</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;bbbbb&quot;</span><br><span class="line">输出: 1</span><br><span class="line">解释: 因为无重复字符的最长子串是&quot;b&quot;，所以其长度为1。</span><br></pre></td></tr></table></figure>
+<p><strong>示例3</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;pwwkew&quot;</span><br><span class="line">输出: 3</span><br><span class="line">解释: 因为无重复字符的最长子串是&quot;wke&quot;，所以其长度为3。</span><br><span class="line">请注意，你的答案必须是子串的长度，&quot;pwke&quot;是一个子序列，不是子串。</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>解法</strong>&emsp;滑动窗口<br>语言：C  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(<span class="keyword">char</span>* s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> start = <span class="number">0</span>;                          <span class="comment">/* 记录最长子串起点 */</span></span><br><span class="line">    <span class="keyword">int</span> flag[<span class="number">128</span>] = &#123;<span class="number">0</span>&#125;;                    <span class="comment">/* 标记数组 */</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; s[i] != <span class="string">'\0'</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (flag[s[i]] &gt; start) &#123;           <span class="comment">/* 如果出现了重复字符 */</span></span><br><span class="line">            cnt = i - start;                <span class="comment">/* 记录当前子串的长度 */</span></span><br><span class="line">            max = cnt &gt; max ? cnt : max;    <span class="comment">/* 刷新最长子串的长度 */</span></span><br><span class="line">            start = flag[s[i]];             <span class="comment">/* 重置起点 */</span></span><br><span class="line">        &#125;</span><br><span class="line">        flag[s[i]] = i + <span class="number">1</span>;                 <span class="comment">/* 刷新标记数组 */</span></span><br><span class="line">    &#125;</span><br><span class="line">    cnt = i - start;                        <span class="comment">/* 记录最后一子串的长度 */</span></span><br><span class="line">    <span class="keyword">return</span> cnt &gt; max ? cnt : max;           <span class="comment">/* 刷新最长子串的长度并返回结果 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这道题采用滑动窗口的思想，大致思路如下图所示。对于给定的字符串<code>s</code>，对其进行遍历，找出以每个字符最长无重复字符子串长度，再取这些长度的最大值，即为本题所求。<br><img src="https://img-blog.csdnimg.cn/20200727174947833.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>那么，我们该如何找出以每个字符开头的最大子串呢？<br>引入标记数组<code>flag</code>，长度为<code>128</code>（因为ASCII码的十进制数范围为<code>0-127</code>），并将其所有元素初始化为<code>0</code>。初始化<code>cnt</code>变量为<code>0</code>，用于记录每个子串的长度。初始化<code>max</code>变量为<code>0</code>，每记录一个子串的长度，就刷新一次<code>max</code>，确保可以保留最长的子串长度。<br>遍历字符串<code>s</code>，找出以每个字符开头的最长无重复字符子串。首先判断子串中有没有出现重复字符，如果出现了重复字符，则必定有<code>flag[s[i]] &gt; start</code>这一条件成立。如果没有出现重复字符，则刷新标记数组元素<code>flag[s[i]] = i + 1</code>；否则，记录当前子串的长度<code>cnt = i - start</code>，刷新<code>max</code>的值，并重置起点<code>start</code>为<code>flag[s[i]]</code>，最后刷新标记数组元素<code>flag[s[i]] = i + 1</code>。在遍历字符串的循环外，我们仍需记录最后一个子串的长度<code>cnt</code>并且刷新最长无重复字符子串长度<code>max</code>，再返回结果。<br>需要说明的一点是，当我们在遍历的过程中判断出子串中出现了重复字符时，寻找下一个字符开头的子串时并不需要再次从那个字符开始，而是可以从中断点处继续搜索，因为前面的那一部分子串必定不会包含重复元素。  </p>
+<h2 id="LeetCode-66-加一"><a href="#LeetCode-66-加一" class="headerlink" title="LeetCode 66. 加一"></a>LeetCode 66. 加一</h2><p><strong>难度</strong>&emsp;简单  </p>
+<p>给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。<br>最高位数字存放在数组的首位，数组中每个元素只存储单个数字。<br>你可以假设除了整数0之外，这个整数不会以零开头。  </p>
+<p><strong>示例1</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,3]</span><br><span class="line">输出: [1,2,4]</span><br><span class="line">解释: 输入数组表示数字123。</span><br></pre></td></tr></table></figure>
+<p><strong>示例2</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [4,3,2,1]</span><br><span class="line">输出: [4,3,2,2]</span><br><span class="line">解释: 输入数组表示数字4321。</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>解法</strong>&emsp;数学<br>语言：C  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Note: The returned array must be malloced, assume caller calls free().</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">plusOne</span><span class="params">(<span class="keyword">int</span>* digits, <span class="keyword">int</span> digitsSize, <span class="keyword">int</span>* returnSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = digitsSize - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">if</span> (digits[i] == <span class="number">9</span>) &#123;</span><br><span class="line">            digits[i] = <span class="number">0</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            digits[i]++;</span><br><span class="line">            * returnSize = digitsSize;</span><br><span class="line">            <span class="keyword">return</span> digits;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span>* ret = (<span class="keyword">int</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>) * (digitsSize + <span class="number">1</span>));</span><br><span class="line">    <span class="built_in">memset</span>(ret, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>) * (digitsSize + <span class="number">1</span>));</span><br><span class="line">    ret[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    * returnSize = digitsSize + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这道题总体来说类似于数学的竖式计算，需要分情况来讨论。<br>最简单的情况就是不涉及进位操作，这样只需要把个位上的数字加1。稍微复杂一点，个位上的数字是9，这时候就要考虑到进位的情况，即让个位数字变为0，十位数字加1。同样地，如果十位数字也是9的话，进位操作就要将十位数字变为0，百位数字加1。百位、千位、万位……数字也是9的情况以此类推。最极端的情况，这个整数的所有位都是9，那么将其所有位的数字都置为0，再从前面添上1即可得到答案。  </p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    I'd walk a million miles just to see your smile. 
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2020/07/27/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E5%81%87%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%89%E5%91%A8%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">实验室暑假学习第三周算法总结</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/07/23/%E3%80%90Linux%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%E3%80%91%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/">【Linux自学笔记】文件相关命令</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/07/22/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E5%81%87%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%BA%8C%E5%91%A8%E4%BB%BB%E5%8A%A1%E6%80%BB%E7%BB%93-%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">实验室暑假学习第二周任务总结--简单的数据处理</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/07/22/%E3%80%90Linux%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%E3%80%91%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%BB%8B%E7%BB%8D%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/">【Linux自学笔记】常用命令介绍与目录相关命令</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/CCH21" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:1398635912@qq.com" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/" target="_blank" rel="noopener">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
