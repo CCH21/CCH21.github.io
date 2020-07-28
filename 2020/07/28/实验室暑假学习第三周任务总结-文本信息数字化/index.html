@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="任务需求&amp;emsp;&amp;emsp;上周我们对爬取到的数据做了一些简单的处理，本周的任务就是将其中的文本信息数字化表示。
+Python源代码&amp;emsp;&amp;emsp;本周的任务，大部分数字化都可以通过字典来解决，只有租期一列比较特殊，有的房源数据的租期是以年为单位，有的是以月为单位，还有的是暂无数据。按照">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="实验室暑假学习第三周任务总结--文本信息数字化"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Welcome to CCH21&#39;s Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>实验室暑假学习第三周任务总结--文本信息数字化 - Welcome to CCH21&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2020/07/28/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E5%81%87%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%89%E5%91%A8%E4%BB%BB%E5%8A%A1%E6%80%BB%E7%BB%93-%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%95%B0%E5%AD%97%E5%8C%96/">
+                实验室暑假学习第三周任务总结--文本信息数字化
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-07-28</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="任务需求"><a href="#任务需求" class="headerlink" title="任务需求"></a>任务需求</h2><p>&emsp;&emsp;上周我们对爬取到的数据做了一些简单的处理，本周的任务就是将其中的文本信息数字化表示。<br><img src="https://img-blog.csdnimg.cn/20200728220309100.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="Python源代码"><a href="#Python源代码" class="headerlink" title="Python源代码"></a>Python源代码</h2><p>&emsp;&emsp;本周的任务，大部分数字化都可以通过字典来解决，只有<strong>租期</strong>一列比较特殊，有的房源数据的<strong>租期</strong>是以<strong>年</strong>为单位，有的是以<strong>月</strong>为单位，还有的是<strong>暂无数据</strong>。按照小组给出的需求，首先要取最低租期，把以年为单位的数据都转换成以月为单位，计算出均值，再进行二次处理，将暂无数据的信息替换成均值。这里可以使用正则表达式来解决。  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">LabelData</span><span class="params">(elem, labeled_col_list, label)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    对大量数据自动编号</span></span><br><span class="line"><span class="string">    :return: 元组，其中的元素为最终编号和下一待编号</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">if</span> elem <span class="keyword">not</span> <span class="keyword">in</span> labeled_col_list:</span><br><span class="line">        labeled_col_list.append(elem)</span><br><span class="line">        ret = label</span><br><span class="line">        label += <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        ret = labeled_col_list.index(elem) + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> ret, label</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 对所在区县、所在街道或地区、小区名称编号使用的变量</span></span><br><span class="line">labeled_col_1, labeled_col_2, labeled_col_3 = [], [], []</span><br><span class="line">label1, label2, label3 = <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span></span><br><span class="line"><span class="comment"># 计算租期的均值所用的求和变量</span></span><br><span class="line">total_term = <span class="number">0</span></span><br><span class="line"><span class="comment"># 存储各行信息列表的列表</span></span><br><span class="line">rows = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'ProcessedTianjinRentHouseInfo.csv'</span>, <span class="string">'r'</span>, newline=<span class="string">''</span>) <span class="keyword">as</span> csv_in_file:</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'LabeledTianjinRentHouseInfo.csv'</span>, <span class="string">'w'</span>, newline=<span class="string">''</span>) <span class="keyword">as</span> csv_out_file:</span><br><span class="line">        filereader = csv.reader(csv_in_file)</span><br><span class="line">        filewriter = csv.writer(csv_out_file)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 读写标题行</span></span><br><span class="line">        head = next(filereader)</span><br><span class="line">        filewriter.writerow(head)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 第一次处理数据</span></span><br><span class="line">        <span class="keyword">for</span> row_list <span class="keyword">in</span> filereader:</span><br><span class="line">            <span class="comment"># 所在城市</span></span><br><span class="line">            row_list[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">            <span class="comment"># 所在区县</span></span><br><span class="line">            row_1_data = LabelData(row_list[<span class="number">1</span>], labeled_col_1, label1)</span><br><span class="line">            row_list[<span class="number">1</span>] = row_1_data[<span class="number">0</span>]</span><br><span class="line">            label1 = row_1_data[<span class="number">1</span>]</span><br><span class="line">            <span class="comment"># 所在街道或地区</span></span><br><span class="line">            row_2_data = LabelData(row_list[<span class="number">2</span>], labeled_col_2, label2)</span><br><span class="line">            row_list[<span class="number">2</span>] = row_2_data[<span class="number">0</span>]</span><br><span class="line">            label2 = row_2_data[<span class="number">1</span>]</span><br><span class="line">            <span class="comment"># 小区名称</span></span><br><span class="line">            row_3_data = LabelData(row_list[<span class="number">3</span>], labeled_col_3, label3)</span><br><span class="line">            row_list[<span class="number">3</span>] = row_3_data[<span class="number">0</span>]</span><br><span class="line">            label3 = row_3_data[<span class="number">1</span>]</span><br><span class="line">            <span class="comment"># 租赁方式</span></span><br><span class="line">            <span class="keyword">if</span> row_list[<span class="number">5</span>] == <span class="string">'整租'</span>:</span><br><span class="line">                row_list[<span class="number">5</span>] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> row_list[<span class="number">5</span>] == <span class="string">'合租'</span>:</span><br><span class="line">                row_list[<span class="number">5</span>] = <span class="number">2</span></span><br><span class="line">            <span class="comment"># 朝向</span></span><br><span class="line">            aspect_dic = &#123;</span><br><span class="line">                <span class="string">'东'</span>: <span class="number">1</span>,</span><br><span class="line">                <span class="string">'南'</span>: <span class="number">2</span>,</span><br><span class="line">                <span class="string">'西'</span>: <span class="number">3</span>,</span><br><span class="line">                <span class="string">'北'</span>: <span class="number">4</span>,</span><br><span class="line">                <span class="string">'东南'</span>: <span class="number">5</span>,</span><br><span class="line">                <span class="string">'东北'</span>: <span class="number">6</span>,</span><br><span class="line">                <span class="string">'西南'</span>: <span class="number">7</span>,</span><br><span class="line">                <span class="string">'西北'</span>: <span class="number">8</span></span><br><span class="line">            &#125;</span><br><span class="line">            row_list[<span class="number">6</span>] = aspect_dic[row_list[<span class="number">6</span>]]</span><br><span class="line">            <span class="comment"># 计费方式</span></span><br><span class="line">            charge_mode_dic = &#123;</span><br><span class="line">                <span class="string">'月付价'</span>: <span class="number">1</span>,</span><br><span class="line">                <span class="string">'季付价'</span>: <span class="number">2</span>,</span><br><span class="line">                <span class="string">'半年付价'</span>: <span class="number">3</span>,</span><br><span class="line">                <span class="string">'年付价'</span>: <span class="number">4</span>,</span><br><span class="line">                <span class="string">'None'</span>: <span class="number">5</span></span><br><span class="line">            &#125;</span><br><span class="line">            row_list[<span class="number">8</span>] = charge_mode_dic[row_list[<span class="number">8</span>]]</span><br><span class="line">            <span class="comment"># 入住</span></span><br><span class="line">            <span class="keyword">if</span> row_list[<span class="number">12</span>] == <span class="string">'随时入住'</span>:</span><br><span class="line">                row_list[<span class="number">12</span>] = <span class="number">1</span></span><br><span class="line">            <span class="comment"># TODO 租期</span></span><br><span class="line">            <span class="keyword">if</span> row_list[<span class="number">13</span>] != <span class="string">'暂无数据'</span>:</span><br><span class="line">                <span class="keyword">if</span> re.search(<span class="string">r'年'</span>, row_list[<span class="number">13</span>]):</span><br><span class="line">                    term = int(re.sub(<span class="string">r'(\D)'</span>, <span class="string">' '</span>, row_list[<span class="number">13</span>]).split()[<span class="number">0</span>]) * <span class="number">12</span></span><br><span class="line">                <span class="keyword">elif</span> re.search(<span class="string">r'月'</span>, row_list[<span class="number">13</span>]):</span><br><span class="line">                    term = int(re.sub(<span class="string">r'(\D)'</span>, <span class="string">' '</span>, row_list[<span class="number">13</span>]).split()[<span class="number">0</span>])</span><br><span class="line">                row_list[<span class="number">13</span>] = term</span><br><span class="line">                total_term += term</span><br><span class="line">            <span class="comment"># 看房</span></span><br><span class="line">            see_house_dic = &#123;</span><br><span class="line">                <span class="string">'随时可看'</span>: <span class="number">1</span>,</span><br><span class="line">                <span class="string">'需提前预约'</span>: <span class="number">2</span>,</span><br><span class="line">                <span class="string">'一般下班后可看'</span>: <span class="number">3</span></span><br><span class="line">            &#125;</span><br><span class="line">            row_list[<span class="number">14</span>] = see_house_dic[row_list[<span class="number">14</span>]]</span><br><span class="line">            <span class="comment"># 所在楼层</span></span><br><span class="line">            floor_dic = &#123;</span><br><span class="line">                <span class="string">'低楼层'</span>: <span class="number">1</span>,</span><br><span class="line">                <span class="string">'中楼层'</span>: <span class="number">2</span>,</span><br><span class="line">                <span class="string">'高楼层'</span>: <span class="number">3</span></span><br><span class="line">            &#125;</span><br><span class="line">            row_list[<span class="number">15</span>] = floor_dic[row_list[<span class="number">15</span>]]</span><br><span class="line">            <span class="comment"># 电梯</span></span><br><span class="line">            lift_dic = &#123;</span><br><span class="line">                <span class="string">'有'</span>: <span class="number">1</span>,</span><br><span class="line">                <span class="string">'无'</span>: <span class="number">2</span>,</span><br><span class="line">                <span class="string">'暂无数据'</span>: <span class="number">3</span></span><br><span class="line">            &#125;</span><br><span class="line">            row_list[<span class="number">17</span>] = lift_dic[row_list[<span class="number">17</span>]]</span><br><span class="line">            <span class="comment"># 车位</span></span><br><span class="line">            stall_dic = &#123;</span><br><span class="line">                <span class="string">'暂无数据'</span>: <span class="number">1</span>,</span><br><span class="line">                <span class="string">'免费使用'</span>: <span class="number">2</span>,</span><br><span class="line">                <span class="string">'租用车位'</span>: <span class="number">3</span></span><br><span class="line">            &#125;</span><br><span class="line">            row_list[<span class="number">18</span>] = stall_dic[row_list[<span class="number">18</span>]]</span><br><span class="line">            <span class="comment"># 用水</span></span><br><span class="line">            water_dic = &#123;</span><br><span class="line">                <span class="string">'民水'</span>: <span class="number">1</span>,</span><br><span class="line">                <span class="string">'商水'</span>: <span class="number">2</span>,</span><br><span class="line">                <span class="string">'暂无数据'</span>: <span class="number">3</span></span><br><span class="line">            &#125;</span><br><span class="line">            row_list[<span class="number">19</span>] = water_dic[row_list[<span class="number">19</span>]]</span><br><span class="line">            <span class="comment"># 用电</span></span><br><span class="line">            elec_dic = &#123;</span><br><span class="line">                <span class="string">'民电'</span>: <span class="number">1</span>,</span><br><span class="line">                <span class="string">'商电'</span>: <span class="number">2</span>,</span><br><span class="line">                <span class="string">'暂无数据'</span>: <span class="number">3</span></span><br><span class="line">            &#125;</span><br><span class="line">            row_list[<span class="number">20</span>] = elec_dic[row_list[<span class="number">20</span>]]</span><br><span class="line">            <span class="comment"># 燃气</span></span><br><span class="line">            gas_dic = &#123;</span><br><span class="line">                <span class="string">'有'</span>: <span class="number">1</span>,</span><br><span class="line">                <span class="string">'无'</span>: <span class="number">2</span>,</span><br><span class="line">                <span class="string">'暂无数据'</span>: <span class="number">3</span></span><br><span class="line">            &#125;</span><br><span class="line">            row_list[<span class="number">21</span>] = gas_dic[row_list[<span class="number">21</span>]]</span><br><span class="line">            <span class="comment"># 采暖</span></span><br><span class="line">            heating_dic = &#123;</span><br><span class="line">                <span class="string">'集中供暖'</span>: <span class="number">1</span>,</span><br><span class="line">                <span class="string">'自采暖'</span>: <span class="number">2</span>,</span><br><span class="line">                <span class="string">'暂无数据'</span>: <span class="number">3</span></span><br><span class="line">            &#125;</span><br><span class="line">            row_list[<span class="number">22</span>] = heating_dic[row_list[<span class="number">22</span>]]</span><br><span class="line">            <span class="comment"># 将第一次处理后的数据保存在rows列表中</span></span><br><span class="line">            rows.append(row_list)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 第二次处理数据</span></span><br><span class="line">        <span class="keyword">for</span> row_list <span class="keyword">in</span> rows:</span><br><span class="line">            <span class="comment"># 再次处理暂无数据的租期，将其更改为均值</span></span><br><span class="line">            <span class="keyword">if</span> row_list[<span class="number">13</span>] == <span class="string">'暂无数据'</span>:</span><br><span class="line">                row_list[<span class="number">13</span>] = total_term // <span class="number">1503</span></span><br><span class="line">            <span class="comment"># 将处理后的数据写入文件</span></span><br><span class="line">            filewriter.writerow(row_list)</span><br><span class="line">        print(<span class="string">'写入成功'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p><img src="https://img-blog.csdnimg.cn/20200728223753690.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NTU0MDEw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    I'd walk a million miles just to see your smile. 
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2020/07/28/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E5%81%87%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%89%E5%91%A8%E4%BB%BB%E5%8A%A1%E6%80%BB%E7%BB%93-%E6%96%87%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%95%B0%E5%AD%97%E5%8C%96/">实验室暑假学习第三周任务总结--文本信息数字化</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/07/27/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E5%81%87%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%89%E5%91%A8%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">实验室暑假学习第三周算法总结</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/07/23/%E3%80%90Linux%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%E3%80%91%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/">【Linux自学笔记】文件相关命令</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/07/22/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E5%81%87%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%BA%8C%E5%91%A8%E4%BB%BB%E5%8A%A1%E6%80%BB%E7%BB%93-%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">实验室暑假学习第二周任务总结--简单的数据处理</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/CCH21" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:1398635912@qq.com" target="_blank" rel="noopener">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/" target="_blank" rel="noopener">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
